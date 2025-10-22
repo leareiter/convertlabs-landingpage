@@ -14,19 +14,15 @@ export default function HeroSection() {
     secondaryCta: "Découvrir nos services"
   }), []);
 
-  // Refs pour les animations GSAP
   const text1Ref = useRef<HTMLSpanElement>(null);
   const text2Ref = useRef<HTMLSpanElement>(null);
   const text3Ref = useRef<HTMLSpanElement>(null);
   const greenBoxRef = useRef<HTMLSpanElement>(null);
 
-  // Animation GSAP
   useEffect(() => {
     if (hero) {
-      // Timeline principale
       const tl = gsap.timeline();
 
-      // Animation du premier texte - "On construit"
       tl.fromTo(text1Ref.current,
         {
           opacity: 0,
@@ -41,7 +37,6 @@ export default function HeroSection() {
           ease: "power2.out"
         }
       )
-        // Animation du deuxième texte - "des produits digitaux"
         .fromTo(text2Ref.current,
           {
             opacity: 0,
@@ -55,9 +50,8 @@ export default function HeroSection() {
             duration: 0.4,
             ease: "power2.out"
           },
-          "-=0.1" // Commence 0.1s avant la fin de l'animation précédente
+          "-=0.1"
         )
-        // Animation du troisième texte - "qui"
         .fromTo(text3Ref.current,
           {
             opacity: 0,
@@ -71,9 +65,8 @@ export default function HeroSection() {
             duration: 0.3,
             ease: "power2.out"
           },
-          "-=0.1" // Commence 0.1s avant la fin de l'animation précédente
+          "-=0.1"
         )
-        // Animation de la green box - "bossent pour toi" après un délai
         .fromTo(greenBoxRef.current,
           {
             opacity: 0,
@@ -84,12 +77,12 @@ export default function HeroSection() {
           {
             opacity: 1,
             scale: 1,
-            rotation: 2, // Inclinaison plus prononcée
+            rotation: 2,
             y: 0,
             duration: 0.5,
             ease: "back.out(1.2)"
           },
-          "+=0.1" // Délai de 0.1s après que "qui" soit complètement visible
+          "+=0.1"
         );
     }
   }, [hero]);
@@ -107,14 +100,14 @@ export default function HeroSection() {
             <ArrowRight size={14} />
           </div>
 
-          <h1 className="text-[40px] lg:text-7xl tracking-[-0.06em]  mb-8 md:mb-12 leading-tight text-center text-text-hero">
+          <h1 className="text-[40px] lg:text-7xl tracking-[-0.05em]  mb-8 md:mb-12 leading-tight text-center text-text-hero">
             <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">On construit</span>
             <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">des produits digitaux</span>
             <div className="flex items-center justify-center gap-4">
               <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">qui </span><span ref={greenBoxRef} className="inline-block font-times-new-roman font-medium italic  bg-brand-green text-text-hero px-6 py-2 rounded-2xl border border-brand-green/10 shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0">bossent pour toi.</span></div>
           </h1>
 
-          <p className="text-lg md:text-xl font-be-vietnam-pro  font-regular text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed tracking-[-0.06em]">
+          <p className="text-base md:text-xl font-be-vietnam-pro  font-regular text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed tracking-[-0.05em]">
             {hero.description.split('\n').map((line, index) => (
               <span key={index}>
                 {line}

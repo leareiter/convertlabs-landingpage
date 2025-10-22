@@ -48,7 +48,6 @@ const Squares: React.FC<SquaresProps> = ({
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Fond surface-muted en premier
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -63,7 +62,6 @@ const Squares: React.FC<SquaresProps> = ({
           const squareX = x - (gridOffset.current.x % squareSize);
           const squareY = y - (gridOffset.current.y % squareSize);
 
-          // Dessiner des carrés parfaits
           ctx.beginPath();
           ctx.rect(squareX, squareY, squareSize, squareSize);
           ctx.stroke();

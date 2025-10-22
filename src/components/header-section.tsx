@@ -33,7 +33,7 @@ const HeaderSection = ({ subtitle, title, highlightedWords }: HeaderSectionProps
       <p className="text-sm font-mono font-semibold text-text-muted uppercase tracking-wider mb-4">
         {subtitle}
       </p>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-text-hero tracking-[-0.06em] leading-tight">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-text-hero tracking-[-0.05em] leading-tight">
         {renderTitle()}
       </h2>
     </div>

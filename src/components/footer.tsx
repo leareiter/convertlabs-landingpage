@@ -21,10 +21,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-background py-16 font-be-vietnam-pro tracking-[-0.06em]">
+    <footer className="bg-black text-background py-16 font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
-          {/* Logo et description */}
           <div className="md:col-span-2">
             <Image src="/logo-white.svg" alt="ConvertLabs Logo" width={300} height={40} />
             <p className="text-background/80 mb-6 max-w-md">
@@ -46,7 +45,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
@@ -60,7 +58,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Liens utiles */}
           <div>
             <h4 className="font-semibold mb-4">Liens utiles</h4>
             <ul className="space-y-2">
@@ -75,7 +72,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Ligne de séparation */}
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-background/60 text-sm">

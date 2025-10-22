@@ -1,4 +1,3 @@
-// Helper pour charger les données JSON avec type safety
 export const loadData = async <T>(path: string): Promise<T> => {
   try {
     const response = await fetch(path);
@@ -12,12 +11,10 @@ export const loadData = async <T>(path: string): Promise<T> => {
   }
 };
 
-// Helper pour charger les données statiques (import direct)
 export const loadStaticData = <T>(data: T): T => {
   return data;
 };
 
-// Types pour les données
 export interface SiteConfig {
   name: string;
   logo: string;

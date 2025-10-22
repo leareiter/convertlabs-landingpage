@@ -33,37 +33,35 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white font-be-vietnam-pro font-regular tracking-[-0.06em]">
+    <nav className="sticky top-0 z-50 w-full bg-white font-be-vietnam-pro font-regular tracking-[-0.05em]">
       <div className="w-full border-b border-gray-200">
         <div className="flex">
-          <div className="hidden md:flex w-[20%] bg-white items-center justify-center ">
+          <div className="hidden md:flex w-[20%] bg-white items-center justify-center">
           </div>
-          <div className="w-full md:w-[60%] px-2 ">
+          <div className="w-full md:w-[60%] px-4">
             <div className="flex h-20 items-center justify-between">
               <div className="flex items-center">
-                <Image 
-                  src="/logo-black.svg" 
-                  alt="ConvertLabs Logo" 
-                  width={170} 
+                <Image
+                  src="/logo-black.svg"
+                  alt="ConvertLabs Logo"
+                  width={170}
                   height={40}
-                  className=" bg-transparent"
-                  style={{ backgroundColor: 'transparent' }}
                 />
               </div>
 
               <div className="hidden lg:flex items-center">
                 <NavigationMenu>
-                  <NavigationMenuList>
+                  <NavigationMenuList className="flex items-center space-x-2">
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-lg font-be-vietnam-pro  font-medium text-text-hero transition-transform bg-transparent -translate-y-1 hover:-translate-y-2" style={{ fontSize: '16px' }}>
-                          Services
-                        </NavigationMenuTrigger>
+                      <NavigationMenuTrigger className="text-base font-medium text-text-hero transition-transform bg-transparent hover:-translate-y-1">
+                        Services
+                      </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <div className="grid gap-3 p-6 w-[400px]">
                           <NavigationMenuLink asChild>
                             <a
                               href="/developpement-web"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform -translate-y-1 hover:-translate-y-2"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
                               <div className="text-base font-bold leading-none">Développement Web</div>
                               <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
@@ -74,7 +72,7 @@ export default function Navbar() {
                           <NavigationMenuLink asChild>
                             <a
                               href="/applications-mobiles"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform -translate-y-1 hover:-translate-y-2"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
                               <div className="text-base font-medium leading-none">Applications Mobiles</div>
                               <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
@@ -85,7 +83,7 @@ export default function Navbar() {
                           <NavigationMenuLink asChild>
                             <a
                               href="/consulting"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform -translate-y-1 hover:-translate-y-2"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
                               <div className="text-base font-medium leading-none">Consulting Tech</div>
                               <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
@@ -102,7 +100,7 @@ export default function Navbar() {
                         <NavigationMenuLink asChild>
                           <a
                             href={link.href}
-                            className="text-lg font-medium text-text-hero transition-transform px-4 py-2 -translate-y-1 hover:-translate-y-2"
+                            className="font-medium text-text-hero transition-transform px-4 py-2 hover:-translate-y-1"
                             style={{ fontSize: '16px' }}
                           >
                             {link.text}
@@ -114,84 +112,73 @@ export default function Navbar() {
                 </NavigationMenu>
               </div>
 
-              {/* Desktop CTA Buttons */}
-              <div className="hidden lg:flex items-center space-x-4">
-                <Button size="lg"
-                  className="bg-brand-black text-white cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
+              <div className="hidden lg:flex items-center">
+                <Button
+                  size="default"
+                  className="bg-brand-black text-white text-base px-6 md:px-8 py-5 rounded-lg font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
                   asChild
                 >
-                  <a href="#rendez-vous">
+                  <a href="#rendez-vous" className="flex items-center gap-2">
                     {navbar.buttons.CTA}
                     <ArrowRight size={16} />
-
                   </a>
-
                 </Button>
               </div>
 
-              {/* Mobile Menu Button */}
-              <div className="lg:hidden">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={toggleMenu}
-                  className="text-text-hero cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
-                >
-                  {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </Button>
+              <div className="lg:hidden" onClick={toggleMenu}>
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </div>
             </div>
 
-            {/* Mobile Navigation */}
             {isMenuOpen && (
               <div className="lg:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border">
-                  {/* Services dropdown for mobile */}
-                  <div className="px-3 py-2 text-xs md:text-sm text-text-hero font-semibold">
+                <div className="px-4 pt-2 pb-3 space-y-1 border-t border-border">
+                  <div className="px-3 py-2 text-sm text-text-hero font-semibold">
                     Services
                   </div>
                   <div className="pl-6 space-y-1">
                     <a
                       href="/developpement-web"
-                      className="block px-3 py-2 text-xs text-text-hero hover:text-brand-blue transition-colors"
+                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Développement Web
                     </a>
                     <a
                       href="/applications-mobiles"
-                      className="block px-3 py-2 text-xs text-text-hero hover:text-brand-blue transition-colors"
+                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Applications Mobiles
                     </a>
                     <a
                       href="/consulting"
-                      className="block px-3 py-2 text-xs text-text-hero hover:text-brand-blue transition-colors"
+                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Consulting Tech
                     </a>
                   </div>
 
-                  {/* Other links */}
                   {navbar.links.slice(1).map((link, index) => (
                     <a
                       key={index}
                       href={link.href}
-                      className="block px-3 py-2 text-xs md:text-sm text-text-hero hover:text-brand-blue transition-colors"
+                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.text}
                     </a>
                   ))}
-                  <div className="pt-4 space-y-2">
-                    <Button 
-                      className="w-full bg-brand-green text-black cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
+
+                  <div className="pt-4">
+                    <Button
+                      className="w-full bg-brand-green text-black cursor-pointer transition-transform hover:-translate-y-1"
                       asChild
                     >
-                      <a href="#rendez-vous">
+                      <a href="#rendez-vous" className="flex items-center justify-center gap-2">
                         {navbar.buttons.CTA}
+                        <ArrowRight size={16} />
                       </a>
                     </Button>
                   </div>
@@ -199,7 +186,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <div className="hidden md:flex w-[20%] items-center justify-center ">
+          <div className="hidden md:flex w-[20%] items-center justify-center">
           </div>
         </div>
       </div>

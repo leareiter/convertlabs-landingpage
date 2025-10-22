@@ -15,28 +15,78 @@ export default function OffersSection() {
 
   useEffect(() => {
     if (sectionRef.current && cardsRef.current.length > 0) {
-      // Animation d'apparition des cards
-      gsap.fromTo(cardsRef.current, 
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.95
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
+      const isDesktop = window.innerWidth >= 768;
+      
+      if (isDesktop) {
+        const middleCard = cardsRef.current[1];
+        const otherCards = [cardsRef.current[0], cardsRef.current[2]];
+        
+        gsap.fromTo(middleCard, 
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.95
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse"
+            }
           }
-        }
-      );
+        );
+        
+        gsap.fromTo(otherCards, 
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.95
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out",
+            delay: 0.4,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      } else {
+        gsap.fromTo(cardsRef.current, 
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.95
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
     }
   }, []);
 
@@ -84,7 +134,7 @@ export default function OffersSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="offres" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.06em]">
+    <section ref={sectionRef} id="offres" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
         <HeaderSection 
           subtitle="NOS OFFRES"
@@ -112,7 +162,7 @@ export default function OffersSection() {
               )}
               <Card className="rounded-xl p-8 flex flex-col h-full relative overflow-hidden shadow-xs border-gray-100">
               <div className="text-center mb-6">
-                <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.06em]">{offer.title}</h3>
+                <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.05em]">{offer.title}</h3>
                 <p className="text-text-muted font-regular font-be-vietnam-pro mb-6 min-h-[60px] flex items-center justify-center">{offer.subtitle}</p>
 
                 <div className="flex items-center justify-center">

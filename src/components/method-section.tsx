@@ -1,22 +1,70 @@
+'use client';
 import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
 import HeaderSection from "@/components/header-section";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function MethodSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCard, setActiveCard] = useState(0);
+  const [cardsVisible, setCardsVisible] = useState(false);
+
   const methods = [
     {
-      title: "On va vite",
-      description: "Parce que le marché ne t'attend pas."
+      title: "On livre vite. Vraiment.",
+      description: "Pas de rétro interminable. Pas de phase d'étude qui dure 3 mois. MVP livré en 4 à 8 semaines. Prototype validé en 2 à 3 semaines. Parce que ton marché ne t'attendra pas 6 mois."
     },
     {
-      title: "On fait propre",
-      description: "Chaque livrable peut grandir avec ton business."
+      title: "On construit pour durer.",
+      description: "Code propre. Architecture scalable. Documentation Notion livrée à chaque étape. Tu peux reprendre le produit en interne, le refactoriser, ou le faire évoluer sans nous. Pas de dépendance. Pas de boîte noire."
     },
     {
-      title: "On reste clairs",
-      description: "Pas de jargon. Pas de dépendance au no-code magique. Tu comprends ce qu'on fait, tu peux le reprendre si tu veux."
+      title: "On reste clairs.",
+      description: "Budget défini avant de commencer. Périmètre clair. Pas de bullshit commercial. Si on pense qu'on n'est pas la bonne option, on te le dit et on te redirige."
     }
   ];
+
+  useEffect(() => {
+    if (cardsVisible) {
+      const interval = setInterval(() => {
+        setActiveCard((prev) => (prev + 1) % methods.length);
+      }, 3000);
+
+      return () => clearInterval(interval);
+    }
+  }, [methods.length, cardsVisible]);
+
+  useEffect(() => {
+    if (containerRef.current && cardsRef.current.length > 0) {
+      gsap.fromTo(cardsRef.current, 
+        {
+          opacity: 0,
+          y: 80,
+          scale: 0.9,
+          rotationX: 15
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          duration: 0.5,
+          ease: "power1.out",
+          onComplete: () => setCardsVisible(true),
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  }, []);
 
   return (
     <section>
@@ -26,34 +74,40 @@ export default function MethodSection() {
           title="3 principes qui font la différence"
         />
 
-        <div className="bg-surface-muted rounded-2xl p-2 max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-stretch gap-4">
+        <div className="max-w-7xl mx-auto bg-gray-100 rounded-2xl p-1 md:p-2" ref={containerRef}>
+          <div className="flex flex-col md:flex-row items-stretch relative">
             {methods.map((method, index) => (
-              <div key={index} className="flex-1 flex flex-col md:flex-row items-center gap-4">
-                <Card className={`p-6 border-border rounded-xl shadow-xs hover:shadow-md transition-shadow duration-300 w-full h-full flex flex-col ${
-                  index === 1 
-                    ? "bg-brand-black text-white" 
-                    : "bg-background"
-                }`}>
-                  <div className="flex flex-col items-center text-center gap-4 flex-1 justify-center">
-                    <div>
-                      <h3 className={`text-lg font-semibold mb-2 ${
-                        index === 1 ? "text-white" : "text-foreground"
+              <div key={index} className="flex-1 relative">
+                <Card 
+                  ref={(el) => { cardsRef.current[index] = el; }}
+                  className={`p-8 md:p-10 border-gray-100 shadow-xs w-full h-full flex flex-col transition-all duration-1000 ease-out ${
+                    activeCard === index 
+                      ? "bg-brand-black text-white" 
+                      : "bg-background"
+                  } ${
+                    index === 0 ? "rounded-t-xl rounded-b-none md:rounded-l-xl md:rounded-r-none border-b md:border-b-0 md:border-r border-gray-200" :
+                    index === methods.length - 1 ? "rounded-b-xl rounded-t-none md:rounded-r-xl md:rounded-l-none" :
+                    "rounded-none border-b md:border-b-0 md:border-r border-gray-200"
+                  }`}
+                >
+                  <div className="flex flex-col items-center text-center gap-4 flex-1 justify-center min-h-[200px]">
+                    <div className="flex flex-col gap-3">
+                      <h3 className={`text-lg font-semibold ${
+                        activeCard === index ? "text-white" : "text-foreground"
                       }`}>{method.title}</h3>
-                      <p className={`text-sm leading-relaxed ${
-                        index === 1 ? "text-gray-300" : "text-text-secondary"
+                      <p className={`text-base leading-relaxed ${
+                        activeCard === index ? "text-gray-300" : "text-text-secondary"
                       }`}>{method.description}</p>
                     </div>
                   </div>
                 </Card>
 
-                {/* Flèche après chaque carte sauf la dernière */}
-                {index < methods.length - 1 && (
-                  <div className="hidden md:flex items-center justify-center">
-                    <div className="relative p-1">
+                {cardsVisible && (activeCard === index || activeCard > index) && (
+                  <div className="flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="relative p-1 transition-all duration-1000 ease-out">
                       <div className="absolute inset-0 bg-brand-green/40 rounded-full"></div>
-                      <div className="relative bg-brand-green text-black p-2 rounded-full animate-pulse">
-                        <ArrowRight size={16} />
+                      <div className="relative bg-brand-green text-black w-12 h-12 rounded-full flex items-center justify-center font-mono text-lg font-bold">
+                        {index + 1}
                       </div>
                     </div>
                   </div>

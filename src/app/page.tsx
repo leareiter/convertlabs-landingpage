@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
 
-// Lazy load components that are below the fold
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
 });
