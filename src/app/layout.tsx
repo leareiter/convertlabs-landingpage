@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
+import Script from "next/script";
 
 const Footer = dynamic(() => import("@/components/footer"), {
   loading: () => <div className="h-32 bg-surface-muted animate-pulse" />,
@@ -113,6 +114,11 @@ export default function RootLayout({
 
           <Footer />
         </div>
+        <Script
+          src="https://app.rybbit.io/api/script.js"
+          data-site-id="23859617b908"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
