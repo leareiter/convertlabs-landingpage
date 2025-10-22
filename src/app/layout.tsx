@@ -1,27 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans, JetBrains_Mono, Inter, Be_Vietnam_Pro } from "next/font/google";
-
-const BeVietnamPro = Be_Vietnam_Pro({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-be-vietnam-pro",
-  display: "swap",
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-plus-jakarta-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
+import { Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -92,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${BeVietnamPro.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${inter.variable} font-sans antialiased tracking-[-0.05em]`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         {children}
       </body>

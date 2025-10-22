@@ -13,7 +13,7 @@ export default function GuaranteeSection() {
           
           <div className="bg-surface-secondary border border-border rounded-lg p-8">
             <h3 className="text-2xl font-bold text-foreground mb-6">
-              On t'aide ou on te le dit.
+              On t&apos;aide ou on te le dit.
             </h3>
             
             <p className="text-lg text-text-secondary mb-6">
@@ -21,7 +21,7 @@ export default function GuaranteeSection() {
             </p>
             
             <p className="text-lg text-text-secondary mb-6">
-              Si on estime qu'on n'est pas la meilleure option pour ton besoin, on te l'explique clairement et on te redirige.
+              Si on estime qu&apos;on n&apos;est pas la meilleure option pour ton besoin, on te l&apos;explique clairement et on te redirige.
             </p>
             
             <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg p-6">

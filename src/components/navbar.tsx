@@ -33,12 +33,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white">
+    <nav className="sticky top-0 z-50 w-full bg-white font-be-vietnam-pro font-regular tracking-[-0.06em]">
       <div className="w-full border-b border-gray-200">
         <div className="flex">
           <div className="hidden md:flex w-[20%] bg-white items-center justify-center ">
           </div>
-          <div className="w-full md:w-[60%] px-2 md:px-6">
+          <div className="w-full md:w-[60%] px-2 ">
             <div className="flex h-20 items-center justify-between">
               <div className="flex items-center">
                 <Image 
@@ -46,7 +46,7 @@ export default function Navbar() {
                   alt="ConvertLabs Logo" 
                   width={170} 
                   height={40}
-                  className="mr-2 bg-transparent"
+                  className=" bg-transparent"
                   style={{ backgroundColor: 'transparent' }}
                 />
               </div>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 <NavigationMenu>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-lg font-be-vietnam-pro  font-semibold text-text-hero transition-transform bg-transparent -translate-y-1 hover:-translate-y-2" style={{ fontSize: '16px' }}>
+                        <NavigationMenuTrigger className="text-lg font-be-vietnam-pro  font-medium text-text-hero transition-transform bg-transparent -translate-y-1 hover:-translate-y-2" style={{ fontSize: '16px' }}>
                           Services
                         </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -102,7 +102,7 @@ export default function Navbar() {
                         <NavigationMenuLink asChild>
                           <a
                             href={link.href}
-                            className="text-lg font-semibold text-text-hero transition-transform px-4 py-2 -translate-y-1 hover:-translate-y-2"
+                            className="text-lg font-medium text-text-hero transition-transform px-4 py-2 -translate-y-1 hover:-translate-y-2"
                             style={{ fontSize: '16px' }}
                           >
                             {link.text}
@@ -116,13 +116,13 @@ export default function Navbar() {
 
               {/* Desktop CTA Buttons */}
               <div className="hidden lg:flex items-center space-x-4">
-                <Button
-                  className="bg-brand-green text-black cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
+                <Button size="lg"
+                  className="bg-brand-black text-white cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
                   asChild
                 >
                   <a href="#rendez-vous">
                     {navbar.buttons.CTA}
-                    <ArrowRight className="ml-2" size={16} />
+                    <ArrowRight size={16} />
 
                   </a>
 

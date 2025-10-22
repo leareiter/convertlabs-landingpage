@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 
 export default function CollaborationSection() {
@@ -34,7 +34,7 @@ export default function CollaborationSection() {
           
           <div className="mb-12">
             <p className="text-lg text-text-secondary mb-6">
-              Nos missions débutent toujours par un <strong className="text-foreground">appel de cadrage</strong> pour comprendre le contexte, les objectifs et le niveau d'urgence du projet.
+              Nos missions débutent toujours par un <strong className="text-foreground">appel de cadrage</strong> pour comprendre le contexte, les objectifs et le niveau d&apos;urgence du projet.
             </p>
             
             <p className="text-lg text-text-secondary mb-6">

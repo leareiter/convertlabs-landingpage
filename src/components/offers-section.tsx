@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Gauge } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -84,7 +84,7 @@ export default function OffersSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="offres" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.04em]">
+    <section ref={sectionRef} id="offres" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.06em]">
       <div className="container mx-auto px-4">
         <HeaderSection 
           subtitle="NOS OFFRES"
@@ -104,7 +104,7 @@ export default function OffersSection() {
                 <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="relative p-1">
                     <div className="absolute inset-0 bg-brand-green/40 rounded-full"></div>
-                    <div className="relative bg-brand-green text-black px-4 py-1.5 rounded-full text-sm font-medium">
+                    <div className="relative bg-brand-green text-black px-4 py-1.5 text-base rounded-full tracking-tight text-sm font-medium">
                       La plus populaire
                     </div>
                   </div>
@@ -112,7 +112,7 @@ export default function OffersSection() {
               )}
               <Card className="rounded-xl p-8 flex flex-col h-full relative overflow-hidden shadow-xs border-gray-100">
               <div className="text-center mb-6">
-                <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.08em]">{offer.title}</h3>
+                <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.06em]">{offer.title}</h3>
                 <p className="text-text-muted font-regular font-be-vietnam-pro mb-6 min-h-[60px] flex items-center justify-center">{offer.subtitle}</p>
 
                 <div className="flex items-center justify-center">

@@ -41,11 +41,11 @@ export default function PhilosophySection() {
         <div className="max-w-4xl mx-auto text-center">
           
           <p className="text-lg text-text-secondary mb-8">
-            Nous ne sommes pas une agence "tout-en-un".
+            Nous ne sommes pas une agence &quot;tout-en-un&quot;.
           </p>
           
           <p className="text-lg text-text-secondary mb-8">
-            Chaque verticale ConvertLabs est un <strong className="text-foreground">bloc d'expertise autonome</strong>, pensé pour répondre à un besoin précis et mesurable.
+            Chaque verticale ConvertLabs est un <strong className="text-foreground">bloc d&apos;expertise autonome</strong>, pensé pour répondre à un besoin précis et mesurable.
           </p>
           
           <div className="bg-surface-muted rounded-2xl p-2 max-w-2xl mx-auto">

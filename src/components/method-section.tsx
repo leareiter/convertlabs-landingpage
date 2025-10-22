@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Clock, CheckCircle, Eye, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 
 export default function MethodSection() {

@@ -37,7 +37,7 @@ export default function ExpertiseSection() {
         
         <div className="text-center mb-16">
           <p className="text-lg text-text-secondary">
-            Convertlabs s'articule autour de <strong className="text-foreground">trois verticales</strong> complémentaires :
+            Convertlabs s&apos;articule autour de <strong className="text-foreground">trois verticales</strong> complémentaires :
           </p>
         </div>
 

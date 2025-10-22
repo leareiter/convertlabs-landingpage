@@ -1,19 +1,18 @@
 "use client";
 
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Badge from "@/components/ui/badge";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
 
 export default function HeroSection() {
-  const hero = {
+  const hero = useMemo(() => ({
     badgeText: "Encore 3 places disponibles",
     title: "On construit des produits digitaux qui bossent pour toi.",
     description: "Pas de PowerPoint. Pas de wireframes qui dorment dans un Drive. Juste des outils opérationnels, des automatisations qui tournent en fond, et des systèmes d'acquisition qui rapportent.",
     primaryCta: "Réserver un appel de cadrage",
     secondaryCta: "Découvrir nos services"
-  };
+  }), []);
 
   // Refs pour les animations GSAP
   const text1Ref = useRef<HTMLSpanElement>(null);
@@ -108,14 +107,14 @@ export default function HeroSection() {
             <ArrowRight size={14} />
           </div>
 
-          <h1 className="text-[40px] lg:text-7xl tracking-[-0.08em]  mb-8 md:mb-12 leading-tight text-center text-text-hero">
+          <h1 className="text-[40px] lg:text-7xl tracking-[-0.06em]  mb-8 md:mb-12 leading-tight text-center text-text-hero">
             <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">On construit</span>
             <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">des produits digitaux</span>
             <div className="flex items-center justify-center gap-4">
               <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">qui </span><span ref={greenBoxRef} className="inline-block font-times-new-roman font-medium italic  bg-brand-green text-text-hero px-6 py-2 rounded-2xl border border-brand-green/10 shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0">bossent pour toi.</span></div>
           </h1>
 
-          <p className="text-lg md:text-xl font-be-vietnam-pro  font-regular text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed tracking-[-0.05em]">
+          <p className="text-lg md:text-xl font-be-vietnam-pro  font-regular text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed tracking-[-0.06em]">
             {hero.description.split('\n').map((line, index) => (
               <span key={index}>
                 {line}
@@ -132,7 +131,7 @@ export default function HeroSection() {
             >
               <a href="#rendez-vous">
                 {hero.primaryCta}
-                <ArrowRight className="ml-2" size={16} />
+                <ArrowRight size={16} />
               </a>
             </Button>
             <Button

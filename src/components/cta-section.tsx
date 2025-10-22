@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, CheckCircle, Calendar, FileText, Zap } from "lucide-react";
+import { ArrowRight, Calendar, FileText, Zap } from "lucide-react";
 
 export default function CTASection() {
   const steps = [

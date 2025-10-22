@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { Marquee } from "@/components/ui/marquee";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,12 +9,10 @@ const TestimonialCard = ({
   name,
   content,
   role,
-  index,
 }: {
   name: string;
   content: string;
   role: string;
-  index: number;
 }) => {
   return (
     <figure
@@ -80,7 +77,6 @@ export default function TestimonialsSection() {
                 name={testimonial.name} 
                 content={testimonial.content} 
                 role={testimonial.role}
-                index={index} 
               />
             ))}
           </Marquee>
@@ -91,7 +87,6 @@ export default function TestimonialsSection() {
                 name={testimonial.name} 
                 content={testimonial.content} 
                 role={testimonial.role}
-                index={index} 
               />
             ))}
           </Marquee>

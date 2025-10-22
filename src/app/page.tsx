@@ -1,12 +1,35 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
-import TestimonialsSection from "@/components/testimonials-section";
-import OffersSection from "@/components/offers-section";
-import AppointmentSection from "@/components/appointment-section";
-import Footer from "@/components/footer";
-import Squares from "@/components/Squares";
-import MethodSection from "@/components/method-section";
-import PhilosophySection from "@/components/philosophy-section";
+
+// Lazy load components that are below the fold
+const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+});
+
+const OffersSection = dynamic(() => import("@/components/offers-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+});
+
+const MethodSection = dynamic(() => import("@/components/method-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+});
+
+const PhilosophySection = dynamic(() => import("@/components/philosophy-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+});
+
+const AppointmentSection = dynamic(() => import("@/components/appointment-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+});
+
+const Footer = dynamic(() => import("@/components/footer"), {
+  loading: () => <div className="h-32 bg-surface-muted animate-pulse" />,
+});
+
+const Squares = dynamic(() => import("@/components/Squares"), {
+  loading: () => <div className="w-full h-full bg-gray-100 animate-pulse" />,
+});
 
 export default function Home() {
   return (
