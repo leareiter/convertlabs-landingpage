@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 
 export default function CollaborationSection() {
   const process = [
-    "Identifier la verticale la plus adaptée à votre besoin",
+    "Identifier la verticale la plus adaptée à ton besoin",
     "Évaluer les contraintes techniques",
     "Définir un périmètre, un calendrier et un budget précis"
   ];
@@ -30,59 +30,42 @@ export default function CollaborationSection() {
           title="Comment on travaille ensemble"
         />
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           
-          <div className="mb-12">
-            <p className="text-lg text-text-secondary mb-6">
-              Nos missions débutent toujours par un <strong className="text-foreground">appel de cadrage</strong> pour comprendre le contexte, les objectifs et le niveau d&apos;urgence du projet.
-            </p>
-            
-            <p className="text-lg text-text-secondary mb-6">
-              Cet échange nous permet de :
-            </p>
-            
-            <ul className="space-y-2 mb-8">
-              {process.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-brand-green mr-3 mt-0.5 shrink-0" />
-                  <span className="text-text-secondary">{item}</span>
-                </li>
-              ))}
-            </ul>
-            
-            <p className="text-lg text-text-secondary mb-6">
-              Une fois validé, on structure le projet en <strong className="text-foreground">sprints courts et mesurables</strong>, avec :
-            </p>
-            
-            <ul className="space-y-2 mb-8">
-              {features.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-brand-green mr-3 mt-0.5 shrink-0" />
-                  <span className="text-text-secondary">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* 3 Black Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {/* Card 1: Cadrage */}
+            <Card className="p-8 bg-brand-black text-white rounded-md">
+              <h3 className="text-xl text-center font-bold font-be-vietnam-pro">Appel de cadrage</h3>
+              <p className="text-gray-300 mb-2 text-center">
+                Nos missions débutent toujours par un appel de cadrage pour comprendre le contexte, les objectifs et le niveau d'urgence du projet.
+              </p>
+              <p className="text-gray-300 font-be-vietnam-pro font-bold mb-2">Cet échange nous permet de :</p>
+              <ul className="space-y-2">
+                {process.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 shrink-0" />
+                    <span className="text-gray-300 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-foreground mb-6">Notre process :</h3>
-            <div className="grid md:grid-cols-4 gap-4">
-              {steps.map((step, index) => (
-                <Card key={index} className="p-6 bg-surface-secondary border-border text-center">
-                  <div className="w-12 h-12 bg-brand-blue text-background rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                    {index + 1}
-                  </div>
-                  <h4 className="font-bold text-foreground mb-2">{step.name}</h4>
-                  <p className="text-sm text-text-secondary">{step.description}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-surface-secondary border border-border rounded-lg p-6">
-            <p className="text-text-secondary">
-              On travaille via des outils collaboratifs (Notion, Slack, Figma, etc.) et on livre de la documentation claire à chaque étape.
-            </p>
+            {/* Card 2: Sprints */}
+            <Card className="p-8 bg-brand-black text-white rounded-md">
+              <h3 className="text-xl text-center font-bold font-be-vietnam-pro">Sprints courts et mesurables</h3>
+              <p className="text-gray-300 mb-6 text-center">
+                Une fois validé, on structure le projet en sprints courts et mesurables, avec :
+              </p>
+              <ul className="space-y-2">
+                {features.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="w-5 h-5 bg-brand-green mr-3 mt-0.5 rounded-full shrink-0" />
+                    <span className="text-gray-300 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
           </div>
         </div>
       </div>

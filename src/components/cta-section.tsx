@@ -47,7 +47,7 @@ export default function CTASection() {
             ))}
           </div>
 
-          <div className="bg-surface-secondary border border-border rounded-lg p-8 mb-8">
+          <div className="bg-surface-secondary border border-border rounded-md p-8 mb-8">
             <p className="text-text-secondary italic">
               *Réponse sous 48h. Sans engagement.*
             </p>

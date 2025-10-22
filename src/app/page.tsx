@@ -3,23 +3,27 @@ import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
 
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
 const OffersSection = dynamic(() => import("@/components/offers-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
 const MethodSection = dynamic(() => import("@/components/method-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
 const PhilosophySection = dynamic(() => import("@/components/philosophy-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
+const CollaborationSection = dynamic(() => import("@/components/collaboration-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
 const AppointmentSection = dynamic(() => import("@/components/appointment-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-lg" />,
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
 const Footer = dynamic(() => import("@/components/footer"), {
@@ -45,12 +49,13 @@ export default function Home() {
             />
           </div>
 
-          <div className="w-full lg:w-[80%] flex flex-col gap-16">
+          <div className="w-full lg:w-[80%] flex flex-col">
             <HeroSection />
             <TestimonialsSection />
             <OffersSection />
             <MethodSection />
-            <PhilosophySection />
+            <CollaborationSection />
+            {/* <PhilosophySection /> */}
             <AppointmentSection />
           </div>
 

@@ -115,7 +115,7 @@ export default function Navbar() {
               <div className="hidden lg:flex items-center">
                 <Button
                   size="default"
-                  className="bg-brand-black text-white text-base px-6 md:px-8 py-5 rounded-lg font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+                  className="bg-brand-black text-white text-base px-6 md:px-8 py-5 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
                   asChild
                 >
                   <a href="#rendez-vous" className="flex items-center gap-2">

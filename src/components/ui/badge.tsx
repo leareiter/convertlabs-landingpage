@@ -56,7 +56,7 @@ const Badge = ({
   };
 
   return (
-    <div className={`inline-flex items-center gap-2 border px-4 py-2 rounded-3xl text-sm font-medium ${getVariantStyles()} ${className}`}>
+    <div className={`inline-flex items-center gap-2 border px-4 py-2 rounded-md text-sm font-medium ${getVariantStyles()} ${className}`}>
       {icon || (
         <div className="relative flex items-center justify-center w-4 h-4">
           <div className={`w-4 h-4 rounded-full animate-pulse absolute ${getIconStyles()}`}></div>

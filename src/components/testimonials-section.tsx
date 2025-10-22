@@ -17,7 +17,7 @@ const TestimonialCard = ({
   return (
     <figure
       className={cn(
-        "relative h-64 w-96 cursor-pointer overflow-hidden rounded-xl border p-6 flex flex-col border-surface-muted shadow-xs",
+        "relative h-64 w-96 cursor-pointer overflow-hidden rounded-md border p-6 flex flex-col border-surface-muted shadow-xs",
       )}
     >
       <div className="flex items-center mb-4">
@@ -62,7 +62,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section >
+    <section className="py-16">
       <div className="container mx-auto">
         <HeaderSection 
           subtitle="TÉMOIGNAGES"
