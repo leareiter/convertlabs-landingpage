@@ -1,0 +1,150 @@
+"use client";
+
+import { ArrowRight, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Badge from "@/components/ui/badge";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+
+export default function HeroSection() {
+  const hero = {
+    badgeText: "Encore 3 places disponibles",
+    title: "On construit des produits digitaux qui bossent pour toi.",
+    description: "Pas de PowerPoint. Pas de wireframes qui dorment dans un Drive. Juste des outils opérationnels, des automatisations qui tournent en fond, et des systèmes d'acquisition qui rapportent.",
+    primaryCta: "Réserver un appel de cadrage",
+    secondaryCta: "Découvrir nos services"
+  };
+
+  // Refs pour les animations GSAP
+  const text1Ref = useRef<HTMLSpanElement>(null);
+  const text2Ref = useRef<HTMLSpanElement>(null);
+  const text3Ref = useRef<HTMLSpanElement>(null);
+  const greenBoxRef = useRef<HTMLSpanElement>(null);
+
+  // Animation GSAP
+  useEffect(() => {
+    if (hero) {
+      // Timeline principale
+      const tl = gsap.timeline();
+
+      // Animation du premier texte - "On construit"
+      tl.fromTo(text1Ref.current,
+        {
+          opacity: 0,
+          y: 20,
+          filter: "blur(4px)"
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.4,
+          ease: "power2.out"
+        }
+      )
+        // Animation du deuxième texte - "des produits digitaux"
+        .fromTo(text2Ref.current,
+          {
+            opacity: 0,
+            y: 20,
+            filter: "blur(4px)"
+          },
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.4,
+            ease: "power2.out"
+          },
+          "-=0.1" // Commence 0.1s avant la fin de l'animation précédente
+        )
+        // Animation du troisième texte - "qui"
+        .fromTo(text3Ref.current,
+          {
+            opacity: 0,
+            y: 20,
+            filter: "blur(4px)"
+          },
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.3,
+            ease: "power2.out"
+          },
+          "-=0.1" // Commence 0.1s avant la fin de l'animation précédente
+        )
+        // Animation de la green box - "bossent pour toi" après un délai
+        .fromTo(greenBoxRef.current,
+          {
+            opacity: 0,
+            scale: 0.9,
+            rotation: -2,
+            y: 10
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            rotation: 2, // Inclinaison plus prononcée
+            y: 0,
+            duration: 0.5,
+            ease: "back.out(1.2)"
+          },
+          "+=0.1" // Délai de 0.1s après que "qui" soit complètement visible
+        );
+    }
+  }, [hero]);
+
+  return (
+    <section className="py-8 md:py-16 border-b border-gray-200">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-brand-black text-white border border-brand-green/20 px-4 py-2 rounded-3xl text-sm font-medium mb-8">
+            <div className="relative flex items-center justify-center w-4 h-4">
+              <div className="w-4 h-4 bg-brand-green/50 rounded-full animate-pulse absolute"></div>
+              <div className="w-2 h-2 bg-brand-green rounded-full animate-pulse relative z-10"></div>
+            </div>
+            <span className="text-xs md:text-base text-white">{hero.badgeText}</span>
+            <ArrowRight size={14} />
+          </div>
+
+          <h1 className="text-[40px] lg:text-7xl tracking-[-0.08em]  mb-8 md:mb-12 leading-tight text-center text-text-hero">
+            <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">On construit</span>
+            <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">des produits digitaux</span>
+            <div className="flex items-center justify-center gap-4">
+              <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">qui </span><span ref={greenBoxRef} className="inline-block font-times-new-roman font-medium italic  bg-brand-green text-text-hero px-6 py-2 rounded-2xl border border-brand-green/10 shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0">bossent pour toi.</span></div>
+          </h1>
+
+          <p className="text-lg md:text-xl font-be-vietnam-pro  font-regular text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed tracking-[-0.05em]">
+            {hero.description.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index < hero.description.split('\n').length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-brand-black text-white text-lg px-6 md:px-8 py-6 rounded-lg font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+              asChild
+            >
+              <a href="#rendez-vous">
+                {hero.primaryCta}
+                <ArrowRight className="ml-2" size={16} />
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border border-border text-foreground text-lg px-6 md:px-8 py-6 rounded-lg font-medium -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+            >
+              {hero.secondaryCta}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
