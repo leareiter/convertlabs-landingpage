@@ -62,7 +62,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-16">
+    <section className="py-16" id="testimonials">
       <div className="container mx-auto">
         <HeaderSection 
           subtitle="TÉMOIGNAGES"

@@ -94,7 +94,7 @@ export default function OffersSection() {
     {
       title: "Design & MVP",
       subtitle: "De l'idée au produit vivant. Rapidement.",
-      description: "Tu arrives avec un concept. On te livre un prototype fonctionnel, testable, et prêt à générer du chiffre.",
+      description: "Tu arrives avec un concept. On te livre un prototype fonctionnel, testable, et prêt à générer du chiffre. En 4 à 8 semaines. (Budget : 10-50k€)",
       timeframe: "En quelques semaines.",
       result: "MVP validé en 3-5 semaines, avec premiers utilisateurs payants sous 60 jours.",
       perfectFor: [
@@ -131,7 +131,7 @@ export default function OffersSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="offres" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.05em]">
+    <section ref={sectionRef} id="offers" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="NOS OFFRES"
@@ -158,9 +158,9 @@ export default function OffersSection() {
                 </div>
               )}
               <Card className="rounded-md p-8 flex flex-col h-full relative overflow-hidden shadow-xs border-gray-100">
-                <div className="text-center mb-6">
+                <div className="text-center mb-2">
                   <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.05em]">{offer.title}</h3>
-                  <p className="text-text-muted font-regular font-be-vietnam-pro mb-6 min-h-[60px] flex items-center justify-center">{offer.subtitle}</p>
+                  <p className="text-text-muted text-base font-regular font-be-vietnam-pro mb-6 min-h-[60px] flex items-center justify-center">{offer.subtitle}</p>
 
                   <div className="flex items-center justify-center">
                     <div className="flex-1 h-px border-t border-dashed border-gray-300"></div>
@@ -171,13 +171,13 @@ export default function OffersSection() {
 
                 <div className="grow flex flex-col">
                   <div className="mb-6 min-h-[100px]">
-                    <h4 className="font-semibold text-text-hero mb-4">Ce que tu reçois :</h4>
+                    <h4 className="font-regular text-xl font-be-vietnam-pro text-text-hero mb-4">Ce que tu reçois :</h4>
                     <ul className="space-y-2">
                       {offer.description.split('. ').map((sentence, sentenceIndex) => (
                         sentence.trim() && (
                           <li key={sentenceIndex} className="flex items-start">
                             <div className="w-1.5 h-1.5 bg-text-hero rounded-full mr-3 mt-2 shrink-0"></div>
-                            <span className="text-text-secondary leading-relaxed">{sentence.trim()}</span>
+                            <span className="text-text-secondary text-base leading-relaxed">{sentence.trim()}</span>
                           </li>
                         )
                       ))}
@@ -185,26 +185,26 @@ export default function OffersSection() {
                   </div>
 
                   <div className="bg-brand-black text-white border border-brand-green/20 rounded-md p-4 mb-6">
-                    <p className="text-base font-medium font-be-vietnam-pro mb-2">
+                    <p className="text-lg font-regular font-be-vietnam-pro mb-2">
                       Résultat moyen :
                     </p>
-                    <p className="text-sm text-white font-medium font-be-vietnam-pro">{offer.result}</p>
+                    <p className="text-sm text-white font-regular font-be-vietnam-pro">{offer.result}</p>
                   </div>
 
                   <div className="mb-4 grow min-h-[140px]">
-                    <h4 className="font-semibold text-text-hero mb-4">Parfait pour :</h4>
-                    <ul className="space-y-3">
+                    <h4 className="font-regular text-xl font-be-vietnam-pro text-text-hero mb-4">Parfait pour :</h4>
+                    <ul className="space-y-2">
                       {offer.perfectFor.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start">
                           <div className="w-2 h-2 bg-text-hero rounded-full mr-3 mt-2 shrink-0"></div>
-                          <span className="text-sm text-text-secondary leading-relaxed">{item}</span>
+                          <span className="text-base text-text-secondary leading-relaxed">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                <Button size="lg" className={`w-full cursor-pointer -translate-y-1 hover:-translate-y-2 transition-all duration-200 mt-auto ${index === 1
+                <Button size="lg" className={`w-full cursor-pointer -translate-y-1 hover:-translate-y-2 transition-all duration-200 mt-auto text-base ${index === 1
                     ? "bg-brand-green text-black hover:bg-brand-green/90"
                     : "bg-text-hero text-white hover:bg-text-hero/90"
                   }`}>

@@ -193,7 +193,7 @@
   }
 
   /* Scroll smooth seulement pour les liens de navigation */
-  a[href^="#"] {
+  html {
     scroll-behavior: smooth;
   }
   body {

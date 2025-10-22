@@ -66,40 +66,38 @@ export default function AppointmentSection() {
                   {steps.map((step, index) => (
                     <Card key={index} className="px-6 bg-brand-black text-white border-surface-muted shadow-xs rounded-md flex-1 flex items-center">
                       <div className="flex flex-col items-center text-center w-full">
-                        <h3 className="text-xl font-be-vietnam-pro font-regular text-white mb-2">
+                        <h3 className="text-lg font-be-vietnam-pro font-medium text-white mb-2">
                           {step.title}
                         </h3>
-                        <p className="text-surface-muted/70 text-sm w-full h-10 flex items-center justify-center ">
+                        <p className="text-white text-sm w-full h-10 flex items-center justify-center leading-tight">
                           {step.description}
                         </p>
                       </div>
                     </Card>
                   ))}
                   <div className="flex-1 flex items-center justify-center py-4">
-                    <p className="text-text-muted/70 text-sm text-center leading-tight font-be-vietnam-pro">
+                    <p className="text-text-muted text-sm text-center leading-tight font-be-vietnam-pro">
                       Réponse sous 48h. Sans engagement.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="w-full lg:w-2/3 flex items-start">
-                <div className="w-full">
-                  {calLoaded ? (
-                    <Cal
-                      namespace="discovery-call"
-                      calLink="benjamin-convertlabs/30min"
-                      config={{ "layout": "month_view", "theme": "light" }}
-                    />
-                  ) : (
-                    <div className="bg-white rounded-2xl p-8 flex items-center justify-center h-96">
-                      <div className="text-center">
-                        <div className="w-8 h-8 border-2 border-brand-green border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                        <p className="text-text-muted">Chargement du calendrier...</p>
-                      </div>
+              <div className="w-full lg:w-2/3 h-full">
+                {calLoaded ? (
+                  <Cal
+                    namespace="discovery-call"
+                    calLink="benjamin-convertlabs/30min"
+                    config={{ "layout": "month_view", "theme": "light" }}
+                  />
+                ) : (
+                  <div className="bg-white rounded-2xl p-8 flex items-center justify-center h-96">
+                    <div className="text-center">
+                      <div className="w-8 h-8 border-2 border-brand-green border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <p className="text-text-muted">Chargement du calendrier...</p>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

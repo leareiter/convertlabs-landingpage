@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,9 +20,9 @@ export default function Navbar() {
     logo: "ConvertLabs",
     links: [
       { text: "Services", href: "#services" },
-      { text: "À propos", href: "#about" },
-      { text: "Réalisations", href: "#portfolio" },
-      { text: "Contact", href: "#contact" }
+      { text: "Témoignages", href: "#testimonials" },
+      { text: "Nos offres", href: "#offers" },
+      { text: "Pourquoi ConvertLabs ?", href: "#why-convertlabs" },
     ],
     buttons: {
       CTA: "Réserver un appel de cadrage"
@@ -38,15 +39,17 @@ export default function Navbar() {
         <div className="flex">
           <div className="hidden md:flex w-[20%] bg-white items-center justify-center">
           </div>
-          <div className="w-full md:w-[60%] px-4">
+          <div className="w-full  px-4">
             <div className="flex h-20 items-center justify-between">
               <div className="flex items-center">
+                <Link href="/">
                 <Image
                   src="/logo-black.svg"
                   alt="ConvertLabs Logo"
                   width={170}
                   height={40}
                 />
+                </Link>
               </div>
 
               <div className="hidden lg:flex items-center">
@@ -60,34 +63,35 @@ export default function Navbar() {
                         <div className="grid gap-3 p-6 w-[400px]">
                           <NavigationMenuLink asChild>
                             <a
-                              href="/developpement-web"
+                              href="/design-mvp"
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
-                              <div className="text-base font-bold leading-none">Développement Web</div>
-                              <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
-                                Sites web modernes et applications web sur mesure
+                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">Design &amp; MVP
+                              </div>
+                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                                De l&apos;idée au produit vivant. Rapidement.
                               </p>
                             </a>
                           </NavigationMenuLink>
                           <NavigationMenuLink asChild>
                             <a
-                              href="/applications-mobiles"
+                              href="/prospection-linkedin"
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
-                              <div className="text-base font-medium leading-none">Applications Mobiles</div>
-                              <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
-                                Apps iOS et Android natives et cross-platform
+                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">Prospection LinkedIn</div>
+                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                                Besoin de leads qualifiés ? On met la machine en route.
                               </p>
                             </a>
                           </NavigationMenuLink>
                           <NavigationMenuLink asChild>
                             <a
-                              href="/consulting"
+                              href="/automatisation-crm"
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
                             >
-                              <div className="text-base font-medium leading-none">Consulting Tech</div>
-                              <p className="line-clamp-2 text-lg leading-snug text-muted-foreground">
-                                Accompagnement stratégique et technique
+                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">CRM & Automatisation</div>
+                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                                On organise ton back-office pour qu&apos;il tourne sans toi.
                               </p>
                             </a>
                           </NavigationMenuLink>

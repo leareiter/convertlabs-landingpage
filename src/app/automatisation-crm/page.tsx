@@ -1,37 +1,37 @@
 import dynamic from "next/dynamic";
-import HeroSection from "@/components/hero-section";
 
-const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
-
-const OffersSection = dynamic(() => import("@/components/offers-section"), {
+const AutomatisationCRMHero = dynamic(() => import("@/components/automatisation-crm/hero"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
-const MethodSection = dynamic(() => import("@/components/method-section"), {
+const AutomatisationCRMApproach = dynamic(() => import("@/components/automatisation-crm/approach"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
-const WhyConvertLabsSection = dynamic(() => import("@/components/why-convertlabs-section"), {
+const AutomatisationCRMOffers = dynamic(() => import("@/components/automatisation-crm/offers"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
-const PhilosophySection = dynamic(() => import("@/components/philosophy-section"), {
+
+const AutomatisationCRMWhy = dynamic(() => import("@/components/automatisation-crm/why"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
+
+const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisation-crm/use-cases"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
 const AppointmentSection = dynamic(() => import("@/components/appointment-section"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
-export default function Home() {
+export default function AutomatisationCRMPage() {
   return (
     <>
-      <HeroSection />
-      <TestimonialsSection />
-      <OffersSection />
-      <MethodSection />
-      <PhilosophySection/> 
-      <WhyConvertLabsSection/>
+      <AutomatisationCRMHero />
+      <AutomatisationCRMApproach />
+      <AutomatisationCRMOffers />
+      <AutomatisationCRMWhy />
+      <AutomatisationCRMUseCases />
       <AppointmentSection />
     </>
   );
