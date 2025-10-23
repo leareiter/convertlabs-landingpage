@@ -2,6 +2,7 @@ import AutomatisationCRMAppointment from "@/components/automatisation-crm/appoin
 import AutomatisationCRMHero from "@/components/automatisation-crm/hero";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
+import AutomatisationCRMCalculator from "@/components/automatisation-crm/calculator";
 
 const AutomatisationCRMApproach = dynamic(() => import("@/components/automatisation-crm/approach"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
@@ -18,6 +19,7 @@ const AutomatisationCRMWhy = dynamic(() => import("@/components/automatisation-c
 const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisation-crm/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
+
 
 export const metadata: Metadata = {
   title: "CRM & Automatisation - ConvertLabs",
@@ -58,6 +60,7 @@ export default function AutomatisationCRMPage() {
       <AutomatisationCRMOffers />
       <AutomatisationCRMWhy />
       <AutomatisationCRMUseCases />
+      <AutomatisationCRMCalculator />
       <AutomatisationCRMAppointment />
     </>
   );

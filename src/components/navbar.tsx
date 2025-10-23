@@ -27,7 +27,7 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Estimer mon projet", href: "#estimation" },
           { text: "Cas d'usage", href: "#use-cases" },
         ],
         buttons: {
@@ -42,7 +42,7 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Estimer mon projet", href: "#calculator" },
           { text: "Cas d'usage", href: "#use-cases" },
         ],
         buttons: {
@@ -57,7 +57,7 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Estimer mon projet", href: "#calculator" },
           { text: "Cas d'usage", href: "#use-cases" },
         ],
         buttons: {
@@ -72,7 +72,7 @@ export default function Navbar() {
       links: [
         { text: "Témoignages", href: "#testimonials" },
         { text: "Nos offres", href: "#offers" },
-        { text: "Pourquoi ConvertLabs ?", href: "#why-convertlabs" },
+        { text: "Estimer mon projet", href: "#calculator" },
       ],
       buttons: {
         CTA: "Réserver un appel de cadrage"

@@ -2,6 +2,7 @@ import DesignMVPAppointment from "@/components/design-mvp/appointment";
 import DesignMVPHero from "@/components/design-mvp/hero";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
+import DesignMVPCalculator from "@/components/design-mvp/calculator";
 
 const DesignMVPApproach = dynamic(() => import("@/components/design-mvp/approach"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
@@ -18,6 +19,7 @@ const DesignMVPWhy = dynamic(() => import("@/components/design-mvp/why"), {
 const DesignMVPUseCases = dynamic(() => import("@/components/design-mvp/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
+
 
 export const metadata: Metadata = {
   title: "Design & MVP - ConvertLabs",
@@ -58,6 +60,7 @@ export default function DesignMVPPage() {
       <DesignMVPOffers />
       <DesignMVPWhy />
       <DesignMVPUseCases />
+      <DesignMVPCalculator />
       <DesignMVPAppointment />
     </>
   );
