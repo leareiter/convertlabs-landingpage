@@ -17,10 +17,10 @@ interface HeroCardProps {
   secondaryCta: string;
   primaryCtaLink?: string;
   secondaryCtaLink?: string;
-  brandColor?: string; // e.g., "bg-brand-green", "bg-brand-purple", "bg-brand-orange", "bg-brand-blue"
+  brandColor?: string;
   showBadge?: boolean;
   sectionId?: string;
-  forceFourLines?: boolean; // Force 4 lignes sur mobile
+  forceFourLines?: boolean;
 }
 
 export default function HeroCard({
@@ -47,6 +47,54 @@ export default function HeroCard({
     primaryCta,
     secondaryCta
   }), [badgeText, title, description, primaryCta, secondaryCta]);
+
+  const optimizedTitleParts = useMemo(() => {
+    const fullTitle = `${titlePart1} ${titlePart2} ${titlePart3}`.trim();
+    const words = fullTitle.split(' ');
+    if (words.length <= 3) {
+      return {
+        line1: words.slice(0, 1).join(' '),
+        line2: words.slice(1, 2).join(' '),
+        line3: words.slice(2).join(' ')
+      };
+    } else if (words.length <= 6) {
+      const midPoint = Math.ceil(words.length / 2);
+      return {
+        line1: words.slice(0, midPoint).join(' '),
+        line2: words.slice(midPoint).join(' '),
+        line3: ''
+      };
+    } else {
+      const wordsPerLine = Math.ceil(words.length / 3);
+      return {
+        line1: words.slice(0, wordsPerLine).join(' '),
+        line2: words.slice(wordsPerLine, wordsPerLine * 2).join(' '),
+        line3: words.slice(wordsPerLine * 2).join(' ')
+      };
+    }
+  }, [titlePart1, titlePart2, titlePart3]);
+
+  const optimizedFourLines = useMemo(() => {
+    const fullTitle = `${titlePart1} ${titlePart2} ${titlePart3}`.trim();
+    const words = fullTitle.split(' ');
+    
+    if (words.length <= 4) {
+      return {
+        line1: words.slice(0, 1).join(' '),
+        line2: words.slice(1, 2).join(' '),
+        line3: words.slice(2, 3).join(' '),
+        line4: words.slice(3).join(' ')
+      };
+    } else {
+      const wordsPerLine = Math.ceil(words.length / 4);
+      return {
+        line1: words.slice(0, wordsPerLine).join(' '),
+        line2: words.slice(wordsPerLine, wordsPerLine * 2).join(' '),
+        line3: words.slice(wordsPerLine * 2, wordsPerLine * 3).join(' '),
+        line4: words.slice(wordsPerLine * 3).join(' ')
+      };
+    }
+  }, [titlePart1, titlePart2, titlePart3]);
 
   const text1Ref = useRef<HTMLSpanElement>(null);
   const text2Ref = useRef<HTMLSpanElement>(null);
@@ -136,28 +184,31 @@ export default function HeroCard({
           <h1 className="text-[40px] lg:text-7xl tracking-[-0.05em] mb-8 md:mb-12 leading-tight text-center text-text-hero">
             {forceFourLines ? (
               <>
-                {/* Version mobile : 4 lignes */}
+                {/* Version mobile : 4 lignes avec distribution optimisée des mots */}
                 <div className="block md:hidden">
-                  <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{titlePart1}</span>
-                  <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{titlePart2}</span>
-                  <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{titlePart3}</span>
+                  <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{optimizedFourLines.line1}</span>
+                  <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{optimizedFourLines.line2}</span>
+                  <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedFourLines.line3}</span>
+                  {optimizedFourLines.line4 && (
+                    <span className="block font-be-vietnam-pro font-medium">{optimizedFourLines.line4}</span>
+                  )}
                   <span 
                     ref={greenBoxMobileRef} 
-                    className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-5xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>
                 </div>
 
-                {/* Version desktop : 3 lignes */}
+                {/* Version desktop : 3 lignes avec distribution optimisée */}
                 <div className="hidden md:block">
-                  <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{titlePart1}</span>
-                  <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{titlePart2}</span>
+                  <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line1}</span>
+                  <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line2}</span>
                   <div className="flex items-center justify-center gap-4">
-                    <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">{titlePart3}</span>
+                    <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
                     <span 
                       ref={greenBoxDesktopRef} 
-                      className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md  shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                      className={`inline-block font-times-new-roman text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                     >
                       {titleHighlight}
                     </span>
@@ -166,14 +217,14 @@ export default function HeroCard({
               </>
             ) : (
               <>
-                {/* Version 3 lignes pour mobile et desktop */}
-                <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{titlePart1}</span>
-                <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{titlePart2}</span>
+                {/* Version 3 lignes pour mobile et desktop avec distribution optimisée */}
+                <span ref={text1Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line1}</span>
+                <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line2}</span>
                 <div className="flex items-center justify-center gap-4">
-                  <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">{titlePart3}</span>
+                  <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
                   <span 
                     ref={greenBoxRef} 
-                    className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-5xl md:text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>
