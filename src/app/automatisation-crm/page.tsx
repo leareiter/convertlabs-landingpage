@@ -1,8 +1,6 @@
+import AutomatisationCRMAppointment from "@/components/automatisation-crm/appointment";
+import AutomatisationCRMHero from "@/components/automatisation-crm/hero";
 import dynamic from "next/dynamic";
-
-const AutomatisationCRMHero = dynamic(() => import("@/components/automatisation-crm/hero"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
 
 const AutomatisationCRMApproach = dynamic(() => import("@/components/automatisation-crm/approach"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
@@ -19,11 +17,6 @@ const AutomatisationCRMWhy = dynamic(() => import("@/components/automatisation-c
 const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisation-crm/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
-
-const AppointmentSection = dynamic(() => import("@/components/appointment-section"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
-
 export default function AutomatisationCRMPage() {
   return (
     <>
@@ -32,7 +25,7 @@ export default function AutomatisationCRMPage() {
       <AutomatisationCRMOffers />
       <AutomatisationCRMWhy />
       <AutomatisationCRMUseCases />
-      <AppointmentSection />
+      <AutomatisationCRMAppointment />
     </>
   );
 }

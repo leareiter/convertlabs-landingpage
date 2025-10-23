@@ -5,6 +5,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,95 +17,149 @@ import {
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navbar = {
-    logo: "ConvertLabs",
-    links: [
-      { text: "Services", href: "#services" },
-      { text: "Témoignages", href: "#testimonials" },
-      { text: "Nos offres", href: "#offers" },
-      { text: "Pourquoi ConvertLabs ?", href: "#why-convertlabs" },
-    ],
-    buttons: {
-      CTA: "Réserver un appel de cadrage"
+  const pathname = usePathname();
+
+
+  const getNavbarConfig = () => {
+    if (pathname === '/design-mvp') {
+      return {
+        logo: "ConvertLabs",
+        links: [
+          { text: "Notre approche", href: "#approach" },
+          { text: "Offres & périmètre", href: "#offers" },
+          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Cas d'usage", href: "#use-cases" },
+        ],
+        buttons: {
+          CTA: "Réserver un appel de cadrage"
+        }
+      };
     }
+
+    if (pathname === '/automatisation-crm') {
+      return {
+        logo: "ConvertLabs",
+        links: [
+          { text: "Notre approche", href: "#approach" },
+          { text: "Offres & périmètre", href: "#offers" },
+          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Cas d'usage", href: "#use-cases" },
+        ],
+        buttons: {
+          CTA: "Réserver un appel de cadrage"
+        }
+      };
+    }
+
+    if (pathname === '/prospection-linkedin') {
+      return {
+        logo: "ConvertLabs",
+        links: [
+          { text: "Notre approche", href: "#approach" },
+          { text: "Offres & périmètre", href: "#offers" },
+          { text: "Pourquoi ConvertLabs ?", href: "#why" },
+          { text: "Cas d'usage", href: "#use-cases" },
+        ],
+        buttons: {
+          CTA: "Réserver un appel de cadrage"
+        }
+      };
+    }
+
+    // Page d'accueil par défaut
+    return {
+      logo: "ConvertLabs",
+      links: [
+        { text: "Témoignages", href: "#testimonials" },
+        { text: "Nos offres", href: "#offers" },
+        { text: "Pourquoi ConvertLabs ?", href: "#why-convertlabs" },
+      ],
+      buttons: {
+        CTA: "Réserver un appel de cadrage"
+      }
+    };
   };
+
+  const navbar = getNavbarConfig();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-white font-be-vietnam-pro font-regular tracking-[-0.05em]">
       <div className="w-full border-b border-gray-200">
         <div className="flex">
-          <div className="hidden md:flex w-[20%] bg-white items-center justify-center">
+          <div className="hidden md:flex w-[10%] bg-white items-center justify-center">
           </div>
-          <div className="w-full  px-4">
+          <div className="w-full px-4 md:px-1">
             <div className="flex h-20 items-center justify-between">
               <div className="flex items-center">
                 <Link href="/">
-                <Image
-                  src="/logo-black.svg"
-                  alt="ConvertLabs Logo"
-                  width={170}
-                  height={40}
-                />
+                  <Image
+                    src="/logo-black.svg"
+                    alt="ConvertLabs Logo"
+                    width={170}
+                    height={40}
+                  />
                 </Link>
               </div>
 
               <div className="hidden lg:flex items-center">
                 <NavigationMenu>
                   <NavigationMenuList className="flex items-center space-x-2">
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger className="text-base font-medium text-text-hero transition-transform bg-transparent hover:-translate-y-1">
-                        Services
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="grid gap-3 p-6 w-[400px]">
-                          <NavigationMenuLink asChild>
-                            <a
-                              href="/design-mvp"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
-                            >
-                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">Design &amp; MVP
-                              </div>
-                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
-                                De l&apos;idée au produit vivant. Rapidement.
-                              </p>
-                            </a>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <a
-                              href="/prospection-linkedin"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
-                            >
-                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">Prospection LinkedIn</div>
-                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
-                                Besoin de leads qualifiés ? On met la machine en route.
-                              </p>
-                            </a>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <a
-                              href="/automatisation-crm"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
-                            >
-                              <div className="text-lg font-regular font-be-vietnam-pro leading-none">CRM & Automatisation</div>
-                              <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
-                                On organise ton back-office pour qu&apos;il tourne sans toi.
-                              </p>
-                            </a>
-                          </NavigationMenuLink>
-                        </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="text-base font-medium text-text-hero transition-transform bg-transparent hover:-translate-y-1">
+            Services
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid gap-3 p-6 w-[400px]">
+              <NavigationMenuLink asChild>
+                <a
+                  href="/design-mvp"
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                >
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">Design &amp; MVP
+                  </div>
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                    De l&apos;idée au produit vivant. Rapidement.
+                  </p>
+                </a>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <a
+                  href="/prospection-linkedin"
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                >
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">Prospection LinkedIn</div>
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                    Besoin de leads qualifiés ? On met la machine en route.
+                  </p>
+                </a>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <a
+                  href="/automatisation-crm"
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                >
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">CRM & Automatisation</div>
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                    On organise ton back-office pour qu&apos;il tourne sans toi.
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
 
-                    {navbar.links.slice(1).map((link, index) => (
+                    {navbar.links.map((link, index) => (
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink asChild>
                           <a
                             href={link.href}
-                            className="font-medium text-text-hero transition-transform px-4 py-2 hover:-translate-y-1"
+                            className="font-medium transition-transform px-4 py-2 hover:-translate-y-1 text-text-hero"
                             style={{ fontSize: '16px' }}
                           >
                             {link.text}
@@ -137,38 +192,38 @@ export default function Navbar() {
             {isMenuOpen && (
               <div className="lg:hidden">
                 <div className="px-4 pt-2 pb-3 space-y-1 border-t border-border">
-                  <div className="px-3 py-2 text-sm text-text-hero font-semibold">
+                  <div className="px-3 py-2 text-base text-text-hero font-semibold">
                     Services
                   </div>
                   <div className="pl-6 space-y-1">
                     <a
-                      href="/developpement-web"
-                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
+                      href="/design-mvp"
+                      className="block px-3 py-2 text-base text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Développement Web
+                      Design & MVP
                     </a>
                     <a
-                      href="/applications-mobiles"
-                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
+                      href="/automatisation-crm"
+                      className="block px-3 py-2 text-base text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Applications Mobiles
+                      CRM & Automatisation
                     </a>
                     <a
-                      href="/consulting"
-                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
+                      href="/prospection-linkedin"
+                      className="block px-3 py-2 text-base text-text-hero hover:text-brand-blue transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Consulting Tech
+                      Prospection LinkedIn
                     </a>
                   </div>
 
-                  {navbar.links.slice(1).map((link, index) => (
+                  {navbar.links.map((link, index) => (
                     <a
                       key={index}
                       href={link.href}
-                      className="block px-3 py-2 text-sm text-text-hero hover:text-brand-blue transition-colors"
+                      className="block px-3 py-2 text-base transition-colors hover:text-brand-blue text-text-hero"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.text}
@@ -190,7 +245,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <div className="hidden md:flex w-[20%] items-center justify-center">
+          <div className="hidden md:flex w-[10%] items-center justify-center">
           </div>
         </div>
       </div>

@@ -54,6 +54,8 @@
   --color-brand-green-hover: var(--brand-green-hover);
   --color-brand-blue-active: var(--brand-blue-active);
   --color-brand-green-active: var(--brand-green-active);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-purple: var(--brand-purple);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -132,6 +134,8 @@
   --brand-green-hover: #99e500;
   --brand-blue-active: #001f75;
   --brand-green-active: #84cc00;
+  --brand-orange: #F36303;
+  --brand-purple: #8B02E1;
   --brand-black: #2e2e2e;
   --text-primary: var(--foreground);
   --text-secondary: var(--brand-black);

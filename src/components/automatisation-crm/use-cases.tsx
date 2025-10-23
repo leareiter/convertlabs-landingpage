@@ -74,27 +74,8 @@ export default function AutomatisationCRMUseCases() {
       result: "Reporting automatisé avec données fiables"
     }
   ];
-
-  const testimonials = [
-    {
-      quote: "ConvertLabs a transformé notre gestion commerciale. Plus de perte de leads, tout est centralisé et automatisé.",
-      author: "Marie L.",
-      role: "Directrice Commerciale, PME Tech"
-    },
-    {
-      quote: "L'équipe a parfaitement compris nos besoins. Notre CRM est maintenant un vrai atout concurrentiel.",
-      author: "Thomas M.",
-      role: "CEO, Startup SaaS"
-    },
-    {
-      quote: "Grâce à leur expertise, nous avons automatisé 80% de nos tâches commerciales répétitives.",
-      author: "Sophie K.",
-      role: "Responsable Marketing, Agence"
-    }
-  ];
-
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 border-b border-gray-200">
+    <section ref={sectionRef} id="use-cases" className="py-16 md:py-24 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="CAS D'USAGE TYPIQUES"
@@ -142,30 +123,7 @@ export default function AutomatisationCRMUseCases() {
             ))}
           </div>
 
-          {/* Témoignages */}
-          <div className="bg-surface-muted rounded-lg p-8 mb-16">
-            <h3 className="text-2xl font-medium font-be-vietnam-pro text-text-hero mb-8 text-center">
-              Ce qu&apos;ils disent de nous
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index} className="p-6 bg-white">
-                  <div className="text-brand-blue mb-4 text-2xl">&ldquo;</div>
-                  <p className="text-text-muted text-sm mb-4 leading-relaxed italic">
-                    {testimonial.quote}
-                  </p>
-                  <div>
-                    <div className="font-medium text-text-hero text-sm">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-xs text-text-muted">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
+        
 
           {/* CTA final */}
           <div className="text-center">
