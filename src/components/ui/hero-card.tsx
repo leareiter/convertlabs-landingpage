@@ -143,7 +143,7 @@ export default function HeroCard({
                   <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{titlePart3}</span>
                   <span 
                     ref={greenBoxMobileRef} 
-                    className={`inline-block font-times-new-roman text-5xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>
@@ -157,7 +157,7 @@ export default function HeroCard({
                     <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">{titlePart3}</span>
                     <span 
                       ref={greenBoxDesktopRef} 
-                      className={`inline-block font-times-new-roman text-5xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md  shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                      className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md  shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                     >
                       {titleHighlight}
                     </span>
@@ -173,7 +173,7 @@ export default function HeroCard({
                   <span ref={text3Ref} className="block mt-2 font-be-vietnam-pro font-medium">{titlePart3}</span>
                   <span 
                     ref={greenBoxRef} 
-                    className={`inline-block font-times-new-roman text-5xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-3xl font-medium md:text-8xl italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-6 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>
