@@ -1,9 +1,6 @@
-import AppointmentSection from "@/components/appointment-section";
+import DesignMVPAppointment from "@/components/design-mvp/appointment";
+import DesignMVPHero from "@/components/design-mvp/hero";
 import dynamic from "next/dynamic";
-
-const DesignMVPHero = dynamic(() => import("@/components/design-mvp/hero"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
 
 const DesignMVPApproach = dynamic(() => import("@/components/design-mvp/approach"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
@@ -29,7 +26,7 @@ export default function DesignMVPPage() {
       <DesignMVPOffers />
       <DesignMVPWhy />
       <DesignMVPUseCases />
-      <AppointmentSection />
+      <DesignMVPAppointment />
     </>
   );
 }

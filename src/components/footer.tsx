@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
-            <Image src="/logo-white.svg" alt="ConvertLabs Logo" width={300} height={40} />
+            <Image src="/logo-white.svg" alt="ConvertLabs Logo" width={300} height={40} style={{ width: "auto", height: "auto" }} />
             <p className="text-background/80 mb-6 max-w-md">
               {footer.description}
             </p>

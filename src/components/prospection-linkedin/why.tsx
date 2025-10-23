@@ -2,7 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Target, Zap, Code, Users, Shield } from "lucide-react";
+import { ArrowRight, Shield, Zap, Target, Users, BarChart3 } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AutomatisationCRMWhy() {
+export default function ProspectionLinkedInWhy() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
@@ -42,34 +42,34 @@ export default function AutomatisationCRMWhy() {
 
   const advantages = [
     {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Protection LinkedIn garantie",
+      description: "Zéro risque de bannissement grâce à nos méthodes éprouvées.",
+      benefit: "Compte LinkedIn sécurisé"
+    },
+    {
       icon: <Target className="w-6 h-6" />,
-      title: "Vision business avant outil",
-      description: "On structure vos process avant de parler technique.",
-      benefit: "Process optimisés dès le départ"
+      title: "Ciblage ultra-précis",
+      description: "Nous trouvons les bons prospects, pas juste des contacts.",
+      benefit: "Taux de qualification élevé"
     },
     {
       icon: <Zap className="w-6 h-6" />,
-      title: "Automatisation mesurée",
-      description: "Des workflows utiles, pas des usines à gaz.",
-      benefit: "Efficacité réelle, pas de complexité"
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      title: "Expertise cross-stack",
-      description: "CRM, Make, API, reporting : tout est connecté et cohérent.",
-      benefit: "Écosystème unifié"
+      title: "Automatisation intelligente",
+      description: "Machine à leads qui tourne sans vous, 24h/24.",
+      benefit: "Gain de temps considérable"
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: "Méthode agile",
-      description: "Cadrage rapide, sprints courts, résultats mesurables.",
-      benefit: "Livraison rapide et itérative"
+      title: "Messages personnalisés",
+      description: "Chaque message est adapté au profil du prospect.",
+      benefit: "Taux de réponse optimisé"
     },
     {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Accompagnement durable",
-      description: "Nous restons en support pour faire évoluer votre système.",
-      benefit: "Support continu et évolutif"
+      icon: <BarChart3 className="w-6 h-6" />,
+      title: "ROI mesurable",
+      description: "Suivi précis des performances et du retour sur investissement.",
+      benefit: "ROI transparent et mesurable"
     }
   ];
 

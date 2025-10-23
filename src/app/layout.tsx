@@ -4,13 +4,10 @@ import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 import Script from "next/script";
+import { GridBackground } from "@/components/ui/grid-background";
 
 const Footer = dynamic(() => import("@/components/footer"), {
   loading: () => <div className="h-32 bg-surface-muted animate-pulse" />,
-});
-
-const Squares = dynamic(() => import("@/components/Squares"), {
-  loading: () => <div className="w-full h-full bg-gray-100 animate-pulse" />,
 });
 
 const inter = Inter({
@@ -89,12 +86,7 @@ export default function RootLayout({
           <div className="w-full">
             <div className="flex">
               <div className="hidden lg:block w-[10%] bg-white items-center justify-center border-r border-gray-200">
-                <Squares
-                  speed={0.1}
-                  squareSize={20}
-                  direction='down'
-                  borderColor='#f3f4f6'
-                />
+                <GridBackground />
               </div>
 
               <div className="w-full lg:w-[80%] flex flex-col">
@@ -102,12 +94,7 @@ export default function RootLayout({
               </div>
 
               <div className="hidden lg:block w-[10%] items-center justify-center border-l border-gray-200">
-                <Squares
-                  speed={0.1}
-                  squareSize={20}
-                  direction='down'
-                  borderColor='#f3f4f6'
-                />
+                <GridBackground />
               </div>
             </div>
           </div>

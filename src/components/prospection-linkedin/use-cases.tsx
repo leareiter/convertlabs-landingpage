@@ -2,7 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket, Building, Lightbulb, Smartphone, TrendingUp } from "lucide-react";
+import { ArrowRight, Building, Rocket, Users, TrendingUp } from "lucide-react";
 import HeaderSection from "@/components/header-section";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function DesignMVPUseCases() {
+export default function ProspectionLinkedInUseCases() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
@@ -42,44 +42,36 @@ export default function DesignMVPUseCases() {
 
   const useCases = [
     {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Startup",
-      description: "qui veut présenter un MVP solide à des investisseurs",
-      challenge: "Besoin d'un prototype crédible rapidement",
-      solution: "Design Sprint + Prototype haute fidélité + MVP fonctionnel",
-      result: "Présentation investisseur réussie en 4-6 semaines"
-    },
-    {
       icon: <Building className="w-8 h-8" />,
-      title: "PME",
-      description: "qui digitalise un process interne via une web app",
-      challenge: "Automatiser des processus manuels",
-      solution: "Audit UX + Développement sur mesure + Formation équipe",
-      result: "Gain de temps de 70% sur les tâches répétitives"
+      title: "PME B2B",
+      description: "qui veut générer un flux constant de leads qualifiés",
+      challenge: "Manque de visibilité et difficulté à toucher les bons prospects",
+      solution: "Ciblage ICP + séquences personnalisées + automatisation",
+      result: "15-20 RDV qualifiés par mois en pilote automatique"
     },
     {
-      icon: <Lightbulb className="w-8 h-8" />,
-      title: "Porteur de projet",
-      description: "qui veut tester son idée sans surinvestir",
-      challenge: "Valider le marché avant d'investir massivement",
-      solution: "Prototype rapide + Tests utilisateurs + Itérations",
-      result: "Validation du concept avec un budget maîtrisé"
+      icon: <Rocket className="w-8 h-8" />,
+      title: "Startup SaaS",
+      description: "qui veut accélérer sa croissance commerciale",
+      challenge: "Besoin de scaler rapidement la prospection",
+      solution: "Machine à leads automatisée + optimisation continue",
+      result: "Pipeline commercial multiplié par 3 en 2 mois"
     },
     {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "Éditeur SaaS",
-      description: "qui veut refaire son front-end sans toucher à son back",
-      challenge: "Moderniser l'interface sans casser l'existant",
-      solution: "Audit UX + Refonte front + Migration progressive",
-      result: "Interface moderne sans interruption de service"
+      icon: <Users className="w-8 h-8" />,
+      title: "Agence de services",
+      description: "qui veut diversifier ses canaux d&apos;acquisition",
+      challenge: "Dépendance aux références et réseaux existants",
+      solution: "Prospection LinkedIn + automatisation + formation équipe",
+      result: "Nouveau canal d&apos;acquisition représentant 40% du CA"
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: "Créateur d'app mobile",
-      description: "qui veut booster sa visibilité via l'ASO",
-      challenge: "Augmenter les téléchargements et la visibilité",
-      solution: "Audit ASO + Optimisation store + A/B testing",
-      result: "+150% de téléchargements en 3 mois"
+      title: "Consultant indépendant",
+      description: "qui veut structurer sa prospection commerciale",
+      challenge: "Prospection manuelle chronophage et peu efficace",
+      solution: "Système automatisé + messages optimisés + suivi CRM",
+      result: "Gain de 10h/semaine + 5x plus de prospects qualifiés"
     }
   ];
 
@@ -88,13 +80,13 @@ export default function DesignMVPUseCases() {
     <section ref={sectionRef} id="use-cases" className="py-16 md:py-24 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <HeaderSection
-          subtitle="CAS D'USAGE TYPIQUES"
-          title="5 profils qui nous font confiance"
+          subtitle="CAS D&apos;USAGE TYPIQUES"
+          title="4 profils qui nous font confiance"
         />
 
         <div className="max-w-6xl mx-auto">
-          {/* Cas d'usage */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {/* Cas d&apos;usage */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {useCases.map((useCase, index) => (
               <Card
                 key={index}
@@ -133,11 +125,12 @@ export default function DesignMVPUseCases() {
             ))}
           </div>
 
+
           {/* CTA final */}
           <div className="text-center">
             <div className="bg-brand-black text-white rounded-lg p-8 mb-8">
               <h3 className="text-2xl font-medium font-be-vietnam-pro mb-4">
-                Prêt à transformer votre idée en produit ?
+                Prêt à transformer votre prospection LinkedIn ?
               </h3>
               <p className="text-lg opacity-90 mb-6">
                 Réservez un appel de cadrage gratuit pour discuter de votre projet

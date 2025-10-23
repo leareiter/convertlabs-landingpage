@@ -97,7 +97,7 @@ export default function DesignMVPWhy() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-surface-muted">
+    <section ref={sectionRef} id="why" className="py-16 md:py-24 bg-surface-muted">
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="POURQUOI CONVERTLABS"
