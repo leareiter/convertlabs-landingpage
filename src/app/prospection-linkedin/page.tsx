@@ -1,6 +1,7 @@
 import ProspectionLinkedInAppointment from "@/components/prospection-linkedin/appointment";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
+import ProspectionLinkedInCalculator from "@/components/prospection-linkedin/calculator";
 
 const ProspectionLinkedInHero = dynamic(() => import("@/components/prospection-linkedin/hero"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
@@ -21,6 +22,7 @@ const ProspectionLinkedInWhy = dynamic(() => import("@/components/prospection-li
 const ProspectionLinkedInUseCases = dynamic(() => import("@/components/prospection-linkedin/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
+
 
 export const metadata: Metadata = {
   title: "Prospection LinkedIn - ConvertLabs",
@@ -61,6 +63,7 @@ export default function ProspectionLinkedInPage() {
       <ProspectionLinkedInOffers />
       <ProspectionLinkedInWhy />
       <ProspectionLinkedInUseCases />
+      <ProspectionLinkedInCalculator />
       <ProspectionLinkedInAppointment />
     </>
   );

@@ -21,6 +21,10 @@ const AppointmentSection = dynamic(() => import("@/components/appointment-sectio
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
+const ProjectCalculatorSection = dynamic(() => import("@/components/project-calculator-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
 export const metadata: Metadata = {
   title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
   description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
@@ -60,6 +64,7 @@ export default function Home() {
       <OffersSection />
       <MethodSection />
       <PhilosophySection/> 
+      <ProjectCalculatorSection />
       <AppointmentSection />
     </>
   );
