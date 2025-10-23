@@ -9,28 +9,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://convertlabs.fr/#offres',
+      url: 'https://convertlabs.fr/design-mvp',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: 'https://convertlabs.fr/#ressources',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: 'https://convertlabs.fr/#pricing',
+      url: 'https://convertlabs.fr/automatisation-crm',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.9,
     },
     {
-      url: 'https://convertlabs.fr/#faq',
+      url: 'https://convertlabs.fr/prospection-linkedin',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.9,
     },
   ]
 }

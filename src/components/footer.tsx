@@ -1,56 +1,237 @@
 "use client";
 
-import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import { ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const highlightedTextRef = useRef<HTMLSpanElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollToTopRef = useRef<HTMLButtonElement>(null);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+
   const footer = {
     logo: "ConvertLabs",
-    description: "On construit des produits digitaux qui bossent pour toi.",
+    description: "On construit des produits digitaux",
+    description2: "qui",
+    highlightedText: "bossent pour toi.",
     services: [
-      { text: "Développement Web", href: "#services" },
-      { text: "Applications Mobiles", href: "#services" },
-      { text: "Consulting Tech", href: "#services" }
+      { text: "Design & MVP", href: "/design-mvp" },
+      { text: "CRM & Automatisation", href: "/automatisation-crm" },
+      { text: "Prospection LinkedIn", href: "/prospection-linkedin" },
     ],
     links: [
+      { text: "Accueil", href: "/" },
+      { text: "Nos offres", href: "/#offers" },
+      { text: "Témoignages", href: "/#testimonials" },
+      { text: "Réserver un appel", href: "/#rendez-vous" }
+    ],
+    legalLinks: [
       { text: "Politique de confidentialité", href: "#privacy" },
-      { text: "Conditions d'utilisation", href: "#terms" },
-      { text: "Nous contacter", href: "#contact" }
-    ]
+      { text: "Conditions d'utilisation", href: "#terms" },    ]
   };
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowScrollToTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      gsap.fromTo(footerRef.current, 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
+    }
+
+    // Animation du logo
+    if (logoRef.current) {
+      gsap.fromTo(logoRef.current,
+        { scale: 0.8, opacity: 0, rotation: -5 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)", delay: 0.2 }
+      );
+    }
+
+    // Animation de la description
+    if (descriptionRef.current) {
+      gsap.fromTo(descriptionRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.4 }
+      );
+    }
+
+    // Animation du texte mis en évidence
+    if (highlightedTextRef.current) {
+      gsap.fromTo(highlightedTextRef.current,
+        { rotation: -15, scale: 0.5, opacity: 0, y: 20 },
+        { rotation: 2, scale: 1, opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)", delay: 0.6 }
+      );
+
+      // Animation de hover pour le texte mis en évidence
+      const handleMouseEnter = () => {
+        gsap.to(highlightedTextRef.current, {
+          rotation: 8,
+          scale: 1.1,
+          y: -8,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(highlightedTextRef.current, {
+          rotation: 2,
+          scale: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      const element = highlightedTextRef.current;
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+
+    // Animation des sections services et liens
+    if (servicesRef.current) {
+      gsap.fromTo(servicesRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 0.8 }
+      );
+    }
+
+    if (linksRef.current) {
+      gsap.fromTo(linksRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 1.0 }
+      );
+    }
+
+    // Animation de la section bottom
+    if (bottomRef.current) {
+      gsap.fromTo(bottomRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 1.2 }
+      );
+    }
+
+    // Animation du bouton scroll to top
+    if (scrollToTopRef.current) {
+      gsap.fromTo(scrollToTopRef.current,
+        { scale: 0, opacity: 0, rotation: 180 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)", delay: 1.4 }
+      );
+    }
+
+    // Animations de hover pour les liens
+    const serviceLinks = document.querySelectorAll('.services-section a');
+    const footerLinks = document.querySelectorAll('.footer-links a');
+
+    serviceLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        gsap.to(link, {
+          scale: 1.05,
+          x: 5,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      link.addEventListener('mouseleave', () => {
+        gsap.to(link, {
+          scale: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    footerLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        gsap.to(link, {
+          scale: 1.05,
+          x: 5,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      link.addEventListener('mouseleave', () => {
+        gsap.to(link, {
+          scale: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+  }, []);
+
   return (
-    <footer className="bg-black text-background py-16 font-be-vietnam-pro tracking-[-0.05em]">
+    <footer ref={footerRef} className="bg-brand-black text-background py-16 md:py-16 font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8 md:mb-12">
+          {/* Brand section */}
           <div className="md:col-span-2">
-            <Image src="/logo-white.svg" alt="ConvertLabs Logo" width={300} height={40} style={{ width: "auto", height: "auto" }} />
-            <p className="text-background/80 mb-6 max-w-md">
-              {footer.description}
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-background/80 hover:text-background transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-background/80 hover:text-background transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-background/80 hover:text-background transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-background/80 hover:text-background transition-colors">
-                <Mail className="w-5 h-5" />
-              </a>
+            <div className="mb-8 md:mb-6">
+              <Image 
+                ref={logoRef}
+                src="/logo-white.svg" 
+                alt="ConvertLabs Logo" 
+                width={300} 
+                height={32}
+                className="mb-4"
+              />
+              <p ref={descriptionRef} className="text-background/80 font-be-vietnam-pro font-regular text-2xl md:text-2xl max-w-md mt-8 md:mt-6">
+                {footer.description} <br /> {footer.description2} <span 
+                  ref={highlightedTextRef}
+                  className="inline-block font-times-new-roman bg-brand-green px-2 py-1 rounded-sm italic text-brand-black cursor-pointer"
+                >
+                  {footer.highlightedText}
+                </span>
+              </p>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
+          {/* Services section */}
+          <div ref={servicesRef} className="services-section">
+            <h4 className="font-semibold mb-6 md:mb-4 text-lg">Services</h4>
+            <ul className="space-y-4 md:space-y-3">
               {footer.services.map((service, index) => (
                 <li key={index}>
-                  <a href={service.href} className="text-background/80 hover:text-background transition-colors">
+                  <a 
+                    href={service.href} 
+                    className="text-background/60 hover:text-background transition-colors duration-200 text-base inline-block"
+                  >
                     {service.text}
                   </a>
                 </li>
@@ -58,28 +239,50 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Liens utiles</h4>
-            <ul className="space-y-2">
+          {/* Links section */}
+          <div ref={linksRef} className="footer-links">
+            <h4 className="font-semibold mb-6 md:mb-4 text-lg">Liens utiles</h4>
+            <ul className="space-y-4 md:space-y-3">
               {footer.links.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-background/80 hover:text-background transition-colors">
-                    {link.text}
-                  </a>
+                  {link.text === "Réserver un appel" ? (
+                    <Button 
+                      size="lg"
+                      className="bg-white hover:bg-white/90 text-brand-black text-base px-4 py-2 rounded-md font-medium transition-all duration-200 hover:scale-105"
+                      asChild
+                    >
+                      <a href={link.href}>
+                        {link.text}
+                        <ArrowRight size={16} />
+                      </a>
+                    </Button>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-background/60 hover:text-background transition-colors duration-200 text-base inline-block"
+                    >
+                      {link.text}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-background/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-background/60 text-sm">
+        {/* Bottom section */}
+        <div ref={bottomRef} className="border-t border-background/20 pt-8 md:pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <p className="text-background/60 text-base text-center md:text-left">
               © {currentYear} {footer.logo}. Tous droits réservés.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              {footer.links.map((link, index) => (
-                <a key={index} href={link.href} className="text-background/60 hover:text-background text-sm transition-colors">
+            <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
+              {footer.legalLinks.map((link, index) => (
+                <a 
+                  key={index} 
+                  href={link.href} 
+                  className="text-background/60 hover:text-background text-base transition-colors duration-200"
+                >
                   {link.text}
                 </a>
               ))}
@@ -87,6 +290,18 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Scroll to top button */}
+      {showScrollToTop && (
+        <button
+          ref={scrollToTopRef}
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-brand-green hover:bg-brand-green/90 text-brand-black p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+          aria-label="Retour en haut de page"
+        >
+          <ArrowUp size={20} />
+        </button>
+      )}
     </footer>
   );
 } 
