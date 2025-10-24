@@ -54,7 +54,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
           <button
             key={o.value}
             onClick={() => setSiteData({ ...siteData, type: o.value as SiteType })}
-            className={`w-full p-4 md:p-6 rounded-xl border text-left transition-all ${
+            className={`w-full p-4 md:p-6 rounded-md border text-left transition-all ${
               siteData.type === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 
                 : 'border-border hover:border-border bg-white'
@@ -85,7 +85,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
             <button
               key={o.value}
               onClick={() => setSiteData({ ...siteData, tech: o.value as TechType })}
-              className={`w-full p-4 md:p-6 rounded-xl border text-left transition-all ${
+              className={`w-full p-4 md:p-6 rounded-md border text-left transition-all ${
                 siteData.tech === o.value 
                   ? `${brandClasses.border} ${brandClasses.accent}` 
                   : 'border-border hover:border-border bg-white'
@@ -144,7 +144,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
           <button
             key={o.value}
             onClick={() => setSiteData({ ...siteData, tech: o.value as TechType })}
-            className={`w-full p-4 md:p-6 rounded-xl border text-left transition-all ${
+            className={`w-full p-4 md:p-6 rounded-md border text-left transition-all ${
               siteData.tech === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 
                 : 'border-border hover:border-border bg-white'
@@ -187,7 +187,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
                   : [...currentModules, module.value];
                 setSiteData({ ...siteData, modules: newModules });
               }}
-              className={`p-3 md:p-4 rounded-xl border text-left transition-all ${
+              className={`p-3 md:p-4 rounded-md border text-left transition-all ${
                 isSelected 
                   ? `${brandClasses.border} ${brandClasses.accent}` 
                   : 'border-border hover:border-border bg-white'

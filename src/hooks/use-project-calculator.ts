@@ -254,7 +254,10 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
     }
     if (activeTab === 'prototype') return 4;
     if (activeTab === 'mvp') return 5;
-    if (activeTab === 'crm') return 7;
+    if (activeTab === 'crm') {
+      // Pour les CRM from scratch, on a 5 étapes au lieu de 7 (étapes 4 et 5 sautées)
+      return crmData.type === 'scratch' ? 5 : 7;
+    }
     if (activeTab === 'linkedin') return 3;
     return 2;
   };
@@ -290,9 +293,24 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
     if (activeTab === 'crm') {
       if (step === 1) return !!crmData.type;
       if (step === 2) return !!crmData.users;
-      if (step === 3) return !!crmData.crmSource;
-      if (step === 4) return !!crmData.crmTarget;
-      if (step === 5) return !!crmData.dataVolume;
+      if (step === 3) {
+        // Pour les migrations, vérifier le CRM source
+        if (crmData.type === 'migration') return !!crmData.crmSource;
+        // Pour from scratch, vérifier le type de CRM souhaité
+        return !!crmData.crmTarget;
+      }
+      if (step === 4) {
+        // Pour les migrations, vérifier le CRM cible
+        if (crmData.type === 'migration') return !!crmData.crmTarget;
+        // Pour from scratch, vérifier les intégrations
+        return !!crmData.integrations;
+      }
+      if (step === 5) {
+        // Pour les migrations, vérifier le volume de données
+        if (crmData.type === 'migration') return !!crmData.dataVolume;
+        // Pour from scratch, la formation est optionnelle
+        return true;
+      }
       if (step === 6) return !!crmData.integrations;
       if (step === 7) return true; // training is boolean
     }
@@ -315,6 +333,14 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
       return;
     }
     
+    // Pour les CRM from scratch, sauter les étapes de migration
+    if (activeTab === 'crm' && crmData.type === 'scratch') {
+      if (step === 3) {
+        setStep(4); // Passer directement à l'étape 4 (intégrations)
+        return;
+      }
+    }
+    
     if (step < max) setStep(step + 1);
     else setStep(max + 1);
   };
@@ -326,6 +352,13 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
         setStep(1);
         return;
       }
+      
+      // Pour les CRM from scratch, si on est à l'étape 4, revenir à l'étape 3
+      if (activeTab === 'crm' && crmData.type === 'scratch' && step === 4) {
+        setStep(3);
+        return;
+      }
+      
       setStep(step - 1);
     }
   };
