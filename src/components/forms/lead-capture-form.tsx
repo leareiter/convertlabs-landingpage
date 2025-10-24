@@ -59,6 +59,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-brand-black focus:border-transparent"
                 placeholder="Jean"
                 required
+                data-rybbit-event="form_field_focus"
+                data-rybbit-prop-field="first_name"
               />
             </div>
             <div>
@@ -73,6 +75,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-brand-black focus:border-transparent"
                 placeholder="Dupont"
                 required
+                data-rybbit-event="form_field_focus"
+                data-rybbit-prop-field="last_name"
               />
             </div>
           </div>
@@ -89,6 +93,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-brand-black focus:border-transparent"
               placeholder="jean.dupont@exemple.com"
               required
+              data-rybbit-event="form_field_focus"
+              data-rybbit-prop-field="email"
             />
           </div>
 
@@ -104,6 +110,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-brand-black focus:border-transparent"
               placeholder="Mon Entreprise"
               required
+              data-rybbit-event="form_field_focus"
+              data-rybbit-prop-field="company"
             />
           </div>
 
@@ -116,6 +124,9 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="submit"
             disabled={isSubmitting}
             className={`w-full font-medium text-base transition-colors ${brandClasses.button} disabled:opacity-50 disabled:cursor-not-allowed`}
+            data-rybbit-event="lead_form_submit"
+            data-rybbit-prop-form-type="calculator"
+            data-rybbit-prop-step="lead_capture"
           >
             {isSubmitting ? (
               <div className="flex items-center justify-center">
