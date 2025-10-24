@@ -106,7 +106,7 @@ export default function MethodSection() {
                   <div className="flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
                     <div className="relative p-1 transition-all duration-500 ease-out">
                       <div className="absolute inset-0 bg-brand-green/40 rounded-full"></div>
-                      <div className="relative bg-brand-green text-black w-12 h-12 rounded-full flex items-center justify-center font-mono text-lg font-bold">
+                      <div className="relative bg-brand-green text-brand-black w-12 h-12 rounded-full flex items-center justify-center font-mono text-lg font-bold">
                         {index + 1}
                       </div>
                     </div>

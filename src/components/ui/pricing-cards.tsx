@@ -104,7 +104,7 @@ export default function PricingCards({ offers, sectionId, popularIndex = 1, bran
             <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
               <div className="relative p-1">
                 <div className={`absolute inset-0 ${brandColor}/40 rounded-full`}></div>
-                <div className={`relative ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-4 py-1.5 rounded-full tracking-tight text-sm font-medium`}>
+                <div className={`relative ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-4 py-1.5 rounded-full tracking-tight text-sm font-medium`}>
                   La plus populaire
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function PricingCards({ offers, sectionId, popularIndex = 1, bran
             </div>
 
             <Button onClick={() => router.push(offer.link)} size="lg" className={`w-full cursor-pointer -translate-y-1 hover:-translate-y-2 transition-all duration-200 mt-auto text-base ${index === middleIndex
-                ? `${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} hover:${brandColor}/90`
+                ? `${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} hover:${brandColor}/90`
                 : "bg-text-hero text-white hover:bg-text-hero/90"
               }`}>
               <a>En savoir plus</a>

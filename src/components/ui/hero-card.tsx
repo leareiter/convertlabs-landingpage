@@ -176,7 +176,7 @@ export default function HeroCard({
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl lg:max-w-8xl mx-auto text-center">
           {showBadge && (
-            <div className={`inline-flex items-center px-4 py-2 rounded-full ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} text-xs md:text-base tracking-tight font-medium mb-8`}>
+            <div className={`inline-flex items-center px-4 py-2 rounded-full ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} text-xs md:text-base tracking-tight font-medium mb-8`}>
               {hero.badgeText}
             </div>
           )}
@@ -194,7 +194,7 @@ export default function HeroCard({
                   )}
                   <span 
                     ref={greenBoxMobileRef} 
-                    className={`inline-block font-times-new-roman text-5xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-5xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>
@@ -208,7 +208,7 @@ export default function HeroCard({
                     <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
                     <span 
                       ref={greenBoxDesktopRef} 
-                      className={`inline-block font-times-new-roman text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                      className={`inline-block font-times-new-roman text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                     >
                       {titleHighlight}
                     </span>
@@ -224,7 +224,7 @@ export default function HeroCard({
                   <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
                   <span 
                     ref={greenBoxRef} 
-                    className={`inline-block font-times-new-roman text-5xl md:text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
+                    className={`inline-block font-times-new-roman text-5xl md:text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
                   </span>

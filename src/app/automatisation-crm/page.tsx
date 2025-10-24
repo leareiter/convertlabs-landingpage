@@ -12,10 +12,6 @@ const AutomatisationCRMOffers = dynamic(() => import("@/components/automatisatio
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
-const AutomatisationCRMWhy = dynamic(() => import("@/components/automatisation-crm/why"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
-
 const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisation-crm/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
@@ -58,7 +54,6 @@ export default function AutomatisationCRMPage() {
       <AutomatisationCRMHero />
       <AutomatisationCRMApproach />
       <AutomatisationCRMOffers />
-      <AutomatisationCRMWhy />
       <AutomatisationCRMUseCases />
       <AutomatisationCRMCalculator />
       <AutomatisationCRMAppointment />

@@ -137,7 +137,7 @@ export default function ProspectionLinkedInUseCases() {
               </p>
               <Button
                 size="lg"
-                className="bg-brand-green text-black text-lg px-8 py-6 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
+                className="bg-brand-green text-brand-black text-lg px-8 py-6 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
                 asChild
               >
                 <a href="#rendez-vous">

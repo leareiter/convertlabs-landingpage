@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { TabId, CalculationResult } from './use-project-calculator';
+import { TabId, CalculationResult } from '@/hooks/use-project-calculator';
 
 export interface LeadSubmissionData {
   email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   company: string;
   calculatorType: TabId;
   estimation: CalculationResult;
@@ -15,7 +16,7 @@ export const useEmailSubmission = () => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
   const submitLead = async (submissionData: LeadSubmissionData): Promise<boolean> => {
-    if (!submissionData.email || !submissionData.name || !submissionData.company) {
+    if (!submissionData.email || !submissionData.firstName || !submissionData.lastName || !submissionData.company) {
       setSubmitError('Veuillez remplir tous les champs obligatoires');
       return false;
     }
@@ -34,9 +35,7 @@ export const useEmailSubmission = () => {
       });
 
       if (!response.ok) {
-        // Handle 409 error (email already exists) as success
         if (response.status === 409) {
-          console.log('Email already exists in audience, treating as success');
           setSubmitSuccess(true);
           return true;
         }
@@ -45,14 +44,6 @@ export const useEmailSubmission = () => {
         throw new Error(errorData.error || 'Failed to submit lead');
       }
 
-      const result = await response.json();
-      console.log('Lead submitted successfully:', result);
-      
-      // Handle case where email already exists
-      if (result.alreadyExists) {
-        console.log('Email already exists in audience, treating as success');
-      }
-      
       setSubmitSuccess(true);
       return true;
     } catch (error: unknown) {

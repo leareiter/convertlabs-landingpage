@@ -27,8 +27,8 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Estimer mon projet", href: "#estimation" },
           { text: "Cas d'usage", href: "#use-cases" },
+          { text: "Estimer mon projet", href: "#calculator" },
         ],
         buttons: {
           CTA: "Réserver un appel de cadrage"
@@ -42,8 +42,8 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Estimer mon projet", href: "#calculator" },
           { text: "Cas d'usage", href: "#use-cases" },
+          { text: "Estimer mon projet", href: "#calculator" }
         ],
         buttons: {
           CTA: "Réserver un appel de cadrage"
@@ -57,8 +57,8 @@ export default function Navbar() {
         links: [
           { text: "Notre approche", href: "#approach" },
           { text: "Offres & périmètre", href: "#offers" },
-          { text: "Estimer mon projet", href: "#calculator" },
           { text: "Cas d'usage", href: "#use-cases" },
+          { text: "Estimer mon projet", href: "#calculator" }
         ],
         buttons: {
           CTA: "Réserver un appel de cadrage"
@@ -232,7 +232,7 @@ export default function Navbar() {
 
                   <div className="pt-4">
                     <Button
-                      className="w-full bg-brand-green text-black cursor-pointer transition-transform hover:-translate-y-1"
+                      className="w-full bg-brand-green text-brand-black cursor-pointer transition-transform hover:-translate-y-1"
                       asChild
                     >
                       <a href="#rendez-vous" className="flex items-center justify-center gap-2">

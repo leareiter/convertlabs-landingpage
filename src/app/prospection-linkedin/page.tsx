@@ -15,10 +15,6 @@ const ProspectionLinkedInOffers = dynamic(() => import("@/components/prospection
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
-const ProspectionLinkedInWhy = dynamic(() => import("@/components/prospection-linkedin/why"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
-
 const ProspectionLinkedInUseCases = dynamic(() => import("@/components/prospection-linkedin/use-cases"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
@@ -61,7 +57,6 @@ export default function ProspectionLinkedInPage() {
       <ProspectionLinkedInHero />
       <ProspectionLinkedInApproach />
       <ProspectionLinkedInOffers />
-      <ProspectionLinkedInWhy />
       <ProspectionLinkedInUseCases />
       <ProspectionLinkedInCalculator />
       <ProspectionLinkedInAppointment />
