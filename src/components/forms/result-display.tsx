@@ -76,7 +76,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
         <p className="text-text-muted">Voici votre estimation personnalisée</p>
       </div>
 
-      <div ref={cardRef} className={`${brandClasses.accent} rounded-xl p-8 shadow-none`}>
+      <div ref={cardRef} className={`${brandClasses.accent} rounded-md p-8 shadow-none`}>
         <div className="text-center">
           <div className="text-4xl font-bold font-be-vietnam-pro text-white tracking-[-0.05em] mb-2">
             {result.min}€ - {result.max}€

@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
       
       // Handle 409 error (email already exists) by updating the contact
       if (response.status === 409) {
-        console.log('Email already exists in Loops audience, updating contact');
         
         // Try to update the existing contact
         const updateResponse = await fetch('https://app.loops.so/api/v1/contacts/update', {
@@ -81,7 +80,6 @@ export async function POST(request: NextRequest) {
         }
 
         const updateResult = await updateResponse.json();
-        console.log('Contact updated successfully in Loops:', updateResult);
         
         return NextResponse.json(
           { 
@@ -101,7 +99,6 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await response.json();
-    console.log('Lead submitted successfully to Looops:', result);
 
     return NextResponse.json(
       { 

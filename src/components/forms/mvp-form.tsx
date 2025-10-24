@@ -73,7 +73,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
           <button
             key={o.value}
             onClick={() => setMvpData({ ...mvpData, platform: o.value as PlatformType })}
-            className={`p-3 md:p-4 rounded-xl border text-left transition-all ${
+            className={`p-3 md:p-4 rounded-md border text-left transition-all ${
               mvpData.platform === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 
                 : 'border-border hover:border-border bg-white'
@@ -102,7 +102,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
           <button
             key={o.value}
             onClick={() => setMvpData({ ...mvpData, hasDesign: o.value as HasDesignType })}
-            className={`w-full p-6 rounded-xl border text-left transition-all ${
+            className={`w-full p-6 rounded-md border text-left transition-all ${
               mvpData.hasDesign === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 
                 : 'border-border hover:border-border bg-white'
@@ -151,7 +151,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
                   : [...currentFeatures, feature.value];
                 setMvpData({ ...mvpData, features: newFeatures });
               }}
-              className={`p-3 md:p-4 rounded-xl border text-left transition-all ${
+              className={`p-3 md:p-4 rounded-md border text-left transition-all ${
                 isSelected 
                   ? `${brandClasses.border} ${brandClasses.accent}` 
                   : 'border-border hover:border-border bg-white'
@@ -182,7 +182,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
           <button
             key={o.value}
             onClick={() => setMvpData({ ...mvpData, backend: o.value as BackendType })}
-            className={`p-3 md:p-4 rounded-xl border text-left transition-all ${
+            className={`p-3 md:p-4 rounded-md border text-left transition-all ${
               mvpData.backend === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 
                 : 'border-border hover:border-border bg-white'

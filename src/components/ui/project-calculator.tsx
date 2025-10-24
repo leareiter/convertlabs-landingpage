@@ -190,7 +190,7 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-3 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
+                    className={`px-4 py-3 text-base font-medium rounded-lg border transition-all duration-200 ${
                       activeTab === tab.id
                         ? `${brandClasses.border} ${brandClasses.accent} text-white`
                         : 'border-border bg-white text-gray-700 hover:bg-gray-50'
@@ -205,8 +205,8 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
             {/* Desktop Tabs */}
             <div className="hidden md:block">
               <div className="w-full overflow-hidden">
-                <div className="relative flex items-center space-x-1 bg-surface-muted rounded-xl p-2">
-                  <div className="absolute inset-0 bg-surface-muted rounded-xl p-2"></div>
+                <div className="relative flex items-center space-x-1 bg-surface-muted rounded-md p-2">
+                  <div className="absolute inset-0 bg-surface-muted rounded-md p-2"></div>
                   {tabs.length > 1 && (
                     <div
                       className="absolute top-1 bottom-1 rounded-lg transition-all duration-300 ease-out bg-brand-black"
