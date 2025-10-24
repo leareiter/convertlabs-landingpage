@@ -53,8 +53,8 @@ const LinkedinForm: React.FC<LinkedinFormProps> = ({ linkedinData, setLinkedinDa
   if (step === 2) return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Nombre d&apos;ICPs</h3>
-        <p className="text-text-muted">Combien d&apos;ICPs (Ideal Customer Profiles) ciblez-vous ?</p>
+        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Nombre d'ICPs</h3>
+        <p className="text-text-muted">Combien d'ICPs (Ideal Customer Profiles) ciblez-vous ?</p>
       </div>
       
       <div className="max-w-2xl mx-auto">

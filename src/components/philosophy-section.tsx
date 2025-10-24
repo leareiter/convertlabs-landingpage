@@ -12,7 +12,7 @@ export default function PhilosophySection() {
           <div className="flex flex-col items-center">
             <div className="text-center">
               <p className="text-lg text-brand-black font-regular font-be-vietnam-pro mb-8">
-                Chaque verticale ConvertLabs est un bloc d&apos;expertise autonome, pensé pour répondre à un besoin précis et mesurable. Notre mission est de concevoir, automatiser et faire croître des produits digitaux durables, en construisant autour de la performance et de la clarté.
+                Chaque verticale ConvertLabs est un bloc d'expertise autonome, pensé pour répondre à un besoin précis et mesurable. Notre mission est de concevoir, automatiser et faire croître des produits digitaux durables, en construisant autour de la performance et de la clarté.
               </p>
             </div>
           </div>

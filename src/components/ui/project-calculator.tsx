@@ -236,18 +236,20 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
         )}
 
         {/* Step Indicator */}
-        <div ref={progressRef} className="bg-transparent rounded-lg p-6">
-          <div className="text-center mb-2">
-            <div className="text-xs md:text-sm text-text-muted">
-              Étape {step} sur {maxStep}
+        {step <= maxStep && (
+          <div ref={progressRef} className="bg-transparent rounded-lg p-6">
+            <div className="text-center mb-2">
+              <div className="text-xs md:text-sm text-text-muted">
+                Étape {step} sur {maxStep}
+              </div>
             </div>
+            <Progress
+              value={Math.min((step / maxStep) * 100, 100)}
+              className="w-full h-3 md:h-4 rounded-full overflow-hidden"
+              brandColor={isHomePage ? 'black' : brandColor}
+            />
           </div>
-          <Progress
-            value={(step / maxStep) * 100}
-            className="w-full h-3 md:h-4 rounded-full overflow-hidden"
-            brandColor={isHomePage ? 'black' : brandColor}
-          />
-        </div>
+        )}
 
         {/* Main Content */}
         <div ref={contentRef} className="space-y-4 md:space-y-6">
@@ -261,7 +263,7 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
                 onReset={resetCalculator}
                 activeTab={activeTab}
               />
-            ) : step === maxStep ? (
+            ) : step === maxStep + 1 ? (
               <LeadCaptureForm
                 leadData={leadData}
                 setLeadData={setLeadData}
@@ -293,7 +295,7 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
           </div>
 
           {/* Navigation */}
-          {!showResult && step < maxStep && (
+          {!showResult && step < maxStep + 1 && (
             <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-0 pt-4 md:pt-6 border-t border-border">
               <button
                 onClick={prevStep}

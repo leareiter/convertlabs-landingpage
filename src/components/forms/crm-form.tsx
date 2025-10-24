@@ -12,6 +12,7 @@ interface CrmFormProps {
     dataVolume?: DataVolumeType;
     integrations?: string;
     training?: boolean;
+    trainingAnswered?: boolean;
   };
   setCrmData: (data: {
     type?: CrmType;
@@ -21,6 +22,7 @@ interface CrmFormProps {
     dataVolume?: DataVolumeType;
     integrations?: string;
     training?: boolean;
+    trainingAnswered?: boolean;
   }) => void;
   step: number;
   brandClasses: {
@@ -65,8 +67,8 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
   if (step === 2) return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Nombre d&apos;utilisateurs</h3>
-        <p className="text-text-muted">Combien d&apos;utilisateurs utiliseront le CRM ?</p>
+        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Nombre d'utilisateurs</h3>
+        <p className="text-text-muted">Combien d'utilisateurs utiliseront le CRM ?</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
@@ -173,7 +175,7 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
         <div className="space-y-6">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Intégrations nécessaires</h3>
-            <p className="text-text-muted">Combien d&apos;intégrations sont nécessaires ?</p>
+            <p className="text-text-muted">Combien d'intégrations sont nécessaires ?</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
@@ -216,20 +218,37 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
             { value: 'pipedrive', label: 'Pipedrive', desc: 'Migration vers Pipedrive.' },
             { value: 'airtable', label: 'Airtable', desc: 'Migration vers Airtable.' },
             { value: 'autre', label: 'Autre', desc: 'Autre CRM ou solution personnalisée.' }
-          ].map((o: Option & { desc: string }) => (
-            <button
-              key={o.value}
-              onClick={() => setCrmData({ ...crmData, crmTarget: o.value as CrmSourceType })}
-              className={`p-3 md:p-4 rounded-md border text-left transition-all ${
-                crmData.crmTarget === o.value 
-                  ? `${brandClasses.border} ${brandClasses.accent}` 
-                  : 'border-border hover:border-border bg-white'
-              }`}
-            >
-              <div className={`font-regular text-base md:text-lg ${getTextColor(crmData.crmTarget === o.value)}`}>{o.label}</div>
-              <div className={`mt-1 text-xs md:text-sm ${getTextColor(crmData.crmTarget === o.value, 'text-text-muted')}`}>{o.desc}</div>
-            </button>
-          ))}
+          ].map((o: Option & { desc: string }) => {
+            const isDisabled = crmData.crmSource === o.value;
+            return (
+              <button
+                key={o.value}
+                onClick={() => !isDisabled && setCrmData({ ...crmData, crmTarget: o.value as CrmSourceType })}
+                disabled={isDisabled}
+                className={`p-3 md:p-4 rounded-md border text-left transition-all ${
+                  isDisabled 
+                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed opacity-50'
+                    : crmData.crmTarget === o.value 
+                      ? `${brandClasses.border} ${brandClasses.accent}` 
+                      : 'border-border hover:border-border bg-white'
+                }`}
+              >
+                <div className={`font-regular text-base md:text-lg ${
+                  isDisabled 
+                    ? 'text-gray-400' 
+                    : getTextColor(crmData.crmTarget === o.value)
+                }`}>
+                  {o.label}
+                  {isDisabled && ' (source)'}
+                </div>
+                <div className={`mt-1 text-xs md:text-sm ${
+                  isDisabled 
+                    ? 'text-gray-400' 
+                    : getTextColor(crmData.crmTarget === o.value, 'text-text-muted')
+                }`}>{o.desc}</div>
+              </button>
+            );
+          })}
         </div>
       </div>
     );
@@ -242,17 +261,17 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
         <div className="space-y-6">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Formation nécessaire</h3>
-            <p className="text-text-muted">Avez-vous besoin d&apos;une formation pour votre équipe ?</p>
+            <p className="text-text-muted">Avez-vous besoin d'une formation pour votre équipe ?</p>
           </div>
           
           <div className="space-y-4">
             {[
-              { value: false, label: 'Non, pas de formation', desc: 'L&apos;équipe maîtrise déjà les outils.' },
-              { value: true, label: 'Oui, formation nécessaire', desc: 'Formation recommandée pour optimiser l&apos;usage.' }
+              { value: false, label: 'Non, pas de formation', desc: 'L\'équipe maîtrise déjà les outils.' },
+              { value: true, label: 'Oui, formation nécessaire', desc: 'Formation recommandée pour optimiser l\'usage.' }
             ].map((o: { value: boolean; label: string; desc: string }) => (
               <button
                 key={o.value.toString()}
-                onClick={() => setCrmData({ ...crmData, training: o.value })}
+                onClick={() => setCrmData({ ...crmData, training: o.value, trainingAnswered: true })}
                 className={`w-full p-6 rounded-md border text-left transition-all ${
                   crmData.training === o.value 
                     ? `${brandClasses.border} ${brandClasses.accent}` 
@@ -306,7 +325,7 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Intégrations nécessaires</h3>
-        <p className="text-text-muted">Combien d&apos;intégrations sont nécessaires ?</p>
+        <p className="text-text-muted">Combien d'intégrations sont nécessaires ?</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
@@ -337,17 +356,17 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Formation nécessaire</h3>
-        <p className="text-text-muted">Avez-vous besoin d&apos;une formation pour votre équipe ?</p>
+        <p className="text-text-muted">Avez-vous besoin d'une formation pour votre équipe ?</p>
       </div>
       
       <div className="space-y-4">
         {[
-          { value: false, label: 'Non, pas de formation', desc: 'L&apos;équipe maîtrise déjà les outils.' },
-          { value: true, label: 'Oui, formation nécessaire', desc: 'Formation recommandée pour optimiser l&apos;usage.' }
+          { value: false, label: 'Non, pas de formation', desc: 'L\'équipe maîtrise déjà les outils.' },
+          { value: true, label: 'Oui, formation nécessaire', desc: 'Formation recommandée pour optimiser l\'usage.' }
         ].map((o: { value: boolean; label: string; desc: string }) => (
           <button
             key={o.value.toString()}
-            onClick={() => setCrmData({ ...crmData, training: o.value })}
+            onClick={() => setCrmData({ ...crmData, training: o.value, trainingAnswered: true })}
             className={`w-full p-6 rounded-md border text-left transition-all ${
               crmData.training === o.value 
                 ? `${brandClasses.border} ${brandClasses.accent}` 

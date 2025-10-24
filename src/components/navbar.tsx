@@ -124,7 +124,7 @@ export default function Navbar() {
                   <div className="text-lg font-regular font-be-vietnam-pro leading-none">Design &amp; MVP
                   </div>
                   <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
-                    De l&apos;idée au produit vivant. Rapidement.
+                    De l'idée au produit vivant. Rapidement.
                   </p>
                 </a>
               </NavigationMenuLink>
@@ -146,7 +146,7 @@ export default function Navbar() {
                 >
                   <div className="text-lg font-regular font-be-vietnam-pro leading-none">CRM & Automatisation</div>
                   <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
-                    On organise ton back-office pour qu&apos;il tourne sans toi.
+                    On organise ton back-office pour qu'il tourne sans toi.
                   </p>
                 </a>
               </NavigationMenuLink>

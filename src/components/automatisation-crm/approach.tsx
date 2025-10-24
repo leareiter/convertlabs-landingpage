@@ -17,7 +17,7 @@ export default function AutomatisationCRMApproach() {
     },
     {
       title: "Formation & Support",
-      description: "Former vos équipes et mettre en place un support continu pour optimiser l&apos;utilisation et maximiser le ROI."
+      description: "Former vos équipes et mettre en place un support continu pour optimiser l'utilisation et maximiser le ROI."
     }
   ];
 

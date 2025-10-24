@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useEmailSubmission } from './use-email-submission';
 import { getActiveSchema } from '@/lib/validation-schemas';
 
@@ -58,39 +58,40 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
   
   // Form data states
   const [siteData, setSiteData] = useState({
-    type: 'lp',
-    pages: 1,
-    tech: 'nocode',
+    type: '',
+    pages: 5,
+    tech: '',
     modules: []
   });
   
   const [prototypeData, setPrototypeData] = useState({
-    type: 'figma',
-    screens: 5,
-    fidelity: 'wireframe',
-    target: 'web'
+    type: '',
+    screens: 10,
+    fidelity: '',
+    target: ''
   });
   
   const [mvpData, setMvpData] = useState({
-    screens: 10,
-    platform: 'web',
-    hasDesign: 'no',
+    screens: 15,
+    platform: '',
+    hasDesign: '',
     features: [],
-    backend: 'none'
+    backend: ''
   });
   
   const [crmData, setCrmData] = useState({
-    type: 'scratch',
-    users: '1-3',
-    crmSource: 'autre',
-    crmTarget: 'autre',
-    dataVolume: '<1k',
-    integrations: '1-3',
-    training: false
+    type: '',
+    users: '',
+    crmSource: '',
+    crmTarget: '',
+    dataVolume: '',
+    integrations: '',
+    training: false,
+    trainingAnswered: true
   });
   
   const [linkedinData, setLinkedinData] = useState({
-    leads: 10,
+    leads: 15,
     icps: 1
   });
   
@@ -103,6 +104,7 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
   
   // Email submission hook
   const { isSubmitting, submitError, submitSuccess, submitLead, resetSubmission } = useEmailSubmission();
+
 
   const allTabs: Tab[] = [
     { id: 'site', label: 'LP / Site' },
@@ -150,8 +152,8 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
       ? (data.screens <= 10 ? 2000 : data.screens <= 20 ? 3000 : data.screens <= 35 ? 4000 : 5000) 
       : 4000;
     
-    const fidelityCoeffs: Record<string, number> = { wireframe: 0.7, high: 1, pixel: 1.3 };
-    const targetCoeffs: Record<string, number> = { lp: 0.8, web: 1, mobile: 1.1, both: 1.3 };
+    const fidelityCoeffs: Record<string, number> = { wireframe: 0.7, high: 1, pixel: 1.3, '': 1 };
+    const targetCoeffs: Record<string, number> = { lp: 0.8, web: 1, mobile: 1.1, both: 1.3, '': 1 };
     
     const budget = baseBudget * (fidelityCoeffs[data.fidelity || ''] || 1) * (targetCoeffs[data.target || ''] || 1);
     return { min: Math.round(budget * 0.9), max: Math.round(budget * 1.1), weeks: 2 };
@@ -161,9 +163,9 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
     const chargeJours = data.screens * 0.7;
     let budget = chargeJours * 400;
     
-    const platformCoeffs: Record<string, number> = { web: 1, mobile: 1.1, both: 1.5 };
-    const designCoeffs: Record<string, number> = { has: 0.8, no: 1 };
-    const backendCoeffs: Record<string, number> = { none: 0.75, light: 1, complex: 1.3 };
+    const platformCoeffs: Record<string, number> = { web: 1, mobile: 1.1, both: 1.5, '': 1 };
+    const designCoeffs: Record<string, number> = { has: 0.8, no: 1, '': 1 };
+    const backendCoeffs: Record<string, number> = { none: 0.75, light: 1, complex: 1.3, '': 1 };
     
     budget *= (platformCoeffs[data.platform] || 1) * (designCoeffs[data.hasDesign] || 1) * (backendCoeffs[data.backend] || 1);
     
@@ -181,9 +183,9 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
       totalDays += featuresDays[feat] || 0; 
     });
     
-    const platformDelayCoeff: Record<string, number> = { web: 1, mobile: 0.8, both: 1.8 };
-    const designDelayCoeff: Record<string, number> = { has: 0.5, no: 1 };
-    const backendDelayCoeff: Record<string, number> = { none: 0.8, light: 1, complex: 1.2 };
+    const platformDelayCoeff: Record<string, number> = { web: 1, mobile: 0.8, both: 1.8, '': 1 };
+    const designDelayCoeff: Record<string, number> = { has: 0.5, no: 1, '': 1 };
+    const backendDelayCoeff: Record<string, number> = { none: 0.8, light: 1, complex: 1.2, '': 1 };
     
     totalDays *= (platformDelayCoeff[data.platform] || 1) * (designDelayCoeff[data.hasDesign] || 1) * (backendDelayCoeff[data.backend] || 1);
     const weeks = Math.max(1, Math.ceil(totalDays / 5));
@@ -193,16 +195,16 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
 
   const calculateCRM = (data: { type: string; users: string; crmSource?: string; crmTarget?: string; dataVolume?: string; integrations: string; training: boolean }): CalculationResult => {
     const userBudgets: Record<string, number> = { 
-      '1-3': 3000, '4-10': 4000, '11-25': 6000, '26-50': 9000, '51-100': 15000, '100+': 20000
+      '1-3': 3000, '4-10': 4000, '11-25': 6000, '26-50': 9000, '51-100': 15000, '100+': 20000, '': 0
     };
     const volumeCoeffs: Record<string, number> = { 
-      '<1k': 1.2, '1k-5k': 1.3, '5k-20k': 1.4, '20k-50k': 1.5, '50k-100k': 1.7, '100k+': 2.0
+      '<1k': 1.2, '1k-5k': 1.3, '5k-20k': 1.4, '20k-50k': 1.5, '50k-100k': 1.7, '100k+': 2.0, '': 1
     };
     const crmCoeffs: Record<string, number> = { 
-      salesforce: 1.5, hubspot: 1.47, zoho: 1.44, pipedrive: 1.41, airtable: 1.38, autre: 1.0
+      salesforce: 1.5, hubspot: 1.47, zoho: 1.44, pipedrive: 1.41, airtable: 1.38, autre: 1.0, '': 1
     };
     const integrationCoeffs: Record<string, number> = { 
-      '1-3': 1, '4-7': 1.2, '8-12': 1.4, '13+': 1.6
+      '1-3': 1, '4-7': 1.2, '8-12': 1.4, '13+': 1.6, '': 1
     };
     
     let budget = userBudgets[data.users] || 0;
@@ -212,7 +214,7 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
     if (data.type === 'migration') {
       budget *= volumeCoeffs[data.dataVolume || ''] * 1.2;
       const volumeWeeks: Record<string, number> = { 
-        '<1k': 1, '1k-5k': 1, '5k-20k': 1, '20k-50k': 2, '50k-100k': 2, '100k+': 3
+        '<1k': 1, '1k-5k': 1, '5k-20k': 1, '20k-50k': 2, '50k-100k': 2, '100k+': 3, '': 1
       };
       weeks = volumeWeeks[data.dataVolume || ''] || 1;
     }
@@ -248,124 +250,73 @@ export const useProjectCalculator = ({ allowedTabs }: UseProjectCalculatorProps 
   // ============================================================================
 
   const maxStep = (): number => {
-    if (activeTab === 'site') {
-      // Pour les landing pages, on a 3 étapes au lieu de 4 (étape "pages" sautée)
-      return siteData.type === 'lp' ? 3 : 4;
-    }
-    if (activeTab === 'prototype') return 4;
-    if (activeTab === 'mvp') return 5;
-    if (activeTab === 'crm') {
-      // Pour les CRM from scratch, on a 5 étapes au lieu de 7 (étapes 4 et 5 sautées)
-      return crmData.type === 'scratch' ? 5 : 7;
-    }
-    if (activeTab === 'linkedin') return 3;
+    if (activeTab === 'site') return siteData.type === 'lp' ? 3 : 4;
+    if (activeTab === 'prototype') return prototypeData.type === 'figma' ? 4 : 2;
+    if (activeTab === 'mvp') return mvpData.backend === 'none' ? 4 : 5;
+    if (activeTab === 'crm') return crmData.type === 'migration' ? 7 : 5;
+    if (activeTab === 'linkedin') return 2;
     return 2;
   };
 
   const isStepComplete = (): boolean => {
     if (activeTab === 'site') {
-      if (step === 1) return !!siteData.type;
-      if (step === 2) {
-        // Pour les landing pages, l'étape 2 est le développement
-        if (siteData.type === 'lp') return !!siteData.tech;
-        // Pour les sites web, l'étape 2 est le nombre de pages
-        return !!siteData.pages;
-      }
-      if (step === 3) return !!siteData.tech;
-      if (step === 4) return true; // modules are optional
+      if (step === 1) return siteData.type !== '';
+      if (step === 3 || (step === 2 && siteData.type === 'lp')) return siteData.tech !== '';
+      return true;
     }
-    
     if (activeTab === 'prototype') {
-      if (step === 1) return !!prototypeData.type;
-      if (step === 2) return !!prototypeData.screens;
-      if (step === 3) return !!prototypeData.fidelity;
-      if (step === 4) return !!prototypeData.target;
+      if (step === 1) return prototypeData.type !== '';
+      if (step === 3 && prototypeData.type === 'figma') return prototypeData.fidelity !== '';
+      if (step === 4 || (step === 2 && prototypeData.type === 'system')) return prototypeData.target !== '';
+      return true;
     }
-    
     if (activeTab === 'mvp') {
-      if (step === 1) return !!mvpData.screens;
-      if (step === 2) return !!mvpData.platform;
-      if (step === 3) return !!mvpData.hasDesign;
+      if (step === 2) return mvpData.platform !== '';
+      if (step === 3) return mvpData.hasDesign !== '';
       if (step === 4) return true; // features are optional
-      if (step === 5) return !!mvpData.backend;
+      if (step === 5) return mvpData.backend !== '';
+      return true;
     }
-    
     if (activeTab === 'crm') {
-      if (step === 1) return !!crmData.type;
-      if (step === 2) return !!crmData.users;
-      if (step === 3) {
-        // Pour les migrations, vérifier le CRM source
-        if (crmData.type === 'migration') return !!crmData.crmSource;
-        // Pour from scratch, vérifier le type de CRM souhaité
-        return !!crmData.crmTarget;
-      }
-      if (step === 4) {
-        // Pour les migrations, vérifier le CRM cible
-        if (crmData.type === 'migration') return !!crmData.crmTarget;
-        // Pour from scratch, vérifier les intégrations
-        return !!crmData.integrations;
-      }
-      if (step === 5) {
-        // Pour les migrations, vérifier le volume de données
-        if (crmData.type === 'migration') return !!crmData.dataVolume;
-        // Pour from scratch, la formation est optionnelle
-        return true;
-      }
-      if (step === 6) return !!crmData.integrations;
-      if (step === 7) return true; // training is boolean
+      if (step === 1) return crmData.type !== '';
+      if (step === 2) return crmData.users !== '';
+      if (step === 3 && crmData.type === 'migration') return crmData.crmSource !== '';
+      if (step === 4 && crmData.type === 'migration') return crmData.crmTarget !== '';
+      if (step === 5 && crmData.type === 'migration') return crmData.dataVolume !== '';
+      if (step === 3 && crmData.type === 'scratch') return crmData.crmTarget !== '';
+      if ((step === 6 && crmData.type === 'migration') || (step === 4 && crmData.type === 'scratch')) return crmData.integrations !== '';
+      if ((step === 7 && crmData.type === 'migration') || (step === 5 && crmData.type === 'scratch')) return crmData.trainingAnswered;
+      return true;
     }
-    
     if (activeTab === 'linkedin') {
       if (step === 1) return linkedinData.leads > 0;
       if (step === 2) return linkedinData.icps > 0;
-      if (step === 3) return true; // Le formulaire email est géré par le composant LeadCaptureForm
+      return true;
     }
-    
-    return false;
+    return true;
   };
 
   const handleNext = (): void => {
     const max = maxStep();
-    
-    // Pour les landing pages, sauter l'étape 2 (nombre de pages)
-    if (activeTab === 'site' && siteData.type === 'lp' && step === 1) {
-      setStep(2); // Passer directement à l'étape 2 (développement)
-      return;
-    }
-    
-    // Pour les CRM from scratch, sauter les étapes de migration
-    if (activeTab === 'crm' && crmData.type === 'scratch') {
-      if (step === 3) {
-        setStep(4); // Passer directement à l'étape 4 (intégrations)
-        return;
-      }
-    }
-    
-    if (step < max) setStep(step + 1);
+    if (activeTab === 'prototype' && step === 1 && prototypeData.type === 'system') setStep(2);
+    else if (step < max) setStep(step + 1);
     else setStep(max + 1);
   };
 
   const handleBack = (): void => {
-    if (step > 1) {
-      // Pour les landing pages, si on est à l'étape 2, revenir à l'étape 1
-      if (activeTab === 'site' && siteData.type === 'lp' && step === 2) {
-        setStep(1);
-        return;
-      }
-      
-      // Pour les CRM from scratch, si on est à l'étape 4, revenir à l'étape 3
-      if (activeTab === 'crm' && crmData.type === 'scratch' && step === 4) {
-        setStep(3);
-        return;
-      }
-      
-      setStep(step - 1);
-    }
+    if (activeTab === 'prototype' && step === 2 && prototypeData.type === 'system') setStep(1);
+    else if (step > 1) setStep(step - 1);
   };
 
   const resetCalculator = (): void => {
     setStep(1);
     setShowResult(false);
+    setSiteData({ type: '', pages: 5, tech: '', modules: [] });
+    setPrototypeData({ type: '', screens: 10, fidelity: '', target: '' });
+    setMvpData({ screens: 15, platform: '', hasDesign: '', features: [], backend: '' });
+    setCrmData({ type: '', users: '', crmSource: '', crmTarget: '', dataVolume: '', integrations: '', training: false, trainingAnswered: true });
+    setLinkedinData({ leads: 15, icps: 1 });
+    setLeadData({ email: '', firstName: '', lastName: '', company: '' });
     resetSubmission();
   };
 

@@ -67,7 +67,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
   }, []);
 
   return (
-    <div ref={containerRef} className="space-y-6">
+    <div ref={containerRef} className="space-y-6 py-10">
       <div className="text-center mb-8">
         <div ref={iconRef} className={`inline-flex items-center justify-center w-16 h-16 ${brandClasses.accent} rounded-full mb-4 shadow-none`}>
           <Check className="w-8 h-8 text-white" />
