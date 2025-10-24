@@ -77,9 +77,9 @@ export default function AutomatisationCRMUseCases() {
   return (
     <section ref={sectionRef} id="use-cases" className="py-16 md:py-24 border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <HeaderSection
+      <HeaderSection
           subtitle="CAS D'USAGE TYPIQUES"
-          title="4 profils qui nous font confiance"
+          title="Ils nous ont fait confiance"
         />
 
         <div className="max-w-6xl mx-auto">

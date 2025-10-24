@@ -89,7 +89,7 @@ export default function DesignMVPUseCases() {
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="CAS D'USAGE TYPIQUES"
-          title="5 profils qui nous font confiance"
+          title="Ils nous ont fait confiance"
         />
 
         <div className="max-w-6xl mx-auto">

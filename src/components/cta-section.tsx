@@ -55,7 +55,7 @@ export default function CTASection() {
 
           <Button 
             size="lg" 
-            className="bg-brand-green text-foreground hover:bg-brand-green-hover text-lg px-12 py-6"
+            className="bg-brand-green text-foreground hover:bg-brand-green-hover text-lg"
             asChild
           >
             <a href="https://cal.com/benjamin-convertlabs/30min" target="_blank" rel="noopener noreferrer">

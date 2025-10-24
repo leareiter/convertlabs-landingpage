@@ -245,7 +245,7 @@ export default function HeroCard({
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-brand-black text-white text-lg px-6 md:px-8 py-6 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+              className="bg-brand-black text-white text-lg rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
               asChild
             >
               <a href={primaryCtaLink}>
@@ -256,7 +256,7 @@ export default function HeroCard({
             <Button
               variant="outline"
               size="lg"
-              className="border border-border text-foreground text-lg px-6 md:px-8 py-6 rounded-md font-medium -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+              className="border border-border text-foreground text-lg  rounded-md font-medium -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
               asChild={!!secondaryCtaLink}
             >
               {secondaryCtaLink ? (

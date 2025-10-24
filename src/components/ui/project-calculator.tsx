@@ -173,7 +173,7 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
   }, [activeTab]);
 
   return (
-    <section ref={containerRef} className="p-1 md:p-2 bg-surface-muted rounded-md max-w-2xl mx-auto font-be-vietnam-pro">
+    <section ref={containerRef} className="p-1 md:p-2 bg-surface-muted rounded-md max-w-3xl mx-auto font-be-vietnam-pro">
       <div className="bg-white rounded-md p-3 md:p-4">
         {(isHomePage || tabs.length > 1) && (
           <div ref={tabsRef} className="mb-1 md:mb-2">
