@@ -80,10 +80,10 @@ export default function UseCaseSection() {
                   <button
                     key={useCase.id}
                     onClick={() => setActiveUseCase(useCase.id)}
-                    className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                    className={`w-full p-4 rounded-lg border-xs transition-all duration-200 text-left ${
                       activeUseCase === useCase.id
-                        ? "border-brand-green bg-brand-green/5 shadow-md"
-                        : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
+                        ? "border-brand-green bg-brand-green/5"
+                        : "border-surface-muted hover:border-gray-300"
                     }`}
                   >
                     <div className="flex items-center space-x-3">
@@ -106,7 +106,7 @@ export default function UseCaseSection() {
 
             {/* Témoignage principal */}
             <div className="lg:col-span-3">
-              <Card className="p-8 shadow-lg border-0 bg-white">
+              <Card className="p-8 border border-surface-muted rounded-md bg-white">
                 <div className="text-center">
                   {/* Rating */}
                   <div className="flex justify-center mb-6">

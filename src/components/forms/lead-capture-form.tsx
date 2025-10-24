@@ -38,7 +38,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   onSubmit
 }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 py-10">
       <div className="text-center">
         <h2 className="text-3xl font-regular text-gray-900 mb-2">Dernière étape</h2>
         <p className="text-text-muted">Recevez votre estimation détaillée par email</p>

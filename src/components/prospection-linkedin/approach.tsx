@@ -13,7 +13,7 @@ export default function ProspectionLinkedInApproach() {
     },
     {
       title: "Contenu & Engagement",
-      description: "Développer une stratégie de contenu qui positionne votre expertise et génère de l&apos;engagement naturel avec votre audience cible."
+      description: "Développer une stratégie de contenu qui positionne votre expertise et génère de l'engagement naturel avec votre audience cible."
     },
     {
       title: "Suivi & Optimisation",

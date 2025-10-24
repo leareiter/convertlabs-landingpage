@@ -33,8 +33,8 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
   if (step === 1) return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d&apos;écrans ?</h3>
-        <p className="text-text-muted">Estimez le nombre d&apos;écrans nécessaires pour votre MVP.</p>
+        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d'écrans ?</h3>
+        <p className="text-text-muted">Estimez le nombre d'écrans nécessaires pour votre MVP.</p>
       </div>
       
       <div className="max-w-2xl mx-auto">
@@ -96,7 +96,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
       
       <div className="space-y-4">
         {[
-          { value: 'has', label: 'Oui, j&apos;ai un design', desc: 'Maquettes Figma, design system, ou équivalent.' },
+          { value: 'has', label: 'Oui, j\'ai un design', desc: 'Maquettes Figma, design system, ou équivalent.' },
           { value: 'no', label: 'Non, à créer', desc: 'Design à concevoir en parallèle du développement.' }
         ].map((o: Option & { desc: string }) => (
           <button

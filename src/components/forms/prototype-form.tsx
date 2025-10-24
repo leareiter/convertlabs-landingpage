@@ -32,7 +32,7 @@ const PrototypeForm: React.FC<PrototypeFormProps> = ({ prototypeData, setPrototy
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Quel livrable est prioritaire ?</h3>
-        <p className="text-text-muted">Partez d&apos;un prototype ou d&apos;un Design System.</p>
+        <p className="text-text-muted">Partez d'un prototype ou d'un Design System.</p>
       </div>
       
       <div className="space-y-4">
@@ -60,8 +60,8 @@ const PrototypeForm: React.FC<PrototypeFormProps> = ({ prototypeData, setPrototy
   if (step === 2) return (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d&apos;écrans ?</h3>
-        <p className="text-text-muted">Estimez le nombre d&apos;écrans nécessaires pour votre prototype.</p>
+        <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d'écrans ?</h3>
+        <p className="text-text-muted">Estimez le nombre d'écrans nécessaires pour votre prototype.</p>
       </div>
       
       <div className="max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ const PrototypeForm: React.FC<PrototypeFormProps> = ({ prototypeData, setPrototy
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
         {[
-          { value: 'wireframe', label: 'Wireframes', desc: 'Structure, hiérarchie, navigation. Idéal pour valider l&apos;UX.' },
+          { value: 'wireframe', label: 'Wireframes', desc: 'Structure, hiérarchie, navigation. Idéal pour valider l\'UX.' },
           { value: 'high', label: 'Haute fidélité', desc: 'Design final, couleurs, typographie. Prêt pour le développement.' },
           { value: 'pixel', label: 'Pixel perfect', desc: 'Détails précis, animations, micro-interactions. Design System complet.' }
         ].map((o: Option & { desc: string }) => (

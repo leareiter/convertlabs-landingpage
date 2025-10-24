@@ -60,10 +60,10 @@ export default function ProspectionLinkedInUseCases() {
     {
       icon: <Users className="w-8 h-8" />,
       title: "Agence de services",
-      description: "qui veut diversifier ses canaux d&apos;acquisition",
+      description: "qui veut diversifier ses canaux d'acquisition",
       challenge: "Dépendance aux références et réseaux existants",
       solution: "Prospection LinkedIn + automatisation + formation équipe",
-      result: "Nouveau canal d&apos;acquisition représentant 40% du CA"
+      result: "Nouveau canal d'acquisition représentant 40% du CA"
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
@@ -80,12 +80,12 @@ export default function ProspectionLinkedInUseCases() {
     <section ref={sectionRef} id="use-cases" className="py-16 md:py-24 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <HeaderSection
-          subtitle="CAS D&apos;USAGE TYPIQUES"
+          subtitle="CAS D'USAGE TYPIQUES"
           title="4 profils qui nous font confiance"
         />
 
         <div className="max-w-6xl mx-auto">
-          {/* Cas d&apos;usage */}
+          {/* Cas d'usage */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {useCases.map((useCase, index) => (
               <Card
