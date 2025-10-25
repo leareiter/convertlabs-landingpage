@@ -1,9 +1,6 @@
 "use client";
-
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Building, Rocket, Users, BarChart3 } from "lucide-react";
 import HeaderSection from "@/components/header-section";
+import UseCaseCard from "@/components/ui/use-case-card";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,26 +9,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AutomatisationCRMUseCases() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const useCaseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (sectionRef.current && cardsRef.current.length > 0) {
-      gsap.fromTo(cardsRef.current,
+    if (useCaseRef.current) {
+      gsap.fromTo(useCaseRef.current,
         {
           opacity: 0,
-          y: 60,
+          y: 80,
           scale: 0.95
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
+          duration: 1,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
+            trigger: useCaseRef.current,
+            start: "top 85%",
             end: "bottom 20%",
             toggleActions: "play none none reverse"
           }
@@ -39,112 +35,43 @@ export default function AutomatisationCRMUseCases() {
       );
     }
   }, []);
-
-  const useCases = [
-    {
-      icon: <Building className="w-8 h-8" />,
-      title: "PME en croissance",
-      description: "qui veut remplacer ses Google Sheets par un CRM solide",
-      challenge: "Gestion éparpillée des données commerciales",
-      solution: "Migration vers HubSpot + automatisation des workflows",
-      result: "Centralisation complète des données commerciales"
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Startup",
-      description: "qui veut automatiser son funnel de leads",
-      challenge: "Suivi manuel des leads et perte d'opportunités",
-      solution: "CRM + automatisation lead nurturing + scoring",
-      result: "Funnel automatisé avec +40% de conversion"
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Agence ou ESN",
-      description: "qui veut unifier ses outils de vente, marketing et delivery",
-      challenge: "Outils disparates et manque de visibilité",
-      solution: "HubSpot + intégrations + dashboards unifiés",
-      result: "Vision 360° sur tous les projets et clients"
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "Entreprise",
-      description: "souhaitant mesurer précisément la performance de son pipe commercial",
-      challenge: "Reporting manuel et données non fiables",
-      solution: "CRM + automatisation reporting + KPIs temps réel",
-      result: "Reporting automatisé avec données fiables"
-    }
-  ];
   return (
     <section ref={sectionRef} id="use-cases" className="py-16 md:py-24 border-b border-gray-200">
       <div className="container mx-auto px-4">
-      <HeaderSection
-          subtitle="CAS D'USAGE TYPIQUES"
+        <HeaderSection
+          subtitle="CAS D'USAGE"
           title="Ils nous ont fait confiance"
         />
 
         <div className="max-w-6xl mx-auto">
-          {/* Cas d'usage */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {useCases.map((useCase, index) => (
-              <Card
-                key={index}
-                ref={(el) => {
-                  if (el) cardsRef.current[index] = el;
-                }}
-                className="p-6 hover:-translate-y-2 transition-all duration-300"
-              >
-                <div className="text-brand-blue mb-4">
-                  {useCase.icon}
-                </div>
-                <h3 className="text-xl font-medium font-be-vietnam-pro text-text-hero mb-3">
-                  {useCase.title}
-                </h3>
-                <p className="text-text-muted text-sm mb-4 leading-relaxed">
-                  {useCase.description}
-                </p>
-                
-                <div className="space-y-3">
-                  <div>
-                    <h4 className="text-sm font-medium text-text-hero mb-1">Défi :</h4>
-                    <p className="text-xs text-text-muted">{useCase.challenge}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-sm font-medium text-text-hero mb-1">Solution :</h4>
-                    <p className="text-xs text-text-muted">{useCase.solution}</p>
-                  </div>
-                  
-                  <div className="bg-brand-green/10 p-3 rounded-md">
-                    <h4 className="text-sm font-medium text-brand-green mb-1">Résultat :</h4>
-                    <p className="text-xs text-brand-black">{useCase.result}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-        
-
-          {/* CTA final */}
-          <div className="text-center">
-            <div className="bg-brand-black text-white rounded-lg p-8 mb-8">
-              <h3 className="text-2xl font-medium font-be-vietnam-pro mb-4">
-                Prêt à structurer votre CRM ?
-              </h3>
-              <p className="text-lg opacity-90 mb-6">
-                Réservez un appel de cadrage gratuit pour discuter de votre projet
-              </p>
-              <Button
-                size="lg"
-                className="bg-brand-green text-brand-black text-lg px-8 py-6 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200"
-                asChild
-              >
-                <a href="#rendez-vous">
-                  Réserver un appel gratuit
-                  <ArrowRight size={16} className="ml-2" />
-                </a>
-              </Button>
-            </div>
+          {/* Cas d'usage Impulse Conseil */}
+          <div ref={useCaseRef} className="mb-16">
+            <UseCaseCard
+              client="Impulse Conseil"
+              founder="Sarah Bentayeb, CEO"
+              avatar="/avatar_sarah.jpg"
+              context="Agence de conseil en transformation digitale (12 personnes, 40 clients actifs)."
+              problem={[
+                "Leads éparpillés (Google Sheets, emails, Trello)",
+                "30% des leads perdus dans la nature",
+                "Aucune visibilité sur le pipe commercial",
+                "3h/jour en saisie manuelle",
+                "Taux de closing : 15% (vs 30% moyenne marché)"
+              ]}
+              solution={{
+                week1: "Cartographie des outils existants, Analyse du cycle de vie client, Recommandation : HubSpot CRM + Make + Slack",
+                week2to4: "Setup HubSpot (pipelines, propriétés, dashboards), Migration de 800 contacts depuis Google Sheets, Création de 4 pipelines (Lead → Signature → Livraison → Renouvellement)",
+                week5to6: "Workflow 1 : Lead entrant → Notification Slack + Email auto, Workflow 2 : Relance J+3 si pas de réponse, Workflow 3 : Onboarding client automatique, Workflow 4 : Alerte renouvellement J-30"
+              }}
+              results={[
+                "Temps de saisie : -70% (de 3h/jour à 50 min/jour)",
+                "Taux de closing : +35% (de 15% à 23%)",
+                "Zéro perte de lead (vs 30% avant)",
+                "Visibilité pipeline : temps réel",
+                "ROI : récupéré en 2 mois (grâce aux deals supplémentaires)"
+              ]}
+              category="crm"
+            />
           </div>
         </div>
       </div>

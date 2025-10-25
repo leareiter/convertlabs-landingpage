@@ -37,7 +37,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
     if (siteData.type === 'lp' && siteData.pages !== 1) {
       setSiteData({ ...siteData, pages: 1 });
     }
-  }, [siteData.type, siteData.pages, setSiteData]);
+  }, [siteData.type, siteData.pages, setSiteData, siteData]);
 
   if (step === 1) return (
     <div className="space-y-4 md:space-y-6">

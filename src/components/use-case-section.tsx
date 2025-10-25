@@ -292,16 +292,13 @@ export default function UseCaseSection() {
                             <h4 className="font-regular text-2xl text-brand-black mb-6">
                               Objectifs
                             </h4>
-                            <div className="grid gap-3">
+                            <ul className="space-y-3 list-disc pl-6 marker:text-brand-green">
                               {useCase.problems.map((problem, problemIndex) => (
-                                <div key={problemIndex} className="flex items-start p-4 border border-surface-muted rounded-md">
-                                  <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
-                                    <div className="w-2 h-2 bg-brand-green rounded-full"></div>
-                                  </div>
-                                  <span className="text-brand-black text-base md:text-sm">{problem}</span>
-                                </div>
+                                <li key={problemIndex} className="text-brand-black text-base md:text-sm leading-relaxed">
+                                  {problem}
+                                </li>
                               ))}
-                            </div>
+                            </ul>
                           </div>
                         )}
 
@@ -311,24 +308,19 @@ export default function UseCaseSection() {
                             <h4 className="font-regular text-2xl text-brand-black mb-6">
                               Méthode
                             </h4>
-                            <div className="grid gap-3">
+                            <ul className="space-y-3 list-disc pl-6 marker:text-brand-green">
                               {Array.isArray(useCase.solution) ? (
                                 useCase.solution.map((step, stepIndex) => (
-                                  <div key={stepIndex} className="flex items-start p-4 border border-surface-muted rounded-md">
-                                    <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
-                                      <div className="w-2 h-2 bg-brand-green rounded-full"></div>
-                                    </div>
-                                    <span className="text-brand-black text-base md:text-sm leading-relaxed">{step}</span>
-                                  </div>
+                                  <li key={stepIndex} className="text-brand-black text-base md:text-sm leading-relaxed">
+                                    {step}
+                                  </li>
                                 ))
                               ) : (
-                                <div className="p-6 border border-gray-200 rounded-lg">
-                                  <p className="text-gray-700 text-base md:text-sm leading-relaxed">
-                                    {useCase.solution}
-                                  </p>
-                                </div>
+                                <li className="text-brand-black text-base md:text-sm leading-relaxed">
+                                  {useCase.solution}
+                                </li>
                               )}
-                            </div>
+                            </ul>
                           </div>
                         )}
                       </div>
