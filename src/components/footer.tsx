@@ -296,10 +296,10 @@ export default function Footer() {
         <button
           ref={scrollToTopRef}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 bg-brand-green hover:bg-brand-green/90 text-brand-black p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 bg-brand-green hover:bg-brand-green/90 text-brand-black p-4 md:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
           aria-label="Retour en haut de page"
         >
-          <ArrowUp size={20} />
+          <ArrowUp size={24} className="md:w-5 md:h-5" />
         </button>
       )}
     </footer>

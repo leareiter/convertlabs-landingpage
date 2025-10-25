@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Card } from "@/components/ui/card";
+import { useState, useRef } from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import HeaderSection from "./header-section";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin();
@@ -36,7 +36,7 @@ const useCases: UseCase[] = [
     id: "healthsyncr",
     company: "HealthSyncr",
     logo: "/healthsyncr.png",
-    verticale: "Design / Developpement Front-End / MVP",
+    verticale: "Design / Dev / MVP",
     verticaleDetail: "Développement d'un MVP",
     testimonial: "En 4 semaines, on est passés de l'idée au MVP validé avec 200 early adopters. ConvertLabs a compris qu'on n'avait pas besoin de perfection, mais d'un produit testable rapidement. Aujourd'hui on lève notre pré-seed grâce à cette traction.",
     author: "Julien Marceau",
@@ -49,7 +49,7 @@ const useCases: UseCase[] = [
       "Lever des fonds rapidement",
       "Budget maîtrisé et délais courts"
     ],
-    solution: ["Design Sprint pour cadrer", "Prototype Figma pour tester", "MVP en sprints courts (delivery 4 à 8 semaines)", "Feedback utilisateurs", "Documentation et transfert."],
+    solution: ["Design Sprint", "Prototype Figma", "MVP en sprints courts (delivery 4 à 8 semaines)", "Feedback utilisateurs", "Documentation et transfert"],
     kpis: [
       {
         label: "MVP livré",
@@ -87,7 +87,7 @@ const useCases: UseCase[] = [
       "Augmenter le taux de closing",
       "Améliorer la visibilité commerciale"
     ],
-    solution: ["Audit du pipeline", "Architecture CRM", "Implémentation structurée", "Automatisations", "Dashboards", "Formation", "Puis amélioration continue."],
+    solution: ["Audit du pipeline", "Architecture CRM", "Implémentation structurée", "Automatisations", "Dashboards", "Formation"],
     kpis: [
       {
         label: "Taux de closing",
@@ -111,7 +111,7 @@ const useCases: UseCase[] = [
     id: "afc-stab",
     company: "AFC-Stab",
     logo: "/afc_stab.png",
-    verticale: "Prospection LinkedIn multi-comptes",
+    verticale: "Prospection LinkedIn",
     verticaleDetail: "Prospection LinkedIn multi-comptes",
     testimonial: "On faisait de la prospection manuelle depuis 2 ans. Résultat : 2-3 RDV par mois, pour un temps fou. Depuis qu'on bosse avec ConvertLabs, on a 12 à 14 rendez-vous qualifiés chaque mois, en pilote automatique. Je ne touche plus à rien, je me connecte juste pour prendre les appels.",
     author: "Henrick Merle",
@@ -124,7 +124,7 @@ const useCases: UseCase[] = [
       "Cibler le secteur aéro/spatial",
       "Sans SDR interne"
     ],
-    solution: ["ICP + messages", "Multi-comptes", "Séquences", "Qualification", "Reporting hebdo", "A/B tests", "Optimisation du reply rate jusqu'à atteindre les RDV cibles."],
+    solution: ["ICP + messages", "Multi-comptes", "Séquences", "Qualification", "Reporting hebdomadaire", "A/B tests", "Optimisation du reply rate jusqu'à atteindre les RDV cibles"],
     kpis: [
       {
         label: "RDV qualifiés",
@@ -201,8 +201,8 @@ export default function UseCaseSection() {
           title="Nos clients nous font confiance"
         />
         
-        <div className="max-w-4xl mx-auto mt-12">
-          <div className="bg-surface-muted p-2 rounded-md">
+        <div className="max-w-4xl mx-auto mt-8 md:mt-12">
+          <div className="bg-surface-muted p-1 md:p-2 rounded-md">
             {useCases.map((useCase, index) => (
               <div key={useCase.id} className={`bg-white border border-surface-muted overflow-hidden ${
                 index === 0 ? 'rounded-t-md' : 
@@ -212,32 +212,34 @@ export default function UseCaseSection() {
                 {/* Header du dropdown */}
                 <button
                   onClick={() => toggleUseCase(useCase.id)}
-                  className={`w-full p-6 transition-all duration-300 text-left relative overflow-hidden flex items-center justify-between ${
+                  className={`w-full p-4 md:p-6 transition-all duration-300 text-left relative overflow-hidden flex items-center justify-between ${
                     expandedUseCase === useCase.id
                       ? "bg-white text-gray-900"
                       : "bg-white text-gray-900 hover:bg-gray-50"
                   }`}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="relative w-28">
+                  <div className="flex items-center space-x-3 md:space-x-4">
+                    <div className="relative w-20 md:w-28">
                       {useCase.logo.startsWith('/') ? (
-                        <img 
+                        <Image 
                           src={useCase.logo} 
                           alt={useCase.company} 
-                          className={`object-contain h-16 w-24 ${
+                          width={100}
+                          height={100}
+                          className={`object-contain h-14 w-16 md:h-16 md:w-24 ${
                             expandedUseCase === useCase.id ? '' : 'grayscale'
                           }`}
                         />
                       ) : (
-                        <div className={`bg-gray-100 flex items-center justify-center text-2xl h-16 w-24 ${
+                        <div className={`bg-gray-100 flex items-center justify-center text-xl md:text-2xl h-12 w-16 md:h-16 md:w-24 ${
                           expandedUseCase === useCase.id ? '' : 'grayscale'
                         }`}>
                           {useCase.logo}
                         </div>
                       )}
                     </div>
-                    <div className="text-left">
-                      <h3 className="text-xl font-regular text-brand-black mb-1">
+                    <div className="text-left flex-1 min-w-0">
+                      <h3 className="text-lg md:text-xl font-regular text-brand-black mb-1 truncate">
                         {useCase.company}
                       </h3>
                       <div className="inline-block px-2 py-1 text-black text-xs uppercase rounded-full bg-brand-green">
@@ -277,56 +279,51 @@ export default function UseCaseSection() {
                     <div className="pt-6">
                       {/* Contexte */}
                       <div className="mb-8">
-                        <p className="text-text-muted text-lg">
+                        <p className="text-text-muted md:text-lg">
                           {useCase.context}
                         </p>
                       </div>
 
-                      {/* Objectifs */}
-                      {useCase.problems && (
-                        <div className="mb-8">
-                          <h4 className="font-regular text-2xl text-brand-black mb-6">
-                            Objectifs
-                          </h4>
-                          <div className="grid gap-3">
-                            {useCase.problems.map((problem, problemIndex) => (
-                              <div key={problemIndex} className="flex items-start p-4 border border-gray-200 rounded-lg">
-                                <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
-                                  <div className="w-2 h-2 bg-brand-green rounded-full"></div>
-                                </div>
-                                <span className="text-text-muted text-lg">{problem}</span>
-                              </div>
-                            ))}
+                      {/* Objectifs et Méthode en grid */}
+                      <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {/* Objectifs */}
+                        {useCase.problems && (
+                          <div>
+                            <h4 className="font-regular text-2xl text-brand-black mb-6">
+                              Objectifs
+                            </h4>
+                            <ul className="space-y-3 list-disc pl-6 marker:text-brand-green">
+                              {useCase.problems.map((problem, problemIndex) => (
+                                <li key={problemIndex} className="text-brand-black text-base md:text-sm leading-relaxed">
+                                  {problem}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                        </div>
-                      )}
+                        )}
 
-                      {/* Méthode */}
-                      {useCase.solution && (
-                        <div className="mb-8">
-                          <h4 className="font-regular text-2xl text-brand-black mb-6">
-                            Méthode
-                          </h4>
-                          <div className="grid gap-3">
-                            {Array.isArray(useCase.solution) ? (
-                              useCase.solution.map((step, stepIndex) => (
-                                <div key={stepIndex} className="flex items-start p-4 border border-gray-200 rounded-lg">
-                                  <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
-                                    <div className="w-2 h-2 bg-brand-green rounded-full"></div>
-                                  </div>
-                                  <span className="text-gray-700 text-lg leading-relaxed">{step}</span>
-                                </div>
-                              ))
-                            ) : (
-                              <div className="p-6 border border-gray-200 rounded-lg">
-                                <p className="text-gray-700 text-lg leading-relaxed">
+                        {/* Méthode */}
+                        {useCase.solution && (
+                          <div>
+                            <h4 className="font-regular text-2xl text-brand-black mb-6">
+                              Méthode
+                            </h4>
+                            <ul className="space-y-3 list-disc pl-6 marker:text-brand-green">
+                              {Array.isArray(useCase.solution) ? (
+                                useCase.solution.map((step, stepIndex) => (
+                                  <li key={stepIndex} className="text-brand-black text-base md:text-sm leading-relaxed">
+                                    {step}
+                                  </li>
+                                ))
+                              ) : (
+                                <li className="text-brand-black text-base md:text-sm leading-relaxed">
                                   {useCase.solution}
-                                </p>
-                              </div>
-                            )}
+                                </li>
+                              )}
+                            </ul>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
                       {/* KPIs */}
                       {useCase.kpis && (
@@ -334,13 +331,13 @@ export default function UseCaseSection() {
                           <h4 className="font-regular text-2xl text-brand-black mb-6">
                             Résultats
                           </h4>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {useCase.kpis.map((kpi, kpiIndex) => (
-                              <div key={kpiIndex} className="bg-brand-black rounded-lg p-6 text-white hover:bg-brand-black/90 transition-all duration-300 group">
-                                <div className="text-5xl font-regular text-white mb-3 group-hover:text-brand-green transition-colors duration-300">
+                              <div key={kpiIndex} className="bg-brand-black text-center rounded-lg p-8 text-white hover:bg-brand-black/90 transition-all duration-300 group">
+                                <div className="text-4xl text-center font-regular text-white mb-4 group-hover:text-brand-green transition-colors duration-300">
                                   {kpi.value}
                                 </div>
-                                <div className="text-lg font-regular text-white/90 mb-2">
+                                <div className="text-xl font-regular text-white/90">
                                   {kpi.label}
                                 </div>
                               </div>

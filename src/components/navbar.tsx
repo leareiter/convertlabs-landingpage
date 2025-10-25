@@ -120,11 +120,11 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <a
                   href="/design-mvp"
-                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                  className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-purple"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">Design &amp; MVP
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">Design &amp; MVP
                   </div>
-                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     De l'idée au produit vivant. Rapidement.
                   </p>
                 </a>
@@ -132,10 +132,10 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <a
                   href="/prospection-linkedin"
-                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                  className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-blue"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">Prospection LinkedIn</div>
-                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">Prospection LinkedIn</div>
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     Besoin de leads qualifiés ? On met la machine en route.
                   </p>
                 </a>
@@ -143,10 +143,10 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <a
                   href="/automatisation-crm"
-                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-transform hover:-translate-y-1"
+                  className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-orange"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none">CRM & Automatisation</div>
-                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-muted-foreground">
+                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">CRM & Automatisation</div>
+                  <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     On organise ton back-office pour qu'il tourne sans toi.
                   </p>
                 </a>

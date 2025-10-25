@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useEmailSubmission } from './use-email-submission';
 import { getActiveSchema } from '@/lib/validation-schemas';
 import { TabId, CalculationResult } from '@/lib/calculator/types';
