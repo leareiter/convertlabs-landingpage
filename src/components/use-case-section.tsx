@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { BorderBeam } from "@/components/ui/border-beam";
 import HeaderSection from "./header-section";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin();
 }
 
 interface UseCase {
@@ -26,10 +25,9 @@ interface UseCase {
   kpis?: {
     label: string;
     value: string;
-    description: string;
   }[];
   context?: string;
-  solution?: string;
+  solution?: string | string[];
   results?: string;
 }
 
@@ -51,27 +49,23 @@ const useCases: UseCase[] = [
       "Lever des fonds rapidement",
       "Budget maîtrisé et délais courts"
     ],
-    solution: "Méthode ConvertLabs : Design Sprint pour cadrer, Prototype Figma pour tester, MVP en sprints courts (delivery 4 à 8 semaines), feedback utilisateurs, documentation et transfert.",
+    solution: ["Design Sprint pour cadrer", "Prototype Figma pour tester", "MVP en sprints courts (delivery 4 à 8 semaines)", "Feedback utilisateurs", "Documentation et transfert."],
     kpis: [
       {
         label: "MVP livré",
         value: "4-6 semaines",
-        description: "délai respecté"
       },
       {
         label: "Budget maîtrisé",
         value: "24k€",
-        description: "vs 60-80k€ agence classique"
       },
       {
         label: "Beta utilisateurs",
         value: "200+",
-        description: "recrutés en beta"
       },
       {
         label: "Préparation levée",
-        value: "✅",
-        description: "fonds prête"
+        value: "100%",
       }
     ],
     active: true
@@ -93,27 +87,23 @@ const useCases: UseCase[] = [
       "Augmenter le taux de closing",
       "Améliorer la visibilité commerciale"
     ],
-    solution: "Méthode ConvertLabs : Audit du pipeline, architecture CRM, implémentation structurée, automatisations, dashboards, formation, puis amélioration continue.",
+    solution: ["Audit du pipeline", "Architecture CRM", "Implémentation structurée", "Automatisations", "Dashboards", "Formation", "Puis amélioration continue."],
     kpis: [
       {
         label: "Taux de closing",
         value: "+30%",
-        description: "amélioration significative"
       },
       {
         label: "Temps admin",
         value: "-70%",
-        description: "de 3h/jour à 50 min/jour"
       },
       {
         label: "Perte de leads",
         value: "0%",
-        description: "vs 30% avant"
       },
       {
         label: "Pipeline temps réel",
-        value: "✅",
-        description: "visibilité complète"
+        value: "100%",
       }
     ]
   },
@@ -134,351 +124,238 @@ const useCases: UseCase[] = [
       "Cibler le secteur aéro/spatial",
       "Sans SDR interne"
     ],
-    solution: "Méthode ConvertLabs : ICP + messages, multi-comptes, séquences, qualification, reporting hebdo, A/B tests et optimisation du reply rate jusqu'à atteindre les RDV cibles.",
+    solution: ["ICP + messages", "Multi-comptes", "Séquences", "Qualification", "Reporting hebdo", "A/B tests", "Optimisation du reply rate jusqu'à atteindre les RDV cibles."],
     kpis: [
       {
         label: "RDV qualifiés",
         value: "12-20/mois",
-        description: "objectif atteint"
       },
       {
         label: "Taux d'acceptation",
         value: "25-35%",
-        description: "performance LinkedIn"
       },
       {
         label: "Taux de réponse",
         value: "12-20%",
-        description: "engagement élevé"
       },
       {
         label: "ROI",
-        value: "<30 jours",
-        description: "retour rapide"
+        value: "< 30 jours",
       }
     ]
   }
 ];
 
 export default function UseCaseSection() {
-  const [activeUseCase, setActiveUseCase] = useState("healthsyncr");
-  const [isHovered, setIsHovered] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [expandedUseCase, setExpandedUseCase] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const navigationRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  const currentUseCase = useCases.find(uc => uc.id === activeUseCase) || useCases[0];
+  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   
-  // GSAP Animations
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const ctx = gsap.context(() => {
-      // Animation d'entrée de la section
-      gsap.fromTo(sectionRef.current, 
-        { opacity: 0, y: 100 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1.2, 
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              // Reprendre le timer quand la section entre dans la vue
-              if (!isHovered) {
-                intervalRef.current = setInterval(() => {
-                  setActiveUseCase(prev => {
-                    const currentIndex = useCases.findIndex(uc => uc.id === prev);
-                    const nextIndex = (currentIndex + 1) % useCases.length;
-                    return useCases[nextIndex].id;
-                  });
-                }, 5000);
-              }
-            },
-            onLeave: () => {
-              // Arrêter le timer quand la section sort de la vue
-              if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-              }
-            }
+  const toggleUseCase = (useCaseId: string) => {
+    const isCurrentlyExpanded = expandedUseCase === useCaseId;
+    
+    if (isCurrentlyExpanded) {
+      // Fermer le dropdown
+      const contentElement = contentRefs.current[useCaseId];
+      if (contentElement) {
+        gsap.to(contentElement, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+          onComplete: () => {
+            setExpandedUseCase(null);
           }
-        }
-      );
-
-      // Animation de la navigation sticky
-      if (navigationRef.current) {
-        gsap.fromTo(navigationRef.current,
-          { opacity: 0, x: -50, scale: 0.95 },
-          {
-            opacity: 1,
-            x: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-              trigger: navigationRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
+        });
+      } else {
+        setExpandedUseCase(null);
       }
-
-
-      // Animation des cartes de navigation au hover
-      const navCards = navigationRef.current?.querySelectorAll('button');
-      navCards?.forEach((card, index) => {
-        gsap.set(card, { transformOrigin: "center center" });
-        
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            scale: 1.05,
-            duration: 0.2,
-            ease: "power2.out"
-          });
-        });
-
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            scale: 1,
-            duration: 0.2,
-            ease: "power2.out"
-          });
-        });
-      });
-
-    }, [sectionRef, navigationRef, contentRef]);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isHovered) {
-      intervalRef.current = setInterval(() => {
-        setActiveUseCase(prev => {
-          const currentIndex = useCases.findIndex(uc => uc.id === prev);
-          const nextIndex = (currentIndex + 1) % useCases.length;
-          return useCases[nextIndex].id;
-        });
-      }, 5000);
     } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isHovered]);
-
-  const handleUseCaseChange = (useCaseId: string) => {
-    if (useCaseId !== activeUseCase) {
-      setActiveUseCase(useCaseId);
+      // Ouvrir le dropdown
+      setExpandedUseCase(useCaseId);
+      
+      // Attendre que le DOM soit mis à jour
+      setTimeout(() => {
+        const contentElement = contentRefs.current[useCaseId];
+        if (contentElement) {
+          // Définir la hauteur initiale à 0
+          gsap.set(contentElement, { height: 0, opacity: 0 });
+          
+          // Animer vers la hauteur complète
+          gsap.to(contentElement, {
+            height: "auto",
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        }
+      }, 10);
     }
   };
 
   return (
-    <>
-      <style jsx>{`
-        @keyframes scan {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        .animate-scan {
-          animation: scan 5s linear infinite;
-        }
-      `}</style>
-      <section ref={sectionRef} className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+    <section ref={sectionRef}  id="use-cases" className="py-16 border-b border-border bg-white">
+      <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="CAS D'USAGE TYPIQUES"
           title="Nos clients nous font confiance"
         />
         
-        <div className="max-w-7xl mx-auto mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {/* Navigation des cas d'usage - Sticky avec header */}
-            <div className="lg:col-span-2">
-              <div className="lg:sticky lg:top-24">
-                  <div ref={navigationRef} className="bg-white rounded-md border border-surface-muted overflow-hidden">
-                  {useCases.map((useCase, index) => (
-                    <div
-                      key={useCase.id}
-                      data-use-case={useCase.id}
-                      className="relative"
-                      onMouseEnter={() => {
-                        setIsHovered(true);
-                        // Délai de 300ms pour un hover plus smooth
-                        hoverTimeoutRef.current = setTimeout(() => {
-                          handleUseCaseChange(useCase.id);
-                        }, 300);
-                      }}
-                      onMouseLeave={() => {
-                        setIsHovered(false);
-                        // Annuler le changement si on quitte avant le délai
-                        if (hoverTimeoutRef.current) {
-                          clearTimeout(hoverTimeoutRef.current);
-                        }
-                      }}
-                    >
-                      <button
-                        onClick={() => handleUseCaseChange(useCase.id)}
-                        className={`w-full h-32 p-6 transition-all duration-300 text-left relative overflow-hidden flex items-center justify-center ${
-                          index === 0 ? "rounded-t-md" : 
-                          index === useCases.length - 1 ? "rounded-b-md" : 
-                          "rounded-none"
-                        } ${
-                          index < useCases.length - 1 ? "border-b border-surface-muted" : ""
-                        } ${
-                          activeUseCase === useCase.id
-                            ? "bg-white text-gray-900"
-                            : "bg-white text-gray-900 opacity-30 hover:opacity-50"
-                        }`}
-                      >
-                        <BorderBeam
-                          size={200}
-                          duration={2}
-                          colorFrom="#adff02"
-                          colorTo="transparent"
-                          delay={0}
-                        />
-                        <div className="relative z-10">
-                          {useCase.logo.startsWith('/') ? (
-                            <img 
-                              src={useCase.logo} 
-                              alt={useCase.company} 
-                              className={`w-full object-contain ${
-                                useCase.id === 'afc-stab' ? 'h-10' : 'h-28'
-                              } ${
-                                activeUseCase === useCase.id ? '' : 'grayscale'
-                              }`}
-                            />
-                          ) : (
-                            <div className={`w-full bg-gray-100 flex items-center justify-center text-2xl ${
-                              useCase.id === 'afc-stab' ? 'h-10' : 'h-28'
-                            } ${
-                              activeUseCase === useCase.id ? '' : 'grayscale'
-                            }`}>
-                              {useCase.logo}
-                            </div>
-                          )}
-                        </div>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Contenu principal - Scroll normal */}
-            <div className="lg:col-span-3">
-              <div className="p-2 bg-surface-muted rounded-md">
-                <div 
-                  ref={contentRef} 
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
+        <div className="max-w-4xl mx-auto mt-12">
+          <div className="bg-surface-muted p-2 rounded-md">
+            {useCases.map((useCase, index) => (
+              <div key={useCase.id} className={`bg-white border border-surface-muted overflow-hidden ${
+                index === 0 ? 'rounded-t-md' : 
+                index === useCases.length - 1 ? 'rounded-b-md' : 
+                ''
+              }`}>
+                {/* Header du dropdown */}
+                <button
+                  onClick={() => toggleUseCase(useCase.id)}
+                  className={`w-full p-6 transition-all duration-300 text-left relative overflow-hidden flex items-center justify-between ${
+                    expandedUseCase === useCase.id
+                      ? "bg-white text-gray-900"
+                      : "bg-white text-gray-900 hover:bg-gray-50"
+                  }`}
                 >
-                  <div className="bg-white rounded-md p-8  border border-surface-muted">
-                  {/* En-tête avec hiérarchie claire */}
-                  <div className="mb-8">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h2 className="text-4xl font-regular text-brand-black mb-2">
-                          {currentUseCase.company}
-                        </h2>
-                        <div className={`inline-block px-4 py-2 text-white text-sm  uppercase rounded-full ${
-                          currentUseCase.verticale.includes('Design') || currentUseCase.verticale.includes('MVP') 
-                            ? 'bg-brand-purple' 
-                            : currentUseCase.verticale.includes('LinkedIn') || currentUseCase.verticale.includes('Prospection')
-                            ? 'bg-brand-blue'
-                            : currentUseCase.verticale.includes('CRM') || currentUseCase.verticale.includes('Automatisation')
-                            ? 'bg-brand-orange'
-                            : 'bg-brand-green'
+                  <div className="flex items-center space-x-4">
+                    <div className="relative w-28">
+                      {useCase.logo.startsWith('/') ? (
+                        <img 
+                          src={useCase.logo} 
+                          alt={useCase.company} 
+                          className={`object-contain h-16 w-24 ${
+                            expandedUseCase === useCase.id ? '' : 'grayscale'
+                          }`}
+                        />
+                      ) : (
+                        <div className={`bg-gray-100 flex items-center justify-center text-2xl h-16 w-24 ${
+                          expandedUseCase === useCase.id ? '' : 'grayscale'
                         }`}>
-                          {currentUseCase.verticale}
+                          {useCase.logo}
                         </div>
+                      )}
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-regular text-brand-black mb-1">
+                        {useCase.company}
+                      </h3>
+                      <div className="inline-block px-2 py-1 text-black text-xs uppercase rounded-full bg-brand-green">
+                        {useCase.verticale}
                       </div>
                     </div>
-                    
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                      {currentUseCase.context}
-                    </p>
                   </div>
-
-
-                  {/* Objectifs - Structure améliorée */}
-                  {currentUseCase.problems && (
-                    <div className="mb-8">
-                      <h3 className="font-regular text-2xl text-brand-black mb-4">
-                        Objectifs
-                      </h3>
-                      <div className="grid gap-3">
-                        {currentUseCase.problems.map((problem, index) => (
-                          <div key={index} className="flex items-start p-4 bg-white border border-gray-200 rounded-md">
-                            <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
-                              <div className="w-2 h-2 bg-brand-green rounded-full"></div>
-                            </div>
-                            <span className="text-gray-700 font-medium">{problem}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                  
+                  {/* Icône de chevron */}
+                  <div className={`transform transition-transform duration-300 ${
+                    expandedUseCase === useCase.id ? 'rotate-180' : ''
+                  }`}>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  
+                  {expandedUseCase === useCase.id && (
+                    <BorderBeam
+                      size={200}
+                      duration={2}
+                      colorFrom="#adff02"
+                      colorTo="transparent"
+                      delay={0}
+                    />
                   )}
+                </button>
 
-                  {/* Méthode - Présentation claire */}
-                  {currentUseCase.solution && (
-                    <div className="mb-8">
-                      <h3 className="font-regular text-2xl text-brand-black mb-4">
-                        Méthode
-                      </h3>
-                      <div className="p-6 bg-brand-black/5 rounded-md border border-brand-black/10">
-                        <p className="text-gray-700 leading-relaxed">
-                          {currentUseCase.solution}
+                {/* Contenu du dropdown */}
+                {expandedUseCase === useCase.id && (
+                  <div 
+                    ref={(el) => {
+                      contentRefs.current[useCase.id] = el;
+                    }}
+                    className="px-6 pb-6 border-t border-surface-muted font-be-vietnam-pro tracking-[-0.05em]"
+                  >
+                    <div className="pt-6">
+                      {/* Contexte */}
+                      <div className="mb-8">
+                        <p className="text-text-muted text-lg">
+                          {useCase.context}
                         </p>
                       </div>
-                    </div>
-                  )}
 
-                  {/* KPIs - Hiérarchie visuelle renforcée */}
-                  {currentUseCase.kpis && (
-                    <div>
-                      <h3 className="font-regular text-2xl text-brand-black mb-6">
-                        Résultats
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {currentUseCase.kpis.map((kpi, index) => (
-                          <div key={index} className="bg-linear-to-br from-white to-gray-50 border-2 border-surface-muted rounded-md p-6 text-center hover:border-brand-green/30 transition-all duration-300">
-                            <div className="text-4xl font-bold text-brand-black mb-2">{kpi.value}</div>
-                            <div className="text-lg font-semibold text-gray-800 mb-1">{kpi.label}</div>
-                            <div className="text-sm text-gray-600">{kpi.description}</div>
+                      {/* Objectifs */}
+                      {useCase.problems && (
+                        <div className="mb-8">
+                          <h4 className="font-regular text-2xl text-brand-black mb-6">
+                            Objectifs
+                          </h4>
+                          <div className="grid gap-3">
+                            {useCase.problems.map((problem, problemIndex) => (
+                              <div key={problemIndex} className="flex items-start p-4 border border-gray-200 rounded-lg">
+                                <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
+                                  <div className="w-2 h-2 bg-brand-green rounded-full"></div>
+                                </div>
+                                <span className="text-text-muted text-lg">{problem}</span>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
+
+                      {/* Méthode */}
+                      {useCase.solution && (
+                        <div className="mb-8">
+                          <h4 className="font-regular text-2xl text-brand-black mb-6">
+                            Méthode
+                          </h4>
+                          <div className="grid gap-3">
+                            {Array.isArray(useCase.solution) ? (
+                              useCase.solution.map((step, stepIndex) => (
+                                <div key={stepIndex} className="flex items-start p-4 border border-gray-200 rounded-lg">
+                                  <div className="w-6 h-6 bg-brand-green/20 rounded-full flex items-center justify-center mr-3 mt-0.5 shrink-0">
+                                    <div className="w-2 h-2 bg-brand-green rounded-full"></div>
+                                  </div>
+                                  <span className="text-gray-700 text-lg leading-relaxed">{step}</span>
+                                </div>
+                              ))
+                            ) : (
+                              <div className="p-6 border border-gray-200 rounded-lg">
+                                <p className="text-gray-700 text-lg leading-relaxed">
+                                  {useCase.solution}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* KPIs */}
+                      {useCase.kpis && (
+                        <div>
+                          <h4 className="font-regular text-2xl text-brand-black mb-6">
+                            Résultats
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {useCase.kpis.map((kpi, kpiIndex) => (
+                              <div key={kpiIndex} className="bg-brand-black rounded-lg p-6 text-white hover:bg-brand-black/90 transition-all duration-300 group">
+                                <div className="text-5xl font-regular text-white mb-3 group-hover:text-brand-green transition-colors duration-300">
+                                  {kpi.value}
+                                </div>
+                                <div className="text-lg font-regular text-white/90 mb-2">
+                                  {kpi.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
                   </div>
-                </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
-    </>
   );
 }

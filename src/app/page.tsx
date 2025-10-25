@@ -68,8 +68,8 @@ export default function Home() {
       <OffersSection />
       <MethodSection />
       <PhilosophySection/> 
-      <ProjectCalculatorSection />
       <UseCaseSection />
+      <ProjectCalculatorSection />
       <AppointmentSection />
       
     </>

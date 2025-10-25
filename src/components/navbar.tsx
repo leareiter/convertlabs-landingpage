@@ -72,6 +72,7 @@ export default function Navbar() {
       links: [
         { text: "Témoignages", href: "#testimonials" },
         { text: "Nos offres", href: "#offers" },
+        { text: "Cas d'usage", href: "#use-cases" },
         { text: "Estimer mon projet", href: "#calculator" },
       ],
       buttons: {
@@ -231,6 +232,7 @@ export default function Navbar() {
 
                   <div className="pt-4">
                     <Button
+                    size="lg"
                       className="w-full bg-brand-green text-brand-black cursor-pointer transition-transform hover:-translate-y-1"
                       asChild
                     >
