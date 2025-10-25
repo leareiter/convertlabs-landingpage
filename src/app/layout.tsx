@@ -116,7 +116,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased`}
       >
-        <div className="min-h-screen bg-background relative font-be-vietnam-pro tracking-tight">
+        <div className="min-h-screen bg-background relative font-be-vietnam-pro">
           <Navbar />
           <div className="w-full">
             <div className="flex">

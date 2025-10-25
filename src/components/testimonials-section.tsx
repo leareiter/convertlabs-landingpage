@@ -44,19 +44,34 @@ export default function TestimonialsSection() {
   const testimonials = {
     items: [
       {
-        name: "Julien Marceau",
+        name: "Julien M.",
         content: "En 4 semaines, on est passés de l'idée au MVP validé avec 200 early adopters. ConvertLabs a compris qu'on n'avait pas besoin de perfection, mais d'un produit testable rapidement. Aujourd'hui on lève notre pré-seed grâce à cette traction.",
         role: "Founder @ HealthSyncr "
       },
       {
-        name: "Sarah Bentayeb",
+        name: "Sarah B.",
         content: "Avant ConvertLabs, notre CRM était un cimetière de données. Maintenant, chaque lead est automatiquement qualifié, relancé et suivi. On a gagné 15h par semaine sur l'admin et augmenté notre taux de closing de 40%. C'est une machine bien huilée.",
         role: "CEO @ Impulse Conseil"
       },
       {
-        name: "Henrick Merle",
+        name: "Henrick M.",
         content: "On faisait de la prospection manuelle depuis 2 ans. Résultat : 2-3 RDV par mois, pour un temps fou. Depuis qu'on bosse avec ConvertLabs, on a 12 à 14 rendez-vous qualifiés chaque mois, en pilote automatique. Je ne touche plus à rien, je me connecte juste pour prendre les appels.",
         role: "Président @ AFC-Stab"
+      },
+      {
+        name: "Thomas B.",
+        content: "On avait besoin d'un prototype fonctionnel pour tester notre concept avant la levée. ConvertLabs a tout pris en charge — UX, UI, et dev front — et livré un MVP complet en moins d'un mois. Zéro blabla, juste du concret : un produit stable, fluide et prêt à scaler.",
+        role: "CEO @ NovaFit"
+      },
+      {
+        name: "Amélie D.",
+        content: "On avait des leads, mais aucun suivi structuré. L'équipe ConvertLabs a refondu tout notre système CRM : automatisations, scoring, séquences de nurturing. Résultat : +52 % de taux de relance et une visibilité totale sur le pipe commercial.",
+        role: "Directrice commerciale @ CleverData"
+      },
+      {
+        name: "Karim L.",
+        content: "Avant ConvertLabs, notre prospection reposait sur un seul profil LinkedIn et beaucoup de temps perdu. Ils ont mis en place un système multi-comptes, des séquences automatisées et un suivi centralisé. En trois semaines, on a doublé le nombre de rendez-vous qualifiés.",
+        role: "Cofondateur @ Altwave"
       }
     ]
   };
