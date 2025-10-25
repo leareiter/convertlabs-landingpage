@@ -248,7 +248,7 @@ export default function Footer() {
                   {link.text === "Réserver un appel" ? (
                     <Button 
                       size="lg"
-                      className="bg-white hover:bg-white/90 text-brand-black text-base px-4 py-2 rounded-md font-medium transition-all duration-200 hover:scale-105"
+                      className="bg-white hover:bg-white/90 text-brand-black md:text-lg"
                       asChild
                     >
                       <a href={link.href}>

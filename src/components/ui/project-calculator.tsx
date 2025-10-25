@@ -6,10 +6,8 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import {
-  useProjectCalculator,
-  TabId
-} from '@/hooks/use-project-calculator';
+import { useProjectCalculator } from '@/hooks/use-project-calculator';
+import { TabId } from '@/lib/calculator/types';
 import FormRenderer from '@/components/forms/form-renderer';
 import LeadCaptureForm from '@/components/forms/lead-capture-form';
 import ResultDisplay from '@/components/forms/result-display';
@@ -104,7 +102,9 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
     return isSelected ? 'text-white' : defaultColor;
   };
 
-  const nextStep = handleNext;
+  const nextStep = async () => {
+    await handleNext();
+  };
   const prevStep = handleBack;
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -173,7 +173,7 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
   }, [activeTab]);
 
   return (
-    <section ref={containerRef} className="p-1 md:p-2 bg-surface-muted rounded-md max-w-2xl mx-auto font-be-vietnam-pro">
+    <section ref={containerRef} className="p-1 md:p-2 bg-surface-muted rounded-md max-w-3xl mx-auto font-be-vietnam-pro">
       <div className="bg-white rounded-md p-3 md:p-4">
         {(isHomePage || tabs.length > 1) && (
           <div ref={tabsRef} className="mb-1 md:mb-2">

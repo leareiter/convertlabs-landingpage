@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ArrowLeft, Check } from 'lucide-react';
-import { TabId } from '@/hooks/use-project-calculator';
+import { TabId } from '@/lib/calculator/types';
 import { gsap } from 'gsap';
 
 interface ResultDisplayProps {

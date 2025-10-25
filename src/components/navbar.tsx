@@ -31,7 +31,7 @@ export default function Navbar() {
           { text: "Estimer mon projet", href: "#calculator" },
         ],
         buttons: {
-          CTA: "Réserver un appel de cadrage"
+          CTA: "Réserver un appel"
         }
       };
     }
@@ -46,7 +46,7 @@ export default function Navbar() {
           { text: "Estimer mon projet", href: "#calculator" }
         ],
         buttons: {
-          CTA: "Réserver un appel de cadrage"
+          CTA: "Réserver un appel"
         }
       };
     }
@@ -61,7 +61,7 @@ export default function Navbar() {
           { text: "Estimer mon projet", href: "#calculator" }
         ],
         buttons: {
-          CTA: "Réserver un appel de cadrage"
+          CTA: "Réserver un appel"
         }
       };
     }
@@ -72,10 +72,11 @@ export default function Navbar() {
       links: [
         { text: "Témoignages", href: "#testimonials" },
         { text: "Nos offres", href: "#offers" },
+        { text: "Cas d'usage", href: "#use-cases" },
         { text: "Estimer mon projet", href: "#calculator" },
       ],
       buttons: {
-        CTA: "Réserver un appel de cadrage"
+        CTA: "Réserver un appel"
       }
     };
   };
@@ -173,8 +174,7 @@ export default function Navbar() {
 
               <div className="hidden lg:flex items-center">
                 <Button
-                  size="default"
-                  className="bg-brand-black text-white text-base px-6 md:px-8 py-5 rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
+                  className="bg-brand-black text-white text-base  rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
                   asChild
                 >
                   <a href="#rendez-vous" className="flex items-center gap-2">
@@ -232,6 +232,7 @@ export default function Navbar() {
 
                   <div className="pt-4">
                     <Button
+                    size="lg"
                       className="w-full bg-brand-green text-brand-black cursor-pointer transition-transform hover:-translate-y-1"
                       asChild
                     >
