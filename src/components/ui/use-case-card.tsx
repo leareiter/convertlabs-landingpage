@@ -159,7 +159,7 @@ const UseCaseCard = forwardRef<HTMLDivElement, UseCaseCardProps>(
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {results.map((result, index) => (
                 <div key={index} className="p-4 rounded-lg bg-brand-black">
-                  <span className="text-white text-xl leading-relaxed">{result}</span>
+                  <span className="text-white md:text-xl leading-relaxed">{result}</span>
                 </div>
               ))}
             </div>
