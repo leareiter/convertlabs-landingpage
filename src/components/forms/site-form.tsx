@@ -129,34 +129,42 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
     );
   }
 
-  if (step === 3) return (
-    <div className="space-y-4 md:space-y-6">
-      <div className="text-center mb-6 md:mb-8">
-        <h3 className="text-2xl md:text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Quelle approche technique ?</h3>
-        <p className="text-text-muted text-sm md:text-base">Choisissez l'approche qui correspond le mieux à vos besoins.</p>
+  if (step === 3) {
+    // Pour les Landing Pages, l'étape 3 n'existe pas (technologie déjà sélectionnée à l'étape 2)
+    if (siteData.type === 'lp') {
+      return null;
+    }
+    
+    // Pour les sites web, l'étape 3 est la sélection de la technologie
+    return (
+      <div className="space-y-4 md:space-y-6">
+        <div className="text-center mb-6 md:mb-8">
+          <h3 className="text-2xl md:text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Quelle approche technique ?</h3>
+          <p className="text-text-muted text-sm md:text-base">Choisissez l'approche qui correspond le mieux à vos besoins.</p>
+        </div>
+        
+        <div className="space-y-4">
+          {[
+            { value: 'nocode', label: 'No-Code', desc: 'Webflow, Framer, ou équivalent. Plus rapide, moins de personnalisation.' },
+            { value: 'code', label: 'Développement', desc: 'React, Next.js, ou équivalent. Plus flexible, plus de temps de développement.' }
+          ].map((o: Option & { desc: string }) => (
+            <button
+              key={o.value}
+              onClick={() => setSiteData({ ...siteData, tech: o.value as TechType })}
+              className={`w-full p-4 md:p-6 rounded-md border text-left transition-all ${
+                siteData.tech === o.value 
+                  ? `${brandClasses.border} ${brandClasses.accent}` 
+                  : 'border-border hover:border-border bg-white'
+              }`}
+            >
+              <div className={`font-regular text-base md:text-lg ${getTextColor(siteData.tech === o.value)}`}>{o.label}</div>
+              <div className={`mt-1 text-sm md:text-base ${getTextColor(siteData.tech === o.value, 'text-text-muted')}`}>{o.desc}</div>
+            </button>
+          ))}
+        </div>
       </div>
-      
-      <div className="space-y-4">
-        {[
-          { value: 'nocode', label: 'No-Code', desc: 'Webflow, Framer, ou équivalent. Plus rapide, moins de personnalisation.' },
-          { value: 'code', label: 'Développement', desc: 'React, Next.js, ou équivalent. Plus flexible, plus de temps de développement.' }
-        ].map((o: Option & { desc: string }) => (
-          <button
-            key={o.value}
-            onClick={() => setSiteData({ ...siteData, tech: o.value as TechType })}
-            className={`w-full p-4 md:p-6 rounded-md border text-left transition-all ${
-              siteData.tech === o.value 
-                ? `${brandClasses.border} ${brandClasses.accent}` 
-                : 'border-border hover:border-border bg-white'
-            }`}
-          >
-            <div className={`font-regular text-base md:text-lg ${getTextColor(siteData.tech === o.value)}`}>{o.label}</div>
-            <div className={`mt-1 text-sm md:text-base ${getTextColor(siteData.tech === o.value, 'text-text-muted')}`}>{o.desc}</div>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (step === 4) return (
     <div className="space-y-4 md:space-y-6">

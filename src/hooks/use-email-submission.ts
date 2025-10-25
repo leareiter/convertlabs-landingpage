@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TabId, CalculationResult } from '@/hooks/use-project-calculator';
+import { TabId, CalculationResult } from '@/lib/calculator/types';
 
 export interface LeadSubmissionData {
   email: string;

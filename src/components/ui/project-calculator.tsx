@@ -6,10 +6,8 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import {
-  useProjectCalculator,
-  TabId
-} from '@/hooks/use-project-calculator';
+import { useProjectCalculator } from '@/hooks/use-project-calculator';
+import { TabId } from '@/lib/calculator/types';
 import FormRenderer from '@/components/forms/form-renderer';
 import LeadCaptureForm from '@/components/forms/lead-capture-form';
 import ResultDisplay from '@/components/forms/result-display';
@@ -104,7 +102,9 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
     return isSelected ? 'text-white' : defaultColor;
   };
 
-  const nextStep = handleNext;
+  const nextStep = async () => {
+    await handleNext();
+  };
   const prevStep = handleBack;
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
