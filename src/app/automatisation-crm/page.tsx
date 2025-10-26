@@ -16,6 +16,10 @@ const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisat
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
+const AutomatisationCRMProblem = dynamic(() => import("@/components/automatisation-crm/problem"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
 
 export const metadata: Metadata = {
   title: "CRM & Automatisation - ConvertLabs",
@@ -52,6 +56,7 @@ export default function AutomatisationCRMPage() {
   return (
     <>
       <AutomatisationCRMHero />
+      <AutomatisationCRMProblem />
       <AutomatisationCRMApproach />
       <AutomatisationCRMOffers />
       <AutomatisationCRMUseCases />

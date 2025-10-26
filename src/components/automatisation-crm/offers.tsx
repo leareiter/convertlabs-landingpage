@@ -4,10 +4,23 @@ import PricingCards from "@/components/ui/pricing-cards";
 export default function AutomatisationCRMOffers() {
   const offers = [
     {
+      title: "Audit & Stratégie CRM",
+      subtitle: "Vision claire de votre écosystème",
+      description: "Audit complet de ton écosystème. Analyse de la performance produit. Recommandations concrètes et chiffrées sur les leviers prioritaires. Feuille de route 90 jours (actions, impact)",
+      result: "Vision claire, priorités validées, plan d'action activable immédiatement",
+      perfectFor: [
+        "Comprendre où tu perds du temps ou de l'argent",
+        "Identifier les quick wins à fort ROI",
+        "Construire une stratégie produit et growth cohérente avant d'exécuter"
+      ],
+      link: "#rendez-vous",
+      slotsLeft: 1,
+    },
+    {
       title: "Configuration CRM",
       subtitle: "HubSpot, Salesforce, Pipedrive",
-      description: "Setup complet de ton CRM. Champs personnalisés et pipelines. Automatisations de base. Formation des équipes. Intégration avec vos outils existants.",
-      result: "CRM opérationnel en 2-3 semaines avec équipes formées.",
+      description: "Setup complet de ton CRM. Champs personnalisés et pipelines. Automatisations de base. Formation des équipes. Intégration avec vos outils existants",
+      result: "CRM opérationnel en 2-3 semaines avec équipes formées",
       perfectFor: [
         "Centraliser vos données clients",
         "Automatiser le suivi commercial",
@@ -17,27 +30,14 @@ export default function AutomatisationCRMOffers() {
       slotsLeft: 2,
     },
     {
-      title: "Intégrations & Workflows",
-      subtitle: "Connecter tous vos outils",
-      description: "Intégration email, calendrier, comptabilité. Workflows d'onboarding automatiques. Relances programmées. Dashboards personnalisés. API et webhooks.",
-      result: "Système automatisé qui fait gagner 10h/semaine.",
+      title: "Conseil & Stratégie CRM",
+      subtitle: "Aligner vision, outils et performance",
+      description: "Audit global de ton écosystème commercial. Analyse des points de friction. Reco sur la stack CRM et les automatisations. Feuille de route priorisée sur 90 jours. Sessions de conseil stratégique mensuelles",
+      result: "Stratégie CRM claire, stack optimisée et plan d'action concret sur 3 mois",
       perfectFor: [
-        "Éliminer les tâches répétitives",
-        "Synchroniser vos outils",
-        "Automatiser vos processus"
-      ],
-      link: "#rendez-vous",
-      slotsLeft: 1,
-    },
-    {
-      title: "Optimisation & Formation",
-      subtitle: "Maximiser l'efficacité",
-      description: "Audit de vos processus existants. Optimisation des workflows. Formation avancée des équipes. Support continu et maintenance. Reporting et analytics.",
-      result: "Équipes autonomes avec processus optimisés.",
-      perfectFor: [
-        "Améliorer l'efficacité de vos équipes",
-        "Formaliser vos processus",
-        "Avoir un support continu"
+        "(Re)penser ton organisation commerciale avant d'automatiser",
+        "Prioriser les bons leviers avant d'investir dans des outils",
+        "Structurer ta croissance autour d'un système clair et mesurable"
       ],
       link: "#rendez-vous",
       slotsLeft: 3,

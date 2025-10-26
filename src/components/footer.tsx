@@ -30,8 +30,8 @@ export default function Footer() {
     links: [
       { text: "Accueil", href: "/" },
       { text: "Cas d'usage", href: "/#use-cases" },
-      { text: "Nos offres", href: "/#offers" },
       { text: "Témoignages", href: "/#testimonials" },
+      { text: "Nos offres", href: "/#offers" },
       { text: "FAQ", href: "/#faq" },
       { text: "Réserver un appel", href: "/#rendez-vous" }
     ],

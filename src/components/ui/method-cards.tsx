@@ -62,7 +62,7 @@ export default function MethodCards({ methods, activeColor, containerId }: Metho
   }, []);
 
   return (
-    <div className="max-w-9xl mx-auto bg-gray-100 rounded-md p-1 md:p-2" ref={containerRef} id={containerId}>
+    <div className="max-w-7xl mx-auto bg-gray-100 rounded-md p-1 md:p-2" ref={containerRef} id={containerId}>
       <div className="flex flex-col md:flex-row items-stretch relative">
         {methods.map((method, index) => (
           <div key={index} className="flex-1 relative">

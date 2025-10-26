@@ -6,8 +6,8 @@ export default function ProspectionLinkedInOffers() {
     {
       title: "Stratégie & Personas",
       subtitle: "Définir ton cible précise",
-      description: "Création d'ICP détaillés. Recherche et qualification des prospects. Personas et messages personnalisés. Stratégie de prospection multi-canaux.",
-      result: "Cible précise avec taux de réponse 3x supérieur.",
+      description: "Création d'ICP détaillés. Recherche et qualification des prospects. Personas et messages personnalisés. Stratégie de prospection multi-canaux",
+      result: "Cible précise avec taux de réponse 3x supérieur",
       perfectFor: [
         "Identifier vos prospects idéaux",
         "Personnaliser vos approches",
@@ -19,8 +19,8 @@ export default function ProspectionLinkedInOffers() {
     {
       title: "Séquences LinkedIn",
       subtitle: "Messages et automatisations",
-      description: "Création de séquences personnalisées. Messages optimisés par industrie. Automatisation des relances. A/B testing et optimisation continue.",
-      result: "10-15 RDV qualifiés par mois en pilote automatique.",
+      description: "Création de séquences personnalisées. Messages optimisés par industrie. Automatisation des relances. A/B testing et optimisation continue",
+      result: "10-15 RDV qualifiés par mois en pilote automatique",
       perfectFor: [
         "Automatiser ton prospection",
         "Éviter les bannissements",
@@ -32,8 +32,8 @@ export default function ProspectionLinkedInOffers() {
     {
       title: "Contenu & Engagement",
       subtitle: "Positionnement et visibilité",
-      description: "Stratégie de contenu LinkedIn. Posts optimisés pour l'engagement. Networking et relations. Branding personnel et expertise.",
-      result: "Positionnement d'expert avec communauté engagée.",
+      description: "Stratégie de contenu LinkedIn. Posts optimisés pour l'engagement. Networking et relations. Branding personnel et expertise",
+      result: "Positionnement d'expert avec communauté engagée",
       perfectFor: [
         "Développer ton notoriété",
         "Générer de l'engagement naturel",

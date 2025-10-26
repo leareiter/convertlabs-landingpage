@@ -38,29 +38,29 @@ const FAQSection = dynamic(() => import("@/components/faq-section"), {
 });
 
 export const metadata: Metadata = {
-  title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
-  description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
+  title: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
+  description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
   keywords: [
     "développement web", "MVP", "CRM", "automatisation", "prospection LinkedIn", 
     "startup", "PME", "digital", "conversion", "lead generation", "marketing automation",
     "développement sur mesure", "solutions digitales", "transformation digitale"
   ],
   openGraph: {
-    title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
-    description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
+    title: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
+    description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
     url: "https://convertlabs.fr",
     images: [
       {
         url: "/logo-convertlabs.png",
         width: 1200,
         height: 630,
-        alt: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
+        alt: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
       },
     ],
   },
   twitter: {
-    title: "ConvertLabs - Produits digitaux qui bossent pour vous",
-    description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
+    title: "ConvertLabs - Produits digitaux qui bossent pour toi",
+    description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
     images: ["/logo-convertlabs.png"],
   },
   alternates: {
@@ -73,7 +73,7 @@ export default function Home() {
     <>
       <HeroCard brandColor="bg-brand-green" showBadge={false} showStats={true} title="On construit des produits digitaux qui bossent pour toi." description="Tu veux lancer vite sans sacrifier la qualité ?
 Design UX/UI, développement full-stack, automatisation CRM et prospection LinkedIn multicomptes.
-Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-vous" secondaryCtaLink="#calculator" />
+Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-toi" secondaryCtaLink="#calculator" />
       <MethodSection />
       <PhilosophySection/> 
       <IdentificationSection />

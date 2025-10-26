@@ -6,8 +6,8 @@ export default function DesignMVPOffers() {
     {
       title: "Design & UX/UI",
       subtitle: "Création ou refonte d'interfaces",
-      description: "Audit d'expérience et design system complet. Maquettes haute fidélité sous Figma. Prototypes cliquables pour validation. Design responsive web et mobile.",
-      result: "Interfaces modernes et intuitives qui convertissent mieux.",
+      description: "Audit d'expérience et design system complet. Maquettes haute fidélité sous Figma. Prototypes cliquables pour validation. Design responsive web et mobile",
+      result: "Interfaces modernes et intuitives qui convertissent mieux",
       perfectFor: [
         "Améliorer l'expérience utilisateur",
         "Créer une identité visuelle cohérente",
@@ -19,8 +19,8 @@ export default function DesignMVPOffers() {
     {
       title: "Développement Full-Stack",
       subtitle: "Développement web et mobile",
-      description: "Développement sur stack moderne (React, Next.js, Vue.js, React Native). Code propre et scalable. Intégration API et bases de données. Déploiement et hébergement.",
-      result: "Application fonctionnelle et performante, prête pour la production.",
+      description: "Développement sur stack moderne (React, Next.js, Vue.js, React Native). Code propre et scalable. Intégration API et bases de données. Déploiement et hébergement",
+      result: "Application fonctionnelle et performante, prête pour la production",
       perfectFor: [
         "Transformer vos maquettes en réalité",
         "Développer rapidement et efficacement",
@@ -32,8 +32,8 @@ export default function DesignMVPOffers() {
     {
       title: "MVP & Prototypage",
       subtitle: "De l'idée au produit testable",
-      description: "Design Sprint et validation rapide. Prototype fonctionnel en 2-3 semaines. Tests utilisateurs et itérations. Roadmap produit et prioritisation.",
-      result: "MVP validé en 3-5 semaines avec premiers utilisateurs.",
+      description: "Design Sprint et validation rapide. Prototype fonctionnel en 2-3 semaines. Tests utilisateurs et itérations. Roadmap produit et prioritisation",
+      result: "MVP validé en 3-5 semaines avec premiers utilisateurs",
       perfectFor: [
         "Tester une idée rapidement",
         "Valider un marché avant d'investir",

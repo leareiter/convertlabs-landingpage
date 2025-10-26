@@ -274,20 +274,40 @@ export default function HeroCard({
           </div>
 
           {showStats && (
-            <div className="mt-8 flex flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em]">
-              <span className="font-medium">15 projets livrés en 2025</span>
-              <span className="w-2 h-2 bg-brand-green rounded-full"></span>
-              <span className="font-medium">Délai moyen : 6 semaines</span>
+            <div className={`mt-8 flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em] ${brandColor === "bg-brand-orange" ? "hidden md:flex" : "flex"}`}>
+                  <span className="font-medium">15 projets livrés en 2025</span>
+                  <span className="w-2 h-2 bg-brand-green rounded-full"></span>
+                  <span className="font-medium">Délai moyen : 6 semaines</span>
             </div>
           )}
 
           {showValidation && (
-            <div className="hidden md:flex mt-8 flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em]">
-              <span className="font-medium">MVP validé en 35 semaines</span>
-              <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
-              <span className="font-medium">Code natif</span>
-              <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
-              <span className="font-medium">Premiers utilisateurs payants sous 60 jours</span>
+            <div className="hidden md:flex mt-8 flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base text-text-muted tracking-[-0.05em] max-w-6xl mx-auto">
+              {brandColor === "bg-brand-blue" ? (
+                <>
+                  <span className="font-medium">Système multi-comptes sécurisé (conformité LinkedIn totale)</span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full"></span>
+                  <span className="font-medium">10–15 RDV qualifiés/mois en moyenne</span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full"></span>
+                  <span className="font-medium">Garantie résultat ou un nouveau compte offert</span>
+                </>
+              ) : brandColor === "bg-brand-orange" ? (
+                <>
+                  <span className="font-medium">CRM opérationnel en 2–3 semaines</span>
+                  <span className="w-2 h-2 bg-brand-orange rounded-full"></span>
+                  <span className="font-medium">40h/mois récupérées</span>
+                  <span className="w-2 h-2 bg-brand-orange rounded-full"></span>
+                  <span className="font-medium">Garantie adoption ou reconfiguration gratuite</span>
+                </>
+              ) : (
+                <>
+                  <span className="font-medium">MVP validé en 35 semaines</span>
+                  <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
+                  <span className="font-medium">Code natif</span>
+                  <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
+                  <span className="font-medium">Premiers utilisateurs payants sous 60 jours</span>
+                </>
+              )}
             </div>
           )}
         </div>

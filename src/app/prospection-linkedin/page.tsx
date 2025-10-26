@@ -1,4 +1,5 @@
 import ProspectionLinkedInAppointment from "@/components/prospection-linkedin/appointment";
+import ProspectionLinkedInProblem from "@/components/prospection-linkedin/problem";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import ProspectionLinkedInCalculator from "@/components/prospection-linkedin/calculator";
@@ -55,6 +56,7 @@ export default function ProspectionLinkedInPage() {
   return (
     <>
       <ProspectionLinkedInHero />
+      <ProspectionLinkedInProblem />
       <ProspectionLinkedInApproach />
       <ProspectionLinkedInOffers />
       <ProspectionLinkedInUseCases />

@@ -18,8 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
-  description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
+  title: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
+  description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
   keywords: [
     "développement web", "MVP", "CRM", "automatisation", "prospection LinkedIn",
     "startup", "PME", "digital", "conversion", "lead generation", "marketing automation",
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "ConvertLabs - Produits digitaux qui bossent pour vous",
-    description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
+    title: "ConvertLabs - Produits digitaux qui bossent pour toi",
+    description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
     url: "https://convertlabs.fr",
     siteName: "ConvertLabs",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
+        alt: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
         type: "image/jpeg",
       },
     ],
@@ -62,8 +62,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ConvertLabs - Produits digitaux qui bossent pour vous",
-    description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
+    title: "ConvertLabs - Produits digitaux qui bossent pour toi",
+    description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
     images: ["/og-image.jpg"],
     creator: "@convertlabs",
     site: "@convertlabs",

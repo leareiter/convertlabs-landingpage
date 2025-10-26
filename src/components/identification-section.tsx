@@ -41,7 +41,7 @@ export default function IdentificationSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
-  const scrollToOffer = (targetId: string) => {
+  const scrollToOffer = () => {
     const targetElement = document.getElementById('offers');
     if (targetElement) {
       targetElement.scrollIntoView({ 
@@ -114,7 +114,7 @@ export default function IdentificationSection() {
                 </div>
 
                 <Button 
-                  onClick={() => scrollToOffer(card.targetId)} 
+                  onClick={() => scrollToOffer()} 
                   size="lg" 
                   className="w-full cursor-pointer -translate-y-1 hover:-translate-y-2 transition-all duration-200 mt-auto text-base bg-text-hero text-white hover:bg-text-hero/90"
                 >

@@ -1,4 +1,3 @@
-import HeaderSection from "@/components/header-section";
 export default function PhilosophySection() {
   return (
     <section className="py-16 bg-brand-black text-white border-b border-border" >

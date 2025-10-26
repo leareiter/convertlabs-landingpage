@@ -54,7 +54,7 @@ const UseCaseCard = forwardRef<HTMLDivElement, UseCaseCardProps>(
     const availableSteps = getAvailableSteps();
 
     return (
-      <div className="relative">
+      <div className="relative max-w-4xl mx-auto">
         <div className="bg-surface-muted rounded-md p-2">
         <Card
           ref={ref}
@@ -118,7 +118,10 @@ const UseCaseCard = forwardRef<HTMLDivElement, UseCaseCardProps>(
               {availableSteps.map((step, index) => {
                 const isLastStep = index === availableSteps.length - 1;
                 const stepData = {
-                  week1: { title: "Semaine 1 : Design Sprint", content: solution.week1 },
+                  week1: { 
+                    title: category === "linkedin" ? "Semaine 1 : Structure et stratégie" : category === "crm" ? "Semaine 1 : Audit Stratégique" : "Semaine 1 : Design Sprint", 
+                    content: solution.week1 
+                  },
                   week2to3: { title: "Semaines 2-3 : Prototype Figma", content: solution.week2to3 },
                   week2: { title: "Semaine 2 : Setup Infrastructure", content: solution.week2 },
                   week2to4: { title: "Semaines 2-4 : Implémentation CRM", content: solution.week2to4 },
