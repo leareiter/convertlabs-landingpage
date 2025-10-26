@@ -73,9 +73,9 @@ Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, M
       <MethodSection />
       <PhilosophySection/> 
       <IdentificationSection />
+      <UseCaseSection />
       <OffersSection />
       <TestimonialsSection />
-      <UseCaseSection />
       <ProjectCalculatorSection />
       <AppointmentSection />
       
