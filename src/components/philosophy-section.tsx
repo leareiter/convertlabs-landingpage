@@ -8,10 +8,10 @@ export default function PhilosophySection() {
             NOTRE PHILOSOPHIE
           </p>
           <div className="space-y-2">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-white tracking-[-0.05em]">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-white tracking-[-0.05em]">
               On ne vend pas des prestations,
             </h2>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-white tracking-[-0.05em] leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-be-vietnam-pro font-medium text-white tracking-[-0.05em] leading-tight">
               on construit de la traction.
             </h2>
           </div>
@@ -21,8 +21,7 @@ export default function PhilosophySection() {
           <div className="flex flex-col items-center">
             <div className="text-center">
               <p className="text-lg font-regular font-be-vietnam-pro mb-8 tracking-[-0.05em]">
-                Chaque verticale Convertlabs est pensée comme un levier de croissance : créer, automatiser, ou convertir.<br/>
-                Notre mission : transformer ton produit en business qui scale, sans perdre de temps ni de marge en process inutiles.              </p>
+                Chaque verticale Convertlabs est pensée comme un levier de croissance : créer, automatiser, ou convertir. Notre mission : transformer ton produit en business qui scale, sans perdre de temps ni de marge en process inutiles.              </p>
             </div>
           </div>
         </div>
