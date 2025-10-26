@@ -22,7 +22,6 @@ export default function ProspectionLinkedInAppointment() {
 
   return (
     <AppointmentCard
-      steps={steps}
       headerSubtitle="GÉNÉRONS VOS LEADS"
       headerTitle="Prêt à transformer LinkedIn en machine à leads qualifiés ?"
       sectionId="rendez-vous"
