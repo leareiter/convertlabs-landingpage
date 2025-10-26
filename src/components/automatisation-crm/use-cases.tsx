@@ -61,14 +61,13 @@ export default function AutomatisationCRMUseCases() {
               solution={{
                 week1: "Cartographie des outils existants, Analyse du cycle de vie client, Recommandation : HubSpot CRM + Make + Slack",
                 week2to4: "Setup HubSpot (pipelines, propriétés, dashboards), Migration de 800 contacts depuis Google Sheets, Création de 4 pipelines (Lead → Signature → Livraison → Renouvellement)",
-                week5to6: "Workflow 1 : Lead entrant → Notification Slack + Email auto, Workflow 2 : Relance J+3 si pas de réponse, Workflow 3 : Onboarding client automatique, Workflow 4 : Alerte renouvellement J-30"
+                week5to6: "Scoring automatique des leads et assignation aux bons commerciaux. Relances multi-canales (email, LinkedIn, SMS) selon statut et délais. Onboarding client automatisé (docs, tâches, accès, notifications). Suivi rétention + alertes renouvellement à J-30. Reporting dynamique sur taux de conversion et revenus projetés."
               }}
               results={[
                 "Temps de saisie : -70% (de 3h/jour à 50 min/jour)",
                 "Taux de closing : +35% (de 15% à 23%)",
                 "Zéro perte de lead (vs 30% avant)",
-                "Visibilité pipeline : temps réel",
-                "ROI : récupéré en 2 mois (grâce aux deals supplémentaires)"
+                "ROI : récupéré en 2 mois"
               ]}
               category="crm"
             />

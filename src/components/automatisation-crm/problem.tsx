@@ -20,12 +20,12 @@ export default function AutomatisationCRMProblem() {
           <div className="flex flex-col items-center">
             <div className="text-center">
               <p className="text-lg font-regular font-be-vietnam-pro mb-8 tracking-[-0.05em]">
-                Tu as 10 outils qui ne parlent pas entre eux.<br/>
-                Tes leads arrivent par email, LinkedIn, formulaire web, et personne ne sait qui doit suivre quoi.<br/>
+                Tu as 10 outils qui ne parlent pas entre eux.
+                Tes leads arrivent par email, LinkedIn, formulaire web, et personne ne sait qui doit suivre quoi.
                 Résultat : 30% de tes leads ne sont jamais relancés.<br/><br/>
-                <span className="font-semibold">Le vrai problème, ce n'est pas le CRM.<br/>
+                <span className="font-semibold">Le vrai problème, ce n'est pas le CRM.
                 C'est l'absence de système.</span><br/><br/>
-                Un CRM mal configuré = perte de temps.<br/>
+                Un CRM mal configuré = perte de temps.
                 Un CRM bien automatisé = machine à cash.
               </p>
             </div>

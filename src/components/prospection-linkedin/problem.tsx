@@ -20,11 +20,11 @@ export default function ProspectionLinkedInProblem() {
           <div className="flex flex-col items-center">
             <div className="text-center">
               <p className="text-lg font-regular font-be-vietnam-pro mb-8 tracking-[-0.05em]">
-                Tu as essayé les cold messages. Tu as automatisé avec des outils grand public.<br/>
-                Résultat : taux de réponse de 2%, profil signalé, compte bloqué.<br/><br/>
-                <span className="font-semibold">Le problème, ce n'est pas LinkedIn.<br/>
+                Tu as essayé les cold messages. Tu as automatisé avec des outils grand public.
+                Résultat : taux de réponse de 2%, profil signalé, compte bloqué.
+                <span className="font-semibold"> Le problème, ce n'est pas LinkedIn.
                 C'est que tout le monde fait la même chose : messages génériques, ciblage hasardeux, relances robotiques.</span><br/><br/>
-                <span className="font-semibold">Notre approche :</span><br/>
+                <span className="font-semibold">Notre approche : </span>
                 Ciblage ultra-précis (ICP à 3 critères max). Messages contextualisés (pas de template). Système multi-comptes propriétaire (zéro risque de ban).
               </p>
             </div>
