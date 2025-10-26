@@ -110,7 +110,7 @@ export default function PricingCards({ offers, sectionId, popularIndex = 1, bran
               </div>
             </div>
           )}
-          <Card className="rounded-md p-8 flex flex-col h-full relative overflow-hidden shadow-xs border-gray-100">
+          <Card id={index === 0 ? "offer-mvp" : index === 1 ? "offer-linkedin" : "offer-crm"} className="rounded-md p-8 flex flex-col h-full relative overflow-hidden shadow-xs border-gray-100">
             <div className="text-center mb-2">
               <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero mb-2 tracking-[-0.05em]">{offer.title}</h3>
               <p className="text-text-muted text-base font-regular font-be-vietnam-pro mb-6 min-h-[60px] flex items-center justify-center">{offer.subtitle}</p>

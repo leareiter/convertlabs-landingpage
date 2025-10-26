@@ -45,7 +45,7 @@ export default function OffersSection() {
   ];
 
   return (
-    <section id="offers" className="border-y py-16 border-border font-be-vietnam-pro tracking-[-0.05em]">
+    <section id="offers" className="border-b py-16 border-border font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="NOS OFFRES"
