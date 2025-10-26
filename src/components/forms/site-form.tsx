@@ -49,7 +49,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
       <div className="space-y-4">
         {[
           { value: 'lp', label: 'Landing Page', desc: '1 page, 5–7 sections, SEO de base. Idéale pour tester une offre rapidement.' },
-          { value: 'site', label: 'Site Web', desc: '3–10 pages, navigation, blog/SEO. Pour présenter votre offre et vos contenus.' }
+          { value: 'site', label: 'Site Web', desc: '3–10 pages, navigation, blog/SEO. Pour présenter ton offre et vos contenus.' }
         ].map((o: Option & { desc: string }) => (
           <button
             key={o.value}
@@ -105,7 +105,7 @@ const SiteForm: React.FC<SiteFormProps> = ({ siteData, setSiteData, step, brandC
       <div className="space-y-4 md:space-y-6">
         <div className="text-center mb-6 md:mb-8">
           <h3 className="text-2xl md:text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien de pages ?</h3>
-          <p className="text-text-muted text-sm md:text-base">Estimez le nombre de pages nécessaires pour votre projet.</p>
+          <p className="text-text-muted text-sm md:text-base">Estime le nombre de pages nécessaires pour ton projet.</p>
         </div>
         
         <div className="max-w-2xl mx-auto">

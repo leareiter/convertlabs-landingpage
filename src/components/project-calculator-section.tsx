@@ -58,7 +58,7 @@ export default function ProjectCalculatorSection() {
         <div ref={headerRef}>
           <HeaderSection
             subtitle="ESTIMATION"
-            title="Estimez votre projet"
+            title="Estime ton projet"
           />
         </div>
         <div ref={calculatorRef}>

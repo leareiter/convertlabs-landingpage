@@ -73,7 +73,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
           <Check className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Estimation terminée !</h2>
-        <p className="text-text-muted">Voici votre estimation personnalisée</p>
+        <p className="text-text-muted">Voici ton estimation personnalisée</p>
       </div>
 
       <div ref={cardRef} className={`${brandClasses.accent} rounded-md p-8 shadow-none`}>

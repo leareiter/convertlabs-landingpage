@@ -3,16 +3,16 @@ import AppointmentCard from "@/components/ui/appointment-card";
 export default function DesignMVPAppointment() {
   const steps = [
     {
-      title: "Audit de votre concept",
-      description: "On analyse votre idée, votre marché et vos contraintes techniques."
+      title: "Audit de ton concept",
+      description: "On analyse ton idée, ton marché et vos contraintes techniques."
     },
     {
       title: "Prototypage & validation",
-      description: "Création d'un prototype fonctionnel pour valider votre concept."
+      description: "Création d'un prototype fonctionnel pour valider ton concept."
     },
     {
       title: "Développement MVP",
-      description: "Développement de votre produit avec les technologies modernes."
+      description: "Développement de ton produit avec les technologies modernes."
     },
     {
       title: "Lancement & optimisation",
@@ -23,8 +23,8 @@ export default function DesignMVPAppointment() {
   return (
     <AppointmentCard
       steps={steps}
-      headerSubtitle="LANÇONS VOTRE MVP"
-      headerTitle="Prêt à transformer votre idée en produit qui convertit ?"
+      headerSubtitle="LANÇONS ton MVP"
+      headerTitle="Prêt à transformer ton idée en produit qui convertit ?"
       sectionId="rendez-vous"
     />
   );

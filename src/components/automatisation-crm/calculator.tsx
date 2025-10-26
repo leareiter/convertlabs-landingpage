@@ -7,7 +7,7 @@ export default function AutomatisationCRMCalculator() {
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="ESTIMATION"
-          title="Estimez votre projet"
+          title="Estime ton projet"
         />
         <ProjectCalculator allowedTabs={['crm']} brandColor="orange" />
       </div>

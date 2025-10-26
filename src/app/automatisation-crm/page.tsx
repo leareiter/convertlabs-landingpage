@@ -19,7 +19,7 @@ const AutomatisationCRMUseCases = dynamic(() => import("@/components/automatisat
 
 export const metadata: Metadata = {
   title: "CRM & Automatisation - ConvertLabs",
-  description: "Automatisez votre CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing et conversion optimisée. Déjà 10+ entreprises qui scalent.",
+  description: "Automatisez ton CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing et conversion optimisée. Déjà 10+ entreprises qui scalent.",
   keywords: [
     "automatisation CRM", "workflow automation", "lead nurturing", "sales automation", 
     "CRM intégration", "marketing automation", "conversion optimization", "sales pipeline",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "CRM & Automatisation - ConvertLabs",
-    description: "Automatisez votre CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing et conversion optimisée.",
+    description: "Automatisez ton CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing et conversion optimisée.",
     url: "https://convertlabs.fr/automatisation-crm",
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "CRM & Automatisation - ConvertLabs",
-    description: "Automatisez votre CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing.",
+    description: "Automatisez ton CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing.",
     images: ["/logo-convertlabs.png"],
   },
   alternates: {

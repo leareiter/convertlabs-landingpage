@@ -41,7 +41,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     <div className="space-y-4 py-10">
       <div className="text-center">
         <h2 className="text-3xl font-regular text-gray-900 mb-2">Dernière étape</h2>
-        <p className="text-text-muted">Recevez votre estimation détaillée par email</p>
+        <p className="text-text-muted">Recevez ton estimation détaillée par email</p>
       </div>
 
       <div className="max-w-md mx-auto">

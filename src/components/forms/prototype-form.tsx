@@ -61,7 +61,7 @@ const PrototypeForm: React.FC<PrototypeFormProps> = ({ prototypeData, setPrototy
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d'écrans ?</h3>
-        <p className="text-text-muted">Estimez le nombre d'écrans nécessaires pour votre prototype.</p>
+        <p className="text-text-muted">Estime le nombre d'écrans nécessaires pour ton prototype.</p>
       </div>
       
       <div className="max-w-2xl mx-auto">

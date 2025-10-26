@@ -261,7 +261,7 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
         <div className="space-y-6">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Formation nécessaire</h3>
-            <p className="text-text-muted">Avez-vous besoin d'une formation pour votre équipe ?</p>
+            <p className="text-text-muted">Avez-vous besoin d'une formation pour ton équipe ?</p>
           </div>
           
           <div className="space-y-4">
@@ -356,7 +356,7 @@ const CrmForm: React.FC<CrmFormProps> = ({ crmData, setCrmData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Formation nécessaire</h3>
-        <p className="text-text-muted">Avez-vous besoin d'une formation pour votre équipe ?</p>
+        <p className="text-text-muted">Avez-vous besoin d'une formation pour ton équipe ?</p>
       </div>
       
       <div className="space-y-4">

@@ -11,6 +11,7 @@ export default function HeroSection() {
       primaryCtaLink="#rendez-vous"
       brandColor="bg-brand-green"
       showBadge={true}
+      showStats={true}
     />
   );
 }

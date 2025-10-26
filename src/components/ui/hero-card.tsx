@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
@@ -21,6 +21,7 @@ interface HeroCardProps {
   showBadge?: boolean;
   sectionId?: string;
   forceFourLines?: boolean;
+  showStats?: boolean;
 }
 
 export default function HeroCard({
@@ -38,7 +39,8 @@ export default function HeroCard({
   brandColor = "bg-brand-green",
   showBadge = true,
   sectionId,
-  forceFourLines = false
+  forceFourLines = false,
+  showStats = false
 }: HeroCardProps) {
   const hero = useMemo(() => ({
     badgeText,
@@ -77,7 +79,7 @@ export default function HeroCard({
   const optimizedFourLines = useMemo(() => {
     const fullTitle = `${titlePart1} ${titlePart2} ${titlePart3}`.trim();
     const words = fullTitle.split(' ');
-    
+
     if (words.length <= 4) {
       return {
         line1: words.slice(0, 1).join(' '),
@@ -192,8 +194,8 @@ export default function HeroCard({
                   {optimizedFourLines.line4 && (
                     <span className="block font-be-vietnam-pro font-medium">{optimizedFourLines.line4}</span>
                   )}
-                  <span 
-                    ref={greenBoxMobileRef} 
+                  <span
+                    ref={greenBoxMobileRef}
                     className={`inline-block font-times-new-roman text-5xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
@@ -206,8 +208,8 @@ export default function HeroCard({
                   <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line2}</span>
                   <div className="flex items-center justify-center gap-4">
                     <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
-                    <span 
-                      ref={greenBoxDesktopRef} 
+                    <span
+                      ref={greenBoxDesktopRef}
                       className={`inline-block font-times-new-roman text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                     >
                       {titleHighlight}
@@ -222,8 +224,8 @@ export default function HeroCard({
                 <span ref={text2Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line2}</span>
                 <div className="flex items-center justify-center gap-4">
                   <span ref={text3Ref} className="block font-be-vietnam-pro font-medium">{optimizedTitleParts.line3}</span>
-                  <span 
-                    ref={greenBoxRef} 
+                  <span
+                    ref={greenBoxRef}
                     className={`inline-block font-times-new-roman text-5xl md:text-8xl font-medium italic ${brandColor} ${brandColor === "bg-brand-green" ? "text-brand-black" : "text-white"} px-5 py-2 rounded-md shadow-xs hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer transform rotate-2 opacity-0`}
                   >
                     {titleHighlight}
@@ -268,6 +270,14 @@ export default function HeroCard({
               )}
             </Button>
           </div>
+
+          {showStats && (
+            <div className="mt-8 flex flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em]">
+              <span className="font-medium">15 projets livrés en 2025</span>
+              <span className="w-2 h-2 bg-brand-green rounded-full"></span>
+              <span className="font-medium">Délai moyen : 6 semaines</span>
+            </div>
+          )}
         </div>
       </div>
     </section>

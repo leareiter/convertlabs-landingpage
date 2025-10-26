@@ -6,7 +6,7 @@ export default function AutomatisationCRMOffers() {
     {
       title: "Configuration CRM",
       subtitle: "HubSpot, Salesforce, Pipedrive",
-      description: "Setup complet de votre CRM. Champs personnalisés et pipelines. Automatisations de base. Formation des équipes. Intégration avec vos outils existants.",
+      description: "Setup complet de ton CRM. Champs personnalisés et pipelines. Automatisations de base. Formation des équipes. Intégration avec vos outils existants.",
       result: "CRM opérationnel en 2-3 semaines avec équipes formées.",
       perfectFor: [
         "Centraliser vos données clients",

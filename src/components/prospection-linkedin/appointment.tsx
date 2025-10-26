@@ -3,7 +3,7 @@ import AppointmentCard from "@/components/ui/appointment-card";
 export default function ProspectionLinkedInAppointment() {
   const steps = [
     {
-      title: "Définition de votre cible",
+      title: "Définition de ton cible",
       description: "Création d'ICP précis et identification de vos prospects idéaux."
     },
     {
@@ -16,7 +16,7 @@ export default function ProspectionLinkedInAppointment() {
     },
     {
       title: "Optimisation continue",
-      description: "Analyse des résultats et amélioration constante de votre approche."
+      description: "Analyse des résultats et amélioration constante de ton approche."
     }
   ];
 
