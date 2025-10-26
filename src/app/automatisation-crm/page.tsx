@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: "https://convertlabs.fr/automatisation-crm",
     images: [
       {
-        url: "/logo-convertlabs.png",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "CRM & Automatisation - ConvertLabs",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "CRM & Automatisation - ConvertLabs",
     description: "Automatisez ton CRM et boostez vos ventes avec ConvertLabs. Workflows automatisés, intégrations CRM, lead nurturing.",
-    images: ["/logo-convertlabs.png"],
+    images: ["/og_image.png"],
   },
   alternates: {
     canonical: "/automatisation-crm",

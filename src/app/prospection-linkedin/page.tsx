@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: "https://convertlabs.fr/prospection-linkedin",
     images: [
       {
-        url: "/logo-convertlabs.png",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "Prospection LinkedIn - ConvertLabs",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Prospection LinkedIn - ConvertLabs",
     description: "Besoin de leads qualifiés ? ConvertLabs met la machine en route. Prospection LinkedIn automatisée, lead generation et conversion optimisée.",
-    images: ["/logo-convertlabs.png"],
+    images: ["/og_image.png"],
   },
   alternates: {
     canonical: "/prospection-linkedin",

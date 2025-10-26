@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: "https://convertlabs.fr/design-mvp",
     images: [
       {
-        url: "/logo-convertlabs.png",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "Design & MVP - ConvertLabs",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Design & MVP - ConvertLabs",
     description: "De l'idée au produit vivant rapidement avec ConvertLabs. Design UX/UI, développement MVP, prototypage et validation d'idées.",
-    images: ["/logo-convertlabs.png"],
+    images: ["/og_image.png"],
   },
   alternates: {
     canonical: "/design-mvp",

@@ -107,7 +107,7 @@ export default function IdentificationSection() {
 
                 <div className="grow flex flex-col">
                   <div className="mb-6 min-h-[120px]">
-                    <p className="text-text-secondary text-base text-center">
+                    <p className="text-text-muted text-base text-center">
                       {card.description}
                     </p>
                   </div>

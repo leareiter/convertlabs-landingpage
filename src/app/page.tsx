@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     url: "https://convertlabs.fr",
     images: [
       {
-        url: "/logo-convertlabs.png",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "ConvertLabs - Produits digitaux qui bossent pour toi",
     description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
-    images: ["/logo-convertlabs.png"],
+    images: ["/og_image.png"],
   },
   alternates: {
     canonical: "/",

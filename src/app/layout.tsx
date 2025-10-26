@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "ConvertLabs",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ConvertLabs - Produits digitaux qui bossent pour toi",
     description: "ConvertLabs construit des produits digitaux qui bossent pour toi. Design & MVP, CRM & Automatisation, Prospection LinkedIn.",
-    images: ["/og-image.jpg"],
+    images: ["/og_image.png"],
     creator: "@convertlabs",
     site: "@convertlabs",
   },
@@ -80,11 +80,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
   },
   other: {
     "msapplication-TileColor": "#000000",
