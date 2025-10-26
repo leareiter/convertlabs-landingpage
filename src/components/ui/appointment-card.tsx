@@ -3,15 +3,8 @@
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect, useState } from "react";
 import HeaderSection from "@/components/header-section";
-import { Card } from "@/components/ui/card";
-
-interface Step {
-  title: string;
-  description: string;
-}
 
 interface AppointmentCardProps {
-  steps: Step[];
   headerSubtitle: string;
   headerTitle: string;
   sectionId?: string;
@@ -22,7 +15,6 @@ interface AppointmentCardProps {
 }
 
 export default function AppointmentCard({ 
-  steps, 
   headerSubtitle, 
   headerTitle, 
   sectionId = "rendez-vous",
@@ -64,46 +56,27 @@ export default function AppointmentCard({
           title={headerTitle}
         />
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="bg-surface-muted rounded-md p-2">
-            <div className="flex flex-col lg:flex-row gap-2">
-              <div className="w-full lg:w-1/3">
-                <div className="flex flex-col gap-1 h-full">
-                  {steps.map((step, index) => (
-                    <Card key={index} className="px-6 bg-brand-black text-white border-surface-muted shadow-xs rounded-md flex-1 flex items-center">
-                      <div className="flex flex-col items-center text-center w-full">
-                        <h3 className="text-lg font-be-vietnam-pro font-medium text-white mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-white text-sm w-full h-10 flex items-center justify-center leading-tight">
-                          {step.description}
-                        </p>
-                      </div>
-                    </Card>
-                  ))}
-                  <div className="flex-1 flex items-center justify-center py-4">
-                    <p className="text-text-muted text-sm text-center leading-tight font-be-vietnam-pro">
-                      {footerText}
-                    </p>
+            <div className="w-full">
+              {calLoaded ? (
+                <Cal
+                  namespace={namespace}
+                  calLink={calLink}
+                  config={{ "layout": "month_view", "theme": "light", "overflow": "scroll" }}
+                />
+              ) : (
+                <div className="bg-white rounded-2xl p-8 flex items-center justify-center h-96">
+                  <div className="text-center">
+                    <div className="w-8 h-8 border-2 border-brand-green border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-text-muted">{loadingText}</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="w-full lg:w-2/3 h-full">
-                {calLoaded ? (
-                  <Cal
-                    namespace={namespace}
-                    calLink={calLink}
-                    config={{ "layout": "month_view", "theme": "light" }}
-                  />
-                ) : (
-                  <div className="bg-white rounded-2xl p-8 flex items-center justify-center h-96">
-                    <div className="text-center">
-                      <div className="w-8 h-8 border-2 border-brand-green border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                      <p className="text-text-muted">{loadingText}</p>
-                    </div>
-                  </div>
-                )}
+              )}
+              <div className="flex items-center justify-center py-4">
+                <p className="text-text-muted text-sm text-center leading-tight font-be-vietnam-pro">
+                  {footerText}
+                </p>
               </div>
             </div>
           </div>
