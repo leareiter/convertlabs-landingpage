@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
       },
       {
         name: "Thomas B.",
-        content: "On avait besoin d'un prototype fonctionnel pour tester notre concept avant la levée. ConvertLabs a tout pris en charge — UX, UI, et dev front — et livré un MVP complet en moins d'un mois. Zéro blabla, juste du concret : un produit stable, fluide et prêt à scaler.",
+        content: "On avait besoin d'un prototype fonctionnel pour tester notre concept avant la levée. ConvertLabs a tout pris en charge (UX, UI, et dev front), et livré un MVP complet en moins d'un mois. Zéro blabla, juste du concret : un produit stable, fluide et prêt à scaler.",
         role: "CEO @ NovaFit"
       },
       {

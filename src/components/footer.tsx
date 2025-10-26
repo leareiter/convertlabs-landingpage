@@ -29,8 +29,10 @@ export default function Footer() {
     ],
     links: [
       { text: "Accueil", href: "/" },
+      { text: "Cas d'usage", href: "/#use-cases" },
       { text: "Nos offres", href: "/#offers" },
       { text: "Témoignages", href: "/#testimonials" },
+      { text: "FAQ", href: "/#faq" },
       { text: "Réserver un appel", href: "/#rendez-vous" }
     ],
     legalLinks: [
@@ -46,6 +48,25 @@ export default function Footer() {
     });
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    if (href.startsWith('/#')) {
+      const sectionId = href.substring(2);
+      
+      if (window.location.pathname === '/') {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.location.href = href;
+      }
+    } else {
+      window.location.href = href;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -54,6 +75,21 @@ export default function Footer() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle scroll to section when arriving from another page
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const sectionId = hash.substring(1); // Remove '#' prefix
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -251,7 +287,7 @@ export default function Footer() {
                       className="bg-white hover:bg-white/90 text-brand-black md:text-lg"
                       asChild
                     >
-                      <a href={link.href}>
+                      <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)}>
                         {link.text}
                         <ArrowRight size={16} />
                       </a>
@@ -259,6 +295,7 @@ export default function Footer() {
                   ) : (
                     <a 
                       href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
                       className="text-background/60 hover:text-background transition-colors duration-200 text-base inline-block"
                     >
                       {link.text}

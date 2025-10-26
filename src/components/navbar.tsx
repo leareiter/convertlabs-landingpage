@@ -109,10 +109,10 @@ export default function Navbar() {
               </div>
 
               <div className="hidden lg:flex items-center">
-                <NavigationMenu>
+                <NavigationMenu delayDuration={0} skipDelayDuration={0}>
                   <NavigationMenuList className="flex items-center space-x-2">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-base font-medium text-text-hero transition-transform bg-transparent hover:-translate-y-1">
+          <NavigationMenuTrigger className="text-base font-medium text-text-hero transition-transform bg-transparent hover:-translate-y-1 data-[state=open]:bg-transparent data-[state=open]:text-text-hero">
             Services
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -122,7 +122,7 @@ export default function Navbar() {
                   href="/design-mvp"
                   className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-purple"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">Design &amp; MVP
+                  <div className="text-xl font-regular font-be-vietnam-pro leading-none group-hover:text-white">Design &amp; MVP
                   </div>
                   <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     De l'idée au produit vivant. Rapidement.
@@ -134,7 +134,7 @@ export default function Navbar() {
                   href="/prospection-linkedin"
                   className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-blue"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">Prospection LinkedIn</div>
+                  <div className="text-xl font-regular font-be-vietnam-pro leading-none group-hover:text-white">Prospection LinkedIn</div>
                   <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     Besoin de leads qualifiés ? On met la machine en route.
                   </p>
@@ -145,7 +145,7 @@ export default function Navbar() {
                   href="/automatisation-crm"
                   className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all hover:-translate-y-1 hover:bg-brand-orange"
                 >
-                  <div className="text-lg font-regular font-be-vietnam-pro leading-none group-hover:text-white">CRM & Automatisation</div>
+                  <div className="text-xl font-regular font-be-vietnam-pro leading-none group-hover:text-white">CRM & Automatisation</div>
                   <p className="line-clamp-2 text-base font-regular font-be-vietnam-pro leading-snug text-text-hero group-hover:text-white">
                     On organise ton back-office pour qu'il tourne sans toi.
                   </p>

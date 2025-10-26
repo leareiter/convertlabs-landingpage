@@ -12,8 +12,8 @@ export default function DesignMVPApproach() {
       description: "Visualiser, tester et valider les choix avant développement. Maquettes haute fidélité et prototype cliquable."
     },
     {
-      title: "Développement Front",
-      description: "Développement web et mobile sur stack moderne (React, React Native, Next.js, Vue.js, Tailwind). Code propre et scalable."
+      title: "Développement",
+      description: "Développement web et mobile sur stack moderne. Code propre et scalable."
     },
     {
       title: "Optimisation ASO",

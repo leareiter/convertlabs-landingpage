@@ -22,6 +22,7 @@ interface HeroCardProps {
   sectionId?: string;
   forceFourLines?: boolean;
   showStats?: boolean;
+  showValidation?: boolean;
 }
 
 export default function HeroCard({
@@ -40,7 +41,8 @@ export default function HeroCard({
   showBadge = true,
   sectionId,
   forceFourLines = false,
-  showStats = false
+  showStats = false,
+  showValidation = false
 }: HeroCardProps) {
   const hero = useMemo(() => ({
     badgeText,
@@ -276,6 +278,16 @@ export default function HeroCard({
               <span className="font-medium">15 projets livrés en 2025</span>
               <span className="w-2 h-2 bg-brand-green rounded-full"></span>
               <span className="font-medium">Délai moyen : 6 semaines</span>
+            </div>
+          )}
+
+          {showValidation && (
+            <div className="hidden md:flex mt-8 flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em]">
+              <span className="font-medium">MVP validé en 35 semaines</span>
+              <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
+              <span className="font-medium">Code natif</span>
+              <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
+              <span className="font-medium">Premiers utilisateurs payants sous 60 jours</span>
             </div>
           )}
         </div>

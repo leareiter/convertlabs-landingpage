@@ -42,7 +42,7 @@ export default function IdentificationSection() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   const scrollToOffer = (targetId: string) => {
-    const targetElement = document.getElementById(targetId);
+    const targetElement = document.getElementById('offers');
     if (targetElement) {
       targetElement.scrollIntoView({ 
         behavior: 'smooth',

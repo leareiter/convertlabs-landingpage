@@ -1,5 +1,6 @@
 import DesignMVPAppointment from "@/components/design-mvp/appointment";
 import DesignMVPHero from "@/components/design-mvp/hero";
+import DesignMVPProblem from "@/components/design-mvp/problem";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import DesignMVPCalculator from "@/components/design-mvp/calculator";
@@ -52,6 +53,7 @@ export default function DesignMVPPage() {
   return (
     <>
       <DesignMVPHero />
+      <DesignMVPProblem />
       <DesignMVPApproach />
       <DesignMVPOffers />
       <DesignMVPUseCases />

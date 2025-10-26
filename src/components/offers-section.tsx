@@ -6,7 +6,7 @@ export default function OffersSection() {
     {
       title: "Design & MVP",
       subtitle: "De l'idée au produit vivant. Rapidement.",
-      description: "Tu arrives avec un concept. On te livre un prototype fonctionnel, testable, et prêt à générer du chiffre. En 4 à 8 semaines. (Budget : 10-50k€)",
+      description: "La concrétisation d'un concept. On te livre un prototype fonctionnel, testable, et prêt à générer du chiffre. En 4 à 8 semaines. Un suivi de bout en bout.",
       result: "MVP validé en 3-5 semaines, avec premiers utilisateurs payants sous 60 jours.",
       perfectFor: [
         "Valider ton marché sans brûler 6 mois et 50k€",
@@ -19,7 +19,7 @@ export default function OffersSection() {
     {
       title: "Prospection LinkedIn",
       subtitle: "Besoin de leads qualifiés ? On met la machine en route.",
-      description: "Ciblage des bons profils (ICP précis). Messages optimisés et personnalisés. Automatisations + tracking + CRM intégré. Suivi des réponses et qualification. Prise de RDV automatique.",
+      description: "Ciblage des bons profils (ICP précis). Messages optimisés et personnalisés. Automatisations + tracking + volume. Suivi des réponses et qualification. Prise de RDV automatique.",
       result: "10-15 RDV qualifiés par mois, en pilote automatique, sans risque de ban.",
       perfectFor: [
         "Générer un flux constant de leads",
@@ -32,8 +32,8 @@ export default function OffersSection() {
     {
       title: "CRM & Automatisation",
       subtitle: "On organise ton back-office pour qu'il tourne sans toi.",
-      description: "Connexion de tes outils (Hubspot, Airtable, Notion, Zapier...). Workflows d'onboarding et relance. Suivi client automatisé. Dashboards personnalisés pour piloter en un coup d'œil.",
-      result: "-60% de temps passé sur la gestion, +40% de deals fermés grâce à un suivi structuré.",
+      description: "Connexion de tes outils (Hubspot, Airtable, Notion, Zapier...). Multi-pipelines sales. Suivi client optimisé. Dashboards personnalisés pour piloter en un coup d'œil.",
+      result: "-60% de temps passé sur la gestion, +40% de deals closés grâce à un suivi structuré.",
       perfectFor: [
         "Structurer tes processus commerciaux",
         "Automatiser les tâches répétitives",

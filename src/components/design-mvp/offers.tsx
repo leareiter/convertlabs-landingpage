@@ -17,7 +17,7 @@ export default function DesignMVPOffers() {
       slotsLeft: 2,
     },
     {
-      title: "Développement Front",
+      title: "Développement Full-Stack",
       subtitle: "Développement web et mobile",
       description: "Développement sur stack moderne (React, Next.js, Vue.js, React Native). Code propre et scalable. Intégration API et bases de données. Déploiement et hébergement.",
       result: "Application fonctionnelle et performante, prête pour la production.",
