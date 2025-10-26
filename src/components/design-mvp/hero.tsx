@@ -4,9 +4,9 @@ export default function DesignMVPHero() {
   return (
     <HeroCard
       badgeText="Design, Développement Front, Maquettage, MVP & ASO"
-      title="On transforme votre idée en MVP qui convertit."
-      titlePart1="On transforme votre"
-      titlePart2="votre idée en MVP"
+      title="On transforme ton idée en MVP qui convertit."
+      titlePart1="On transforme ton"
+      titlePart2="ton idée en MVP"
       titlePart3="qui "
       titleHighlight="convertit."
       description="Pas de développement à l'aveugle. Pas de features inutiles. Juste un prototype testé, un design qui convertit, et un produit prêt pour le marché."

@@ -8,7 +8,7 @@ export default function AutomatisationCRMAppointment() {
     },
     {
       title: "Configuration CRM",
-      description: "Setup et personnalisation de votre CRM selon vos besoins spécifiques."
+      description: "Setup et personnalisation de ton CRM selon vos besoins spécifiques."
     },
     {
       title: "Automatisation & intégrations",
@@ -23,8 +23,8 @@ export default function AutomatisationCRMAppointment() {
   return (
     <AppointmentCard
       steps={steps}
-      headerSubtitle="AUTOMATISONS VOTRE BACK-OFFICE"
-      headerTitle="Prêt à transformer votre gestion en machine bien huilée ?"
+      headerSubtitle="AUTOMATISONS ton BACK-OFFICE"
+      headerTitle="Prêt à transformer ton gestion en machine bien huilée ?"
       sectionId="rendez-vous"
     />
   );

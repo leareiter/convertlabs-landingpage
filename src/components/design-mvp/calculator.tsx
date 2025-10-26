@@ -7,7 +7,7 @@ export default function DesignMVPCalculator() {
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="ESTIMATION"
-          title="Estimez votre projet"
+          title="Estime ton projet"
         />
         <ProjectCalculator allowedTabs={['site', 'prototype', 'mvp']} brandColor="purple" />
       </div>

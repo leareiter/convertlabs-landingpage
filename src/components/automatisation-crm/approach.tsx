@@ -5,11 +5,11 @@ export default function AutomatisationCRMApproach() {
   const methods = [
     {
       title: "Audit & Cartographie",
-      description: "Analyser les processus existants, identifier les points de friction et cartographier les flux de données pour optimiser votre back-office."
+      description: "Analyser les processus existants, identifier les points de friction et cartographier les flux de données pour optimiser ton back-office."
     },
     {
       title: "Configuration CRM",
-      description: "Configurer et personnaliser votre CRM (HubSpot, Salesforce, Pipedrive) selon vos besoins spécifiques et vos workflows métier."
+      description: "Configurer et personnaliser ton CRM (HubSpot, Salesforce, Pipedrive) selon vos besoins spécifiques et vos workflows métier."
     },
     {
       title: "Intégrations & Workflows",
@@ -26,7 +26,7 @@ export default function AutomatisationCRMApproach() {
       <div className="container mx-auto px-4">
         <HeaderSection
           subtitle="NOTRE APPROCHE"
-          title="4 étapes pour automatiser votre back-office"
+          title="4 étapes pour automatiser ton back-office"
         />
 
         <MethodCards 

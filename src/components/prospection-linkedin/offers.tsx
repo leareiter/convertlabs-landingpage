@@ -5,7 +5,7 @@ export default function ProspectionLinkedInOffers() {
   const offers = [
     {
       title: "Stratégie & Personas",
-      subtitle: "Définir votre cible précise",
+      subtitle: "Définir ton cible précise",
       description: "Création d'ICP détaillés. Recherche et qualification des prospects. Personas et messages personnalisés. Stratégie de prospection multi-canaux.",
       result: "Cible précise avec taux de réponse 3x supérieur.",
       perfectFor: [
@@ -22,7 +22,7 @@ export default function ProspectionLinkedInOffers() {
       description: "Création de séquences personnalisées. Messages optimisés par industrie. Automatisation des relances. A/B testing et optimisation continue.",
       result: "10-15 RDV qualifiés par mois en pilote automatique.",
       perfectFor: [
-        "Automatiser votre prospection",
+        "Automatiser ton prospection",
         "Éviter les bannissements",
         "Générer des leads qualifiés"
       ],
@@ -35,9 +35,9 @@ export default function ProspectionLinkedInOffers() {
       description: "Stratégie de contenu LinkedIn. Posts optimisés pour l'engagement. Networking et relations. Branding personnel et expertise.",
       result: "Positionnement d'expert avec communauté engagée.",
       perfectFor: [
-        "Développer votre notoriété",
+        "Développer ton notoriété",
         "Générer de l'engagement naturel",
-        "Construire votre réseau"
+        "Construire ton réseau"
       ],
       link: "#rendez-vous",
       slotsLeft: 4,

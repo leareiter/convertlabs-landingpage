@@ -5,7 +5,7 @@ export default function ProspectionLinkedInApproach() {
   const methods = [
     {
       title: "Stratégie & Personas",
-      description: "Définir votre cible, créer des personas détaillés et élaborer une stratégie de prospection personnalisée pour maximiser les conversions."
+      description: "Définir ton cible, créer des personas détaillés et élaborer une stratégie de prospection personnalisée pour maximiser les conversions."
     },
     {
       title: "Séquences LinkedIn",
@@ -13,11 +13,11 @@ export default function ProspectionLinkedInApproach() {
     },
     {
       title: "Contenu & Engagement",
-      description: "Développer une stratégie de contenu qui positionne votre expertise et génère de l'engagement naturel avec votre audience cible."
+      description: "Développer une stratégie de contenu qui positionne ton expertise et génère de l'engagement naturel avec ton audience cible."
     },
     {
       title: "Suivi & Optimisation",
-      description: "Mesurer les performances, analyser les données et optimiser continuellement votre approche pour améliorer les taux de conversion."
+      description: "Mesurer les performances, analyser les données et optimiser continuellement ton approche pour améliorer les taux de conversion."
     }
   ];
 

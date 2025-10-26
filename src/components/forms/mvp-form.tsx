@@ -34,7 +34,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Combien d'écrans ?</h3>
-        <p className="text-text-muted">Estimez le nombre d'écrans nécessaires pour votre MVP.</p>
+        <p className="text-text-muted">Estime le nombre d'écrans nécessaires pour ton MVP.</p>
       </div>
       
       <div className="max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Plateforme cible</h3>
-        <p className="text-text-muted">Pour quelle plateforme développez-vous votre MVP ?</p>
+        <p className="text-text-muted">Pour quelle plateforme développez-vous ton MVP ?</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
@@ -170,7 +170,7 @@ const MvpForm: React.FC<MvpFormProps> = ({ mvpData, setMvpData, step, brandClass
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-medium font-be-vietnam-pro text-text-hero tracking-[-0.05em] mb-2">Backend nécessaire</h3>
-        <p className="text-text-muted">Quel niveau de backend est nécessaire pour votre MVP ?</p>
+        <p className="text-text-muted">Quel niveau de backend est nécessaire pour ton MVP ?</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">

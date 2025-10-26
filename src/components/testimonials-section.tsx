@@ -31,7 +31,7 @@ const TestimonialCard = ({
       <div className="flex items-center mt-auto">
         <div>
           <div className="flex items-center">
-            <p className="font-semibold text-gray-900 dark:text-white text-sm">{name}</p>
+            <p className="font-regular text-gray-900 dark:text-white text-base">{name}</p>
           </div>
           <p className="text-xs font-regular text-gray-500 dark:text-gray-400">{role}</p>
         </div>
@@ -86,19 +86,9 @@ export default function TestimonialsSection() {
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s]">
-            {testimonials.items.slice(0, 3).map((testimonial, index) => (
+            {testimonials.items.map((testimonial, index) => (
               <TestimonialCard 
                 key={index} 
-                name={testimonial.name} 
-                content={testimonial.content} 
-                role={testimonial.role}
-              />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {testimonials.items.slice(3).map((testimonial, index) => (
-              <TestimonialCard 
-                key={index + 3} 
                 name={testimonial.name} 
                 content={testimonial.content} 
                 role={testimonial.role}

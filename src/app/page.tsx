@@ -63,9 +63,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <HeroCard brandColor="bg-brand-green"  showBadge={false} title="On construit des produits digitaux qui bossent pour toi." description="Pas de PowerPoint. Pas de wireframes qui dorment dans un Drive. Juste des outils opérationnels, des automatisations qui tournent en fond, et des systèmes d'acquisition qui rapportent." primaryCta="Réserver un appel de cadrage" secondaryCta="Découvrir nos services" primaryCtaLink="#rendez-vous" secondaryCtaLink="#services" />
-      <TestimonialsSection />
+      <HeroCard brandColor="bg-brand-green" showBadge={false} showStats={true} title="On construit des produits digitaux qui bossent pour toi." description="Tu veux lancer vite sans sacrifier la qualité ?
+Design UX/UI, développement full-stack, automatisation CRM et prospection LinkedIn multicomptes.
+Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-vous" secondaryCtaLink="#calculator" />
       <OffersSection />
+      <TestimonialsSection />
       <MethodSection />
       <PhilosophySection/> 
       <UseCaseSection />
