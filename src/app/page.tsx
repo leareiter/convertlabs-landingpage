@@ -33,6 +33,10 @@ const IdentificationSection = dynamic(() => import("@/components/identification-
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
+const FAQSection = dynamic(() => import("@/components/faq-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
 export const metadata: Metadata = {
   title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
   description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
@@ -77,6 +81,7 @@ Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, M
       <OffersSection />
       <TestimonialsSection />
       <ProjectCalculatorSection />
+      <FAQSection />
       <AppointmentSection />
       
     </>

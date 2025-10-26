@@ -3,7 +3,6 @@
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect, useState } from "react";
 import HeaderSection from "@/components/header-section";
-import { Card } from "@/components/ui/card";
 
 interface AppointmentCardProps {
   headerSubtitle: string;
