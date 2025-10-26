@@ -70,9 +70,9 @@ export default function Navbar() {
     return {
       logo: "ConvertLabs",
       links: [
+        { text: "Cas d'usage", href: "#use-cases" },
         { text: "Témoignages", href: "#testimonials" },
         { text: "Nos offres", href: "#offers" },
-        { text: "Cas d'usage", href: "#use-cases" },
         { text: "Estimer mon projet", href: "#calculator" },
       ],
       buttons: {

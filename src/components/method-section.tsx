@@ -23,8 +23,8 @@ export default function MethodSection() {
       description: "Code propre. Architecture scalable. Documentation Notion livrée à chaque étape. Tu peux reprendre le produit en interne, le refactoriser, ou le faire évoluer sans nous. Pas de dépendance. Pas de boîte noire."
     },
     {
-      title: "On reste clairs.",
-      description: "Budget défini avant de commencer. Périmètre clair. Pas de bullshit commercial. Si on pense qu'on n'est pas la bonne option, on te le dit et on te redirige."
+      title: "On te garantit...",
+      description: "Un budget fixé avant de commencer. Périmètre défini. Aucun bullshit commercial. Si on dépasse les délais, on bosse gratuitement jusqu’à atteindre les résultats."
     }
   ];
 

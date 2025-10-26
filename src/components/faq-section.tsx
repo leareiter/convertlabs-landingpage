@@ -34,7 +34,7 @@ const faqData: FAQItem[] = [
   },
   {
     id: "5",
-    question: "Pourquoi est-il affiché'3 places restantes' ?",
+    question: "Pourquoi est-il affiché \"3 places restantes\" ?",
     answer: "On limite à 8 projets simultanés pour garantir qualité et respect des délais. C'est une contrainte opérationnelle réelle, pas une tactique marketing."
   },
   {

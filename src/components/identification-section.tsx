@@ -24,14 +24,14 @@ const identificationCards: IdentificationCard[] = [
     targetId: "offer-mvp"
   },
   {
-    title: "J'ai des clients, mais mon pipe fuit",
+    title: "J'ai des clients, mais je ne scale pas",
     description: "Tes leads sont éparpillés entre Google Sheets, emails et Trello. Tu perds 30% des opportunités dans la nature, et tu passes 3h/jour en saisie manuelle. Tu veux un CRM qui fonctionne vraiment.",
     cta: "Voir l'offre CRM",
     targetId: "offer-crm"
   },
   {
     title: "Je veux remplir mon agenda de RDV",
-    description: "Tu fais de la prospection manuelle depuis des mois pour 2-3 RDV/mois. Tu n'as pas le budget pour un SDR, mais tu veux un pipeline constant de conversations qualifiées — sans risquer le ban.",
+    description: "Tu fais de la prospection manuelle depuis des mois pour 2-3 RDV/mois. Tu n'as pas le budget pour un SDR, mais tu veux un pipeline constant de conversations qualifiées sans risquer le ban.",
     cta: "Voir l'offre LinkedIn",
     targetId: "offer-linkedin"
   }
