@@ -22,7 +22,6 @@ export default function DesignMVPAppointment() {
 
   return (
     <AppointmentCard
-      steps={steps}
       headerSubtitle="LANÇONS ton MVP"
       headerTitle="Prêt à transformer ton idée en produit qui convertit ?"
       sectionId="rendez-vous"
