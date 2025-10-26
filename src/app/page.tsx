@@ -29,6 +29,10 @@ const UseCaseSection = dynamic(() => import("@/components/use-case-section"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
 });
 
+const IdentificationSection = dynamic(() => import("@/components/identification-section"), {
+  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
+});
+
 export const metadata: Metadata = {
   title: "ConvertLabs - On construit des produits digitaux qui bossent pour vous",
   description: "ConvertLabs construit des produits digitaux qui bossent pour vous. Design & MVP, CRM & Automatisation, Prospection LinkedIn. Déjà 10+ entreprises tech qui scalent avec nous.",
@@ -66,10 +70,11 @@ export default function Home() {
       <HeroCard brandColor="bg-brand-green" showBadge={false} showStats={true} title="On construit des produits digitaux qui bossent pour toi." description="Tu veux lancer vite sans sacrifier la qualité ?
 Design UX/UI, développement full-stack, automatisation CRM et prospection LinkedIn multicomptes.
 Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-vous" secondaryCtaLink="#calculator" />
-      <OffersSection />
-      <TestimonialsSection />
       <MethodSection />
       <PhilosophySection/> 
+      <IdentificationSection />
+      <OffersSection />
+      <TestimonialsSection />
       <UseCaseSection />
       <ProjectCalculatorSection />
       <AppointmentSection />

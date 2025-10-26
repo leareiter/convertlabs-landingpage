@@ -6,16 +6,17 @@ export default function PhilosophySection() {
         <HeaderSection
           subtitle="NOTRE PHILOSOPHIE"
           title="Nous ne sommes pas une agence tout-en-un."
-          titleClassName="text-white" 
-          subtitleClassName="text-white" 
+          titleClassName="text-white"
+          subtitleClassName="text-white"
         />
 
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col items-center">
             <div className="text-center">
               <p className="text-lg font-regular font-be-vietnam-pro mb-8">
-                Chaque verticale ConvertLabs est un bloc d'expertise autonome, pensé pour répondre à un besoin précis et mesurable. Notre mission est de concevoir, automatiser et faire croître des produits digitaux durables, en construisant autour de la performance et de la clarté.
-              </p>
+                On ne vend pas des prestations, on construit de la traction.
+                Chaque verticale Convertlabs est pensée comme un levier de croissance : créer, automatiser, ou convertir.
+                Notre mission : transformer ton produit en business qui scale, sans perdre de temps ni de marge en process inutiles.              </p>
             </div>
           </div>
         </div>
