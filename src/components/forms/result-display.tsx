@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowLeft, Check } from 'lucide-react';
 import { TabId } from '@/lib/calculator/types';
-import { gsap } from 'gsap';
+// GSAP will be lazy loaded
 
 interface ResultDisplayProps {
   result: {
@@ -33,37 +33,40 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (containerRef.current) {
-      // Animation d'apparition du container
-      gsap.fromTo(containerRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.6, ease: "power2.out" }
-      );
-
-      // Animation de l'icône avec délai
-      if (iconRef.current) {
-        gsap.fromTo(iconRef.current,
-          { opacity: 0, scale: 0.8 },
-          { opacity: 1, scale: 1, duration: 0.5, delay: 0.2, ease: "power2.out" }
-        );
-      }
-
-      // Animation de la carte avec délai
-      if (cardRef.current) {
-        gsap.fromTo(cardRef.current,
+    // Lazy load GSAP for animations
+    import("gsap").then(({ gsap }) => {
+      if (containerRef.current) {
+        // Animation d'apparition du container
+        gsap.fromTo(containerRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.5, delay: 0.4, ease: "power2.out" }
+          { opacity: 1, duration: 0.6, ease: "power2.out" }
         );
-      }
 
-      // Animation du bouton avec délai
-      if (buttonRef.current) {
-        gsap.fromTo(buttonRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.4, delay: 0.6, ease: "power2.out" }
-        );
+        // Animation de l'icône avec délai
+        if (iconRef.current) {
+          gsap.fromTo(iconRef.current,
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, duration: 0.5, delay: 0.2, ease: "power2.out" }
+          );
+        }
+
+        // Animation de la carte avec délai
+        if (cardRef.current) {
+          gsap.fromTo(cardRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5, delay: 0.4, ease: "power2.out" }
+          );
+        }
+
+        // Animation du bouton avec délai
+        if (buttonRef.current) {
+          gsap.fromTo(buttonRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.4, delay: 0.6, ease: "power2.out" }
+          );
+        }
       }
-    }
+    });
   }, []);
 
   return (

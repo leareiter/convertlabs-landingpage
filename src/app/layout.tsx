@@ -96,7 +96,7 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo_black.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -134,7 +134,7 @@ export default function RootLayout({
         <Script
           src="https://app.rybbit.io/api/script.js"
           data-site-id="23859617b908"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </body>
     </html>

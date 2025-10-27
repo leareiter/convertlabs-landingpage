@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { gsap } from 'gsap';
+// GSAP will be lazy loaded
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { useProjectCalculator } from '@/hooks/use-project-calculator';
@@ -111,64 +111,86 @@ const ProjectCalculator: React.FC<ProjectCalculatorProps> = ({ allowedTabs, bran
     await handleLeadSubmit();
   };
 
-  // Animation d'apparition avec GSAP
+  // Animation d'apparition avec GSAP (lazy loaded)
   useEffect(() => {
-    if (containerRef.current) {
-      // Animation initiale
-      gsap.fromTo(containerRef.current, 
-        { 
-          opacity: 0
-        },
-        { 
-          opacity: 1,
-          duration: 1.0,
-          ease: "power2.out"
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (entries[0].isIntersecting) {
+          const { gsap } = await import("gsap");
+          
+          if (containerRef.current) {
+            // Animation initiale
+            gsap.fromTo(containerRef.current, 
+              { 
+                opacity: 0
+              },
+              { 
+                opacity: 1,
+                duration: 1.0,
+                ease: "power2.out",
+                force3D: true
+              }
+            );
+
+            // Animation des éléments enfants avec délai
+            if (tabsRef.current) {
+              gsap.fromTo(tabsRef.current,
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: "power3.out", force3D: true }
+              );
+            }
+
+            if (progressRef.current) {
+              gsap.fromTo(progressRef.current,
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: "power3.out", force3D: true }
+              );
+            }
+
+            if (contentRef.current) {
+              gsap.fromTo(contentRef.current,
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power3.out", force3D: true }
+              );
+            }
+          }
+          
+          observer.disconnect();
         }
-      );
+      },
+      { threshold: 0.1 }
+    );
 
-      // Animation des éléments enfants avec délai
-      if (tabsRef.current) {
-        gsap.fromTo(tabsRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: "power3.out" }
-        );
-      }
-
-      if (progressRef.current) {
-        gsap.fromTo(progressRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: "power3.out" }
-        );
-      }
-
-      if (contentRef.current) {
-        gsap.fromTo(contentRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power3.out" }
-        );
-      }
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   // Animation des transitions d'étapes (sauf boutons précédent/suivant)
   useEffect(() => {
     if (contentRef.current) {
-      // Animation seulement sur changement d'étape, pas sur changement de tab
-      gsap.fromTo(contentRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-      );
+      // Lazy load GSAP for step transitions
+      import("gsap").then(({ gsap }) => {
+        gsap.fromTo(contentRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", force3D: true }
+        );
+      });
     }
   }, [step]); // Retiré activeTab pour éviter l'animation sur changement de tab
 
   // Animation du contenu du formulaire au changement de tab
   useEffect(() => {
     if (formContentRef.current) {
-      // Animation plus fluide du contenu du formulaire uniquement
-      gsap.fromTo(formContentRef.current,
-        { opacity: 0.8, y: 10 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }
-      );
+      // Lazy load GSAP for form content transitions
+      import("gsap").then(({ gsap }) => {
+        gsap.fromTo(formContentRef.current,
+          { opacity: 0.8, y: 10 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", force3D: true }
+        );
+      });
     }
   }, [activeTab]);
 

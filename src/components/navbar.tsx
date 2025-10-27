@@ -104,6 +104,7 @@ export default function Navbar() {
                     alt="ConvertLabs Logo"
                     width={170}
                     height={40}
+                    priority
                   />
                 </Link>
               </div>
