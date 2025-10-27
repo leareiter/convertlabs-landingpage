@@ -3,7 +3,12 @@
 import { useState, useRef } from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import HeaderSection from "./header-section";
+import { gsap } from "gsap";
 import Image from "next/image";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin();
+}
 
 interface UseCase {
   id: string;
@@ -146,14 +151,13 @@ export default function UseCaseSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   
-  const toggleUseCase = async (useCaseId: string) => {
+  const toggleUseCase = (useCaseId: string) => {
     const isCurrentlyExpanded = expandedUseCase === useCaseId;
     
     if (isCurrentlyExpanded) {
       // Fermer le dropdown
       const contentElement = contentRefs.current[useCaseId];
       if (contentElement) {
-        const { gsap } = await import("gsap");
         gsap.to(contentElement, {
           height: 0,
           opacity: 0,
@@ -171,10 +175,9 @@ export default function UseCaseSection() {
       setExpandedUseCase(useCaseId);
       
       // Attendre que le DOM soit mis à jour
-      setTimeout(async () => {
+      setTimeout(() => {
         const contentElement = contentRefs.current[useCaseId];
         if (contentElement) {
-          const { gsap } = await import("gsap");
           // Définir la hauteur initiale à 0
           gsap.set(contentElement, { height: 0, opacity: 0 });
           

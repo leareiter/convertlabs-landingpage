@@ -1,9 +1,6 @@
 import dynamic from "next/dynamic";
+import HeroCard from "@/components/ui/hero-card";
 import { Metadata } from "next";
-
-const HeroCard = dynamic(() => import("@/components/ui/hero-card"), {
-  loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
-});
 
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"), {
   loading: () => <div className="h-96 bg-surface-muted animate-pulse rounded-md" />,
