@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   
   // Optimize bundle splitting
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'gsap', '@tanstack/react-form'],
   },
   
   // Turbopack configuration (nouvelle syntaxe)

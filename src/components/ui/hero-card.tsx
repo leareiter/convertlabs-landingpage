@@ -3,7 +3,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useMemo } from "react";
-import { gsap } from "gsap";
 
 interface HeroCardProps {
   badgeText?: string;
@@ -109,23 +108,11 @@ export default function HeroCard({
 
   useEffect(() => {
     if (hero) {
-      const tl = gsap.timeline();
+      // Lazy load GSAP for hero animations
+      import("gsap").then(({ gsap }) => {
+        const tl = gsap.timeline();
 
-      tl.fromTo(text1Ref.current,
-        {
-          opacity: 0,
-          y: 20,
-          filter: "blur(4px)"
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.2,
-          ease: "power2.out"
-        }
-      )
-        .fromTo(text2Ref.current,
+        tl.fromTo(text1Ref.current,
           {
             opacity: 0,
             y: 20,
@@ -137,41 +124,56 @@ export default function HeroCard({
             filter: "blur(0px)",
             duration: 0.2,
             ease: "power2.out"
-          },
-          "-=0.05"
+          }
         )
-        .fromTo(text3Ref.current,
-          {
-            opacity: 0,
-            y: 20,
-            filter: "blur(4px)"
-          },
-          {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 0.15,
-            ease: "power2.out"
-          },
-          "-=0.05"
-        )
-        .fromTo([greenBoxRef.current, greenBoxMobileRef.current, greenBoxDesktopRef.current].filter(Boolean),
-          {
-            opacity: 0,
-            scale: 0.9,
-            rotation: -2,
-            y: 10
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 2,
-            y: 0,
-            duration: 0.3,
-            ease: "back.out(1.2)"
-          },
-          "+=0.2"
-        );
+          .fromTo(text2Ref.current,
+            {
+              opacity: 0,
+              y: 20,
+              filter: "blur(4px)"
+            },
+            {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              duration: 0.2,
+              ease: "power2.out"
+            },
+            "-=0.05"
+          )
+          .fromTo(text3Ref.current,
+            {
+              opacity: 0,
+              y: 20,
+              filter: "blur(4px)"
+            },
+            {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              duration: 0.15,
+              ease: "power2.out"
+            },
+            "-=0.05"
+          )
+          .fromTo([greenBoxRef.current, greenBoxMobileRef.current, greenBoxDesktopRef.current].filter(Boolean),
+            {
+              opacity: 0,
+              scale: 0.9,
+              rotation: -2,
+              y: 10
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              rotation: 2,
+              y: 0,
+              duration: 0.3,
+              ease: "back.out(1.2)"
+            },
+            "+=0.2"
+          );
+      });
     }
   }, [hero]);
 

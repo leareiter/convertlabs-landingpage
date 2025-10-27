@@ -2,10 +2,6 @@
 import { Card } from "@/components/ui/card";
 import HeaderSection from "@/components/header-section";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function MethodSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,29 +36,48 @@ export default function MethodSection() {
 
   useEffect(() => {
     if (containerRef.current && cardsRef.current.length > 0) {
-      gsap.fromTo(cardsRef.current, 
-        {
-          opacity: 0,
-          y: 80,
-          scale: 0.9,
-          rotationX: 15
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          rotationX: 0,
-          duration: 0.5,
-          ease: "power1.out",
-          onComplete: () => setCardsVisible(true),
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play none none reverse"
+      // Use IntersectionObserver to delay GSAP loading
+      const observer = new IntersectionObserver(
+        async (entries) => {
+          if (entries[0].isIntersecting) {
+            const { gsap } = await import("gsap");
+            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+            
+            gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.fromTo(cardsRef.current, 
+              {
+                opacity: 0,
+                y: 80,
+                scale: 0.9,
+                rotationX: 15
+              },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotationX: 0,
+                duration: 0.5,
+                ease: "power1.out",
+                onComplete: () => setCardsVisible(true),
+                scrollTrigger: {
+                  trigger: containerRef.current,
+                  start: "top 85%",
+                  end: "bottom 15%",
+                  toggleActions: "play none none reverse"
+                }
+              }
+            );
+            
+            observer.disconnect();
           }
-        }
+        },
+        { threshold: 0.1 }
       );
+
+      observer.observe(containerRef.current);
+      
+      return () => observer.disconnect();
     }
   }, []);
 

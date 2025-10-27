@@ -3,7 +3,6 @@
 import { ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
@@ -93,142 +92,178 @@ export default function Footer() {
   }, []);
 
   useEffect(() => {
+    // Lazy load GSAP only when footer comes into view
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (entries[0].isIntersecting) {
+          const { gsap } = await import("gsap");
+          
+          // Set will-change for GPU acceleration
+          const elementsToAnimate = [footerRef.current, logoRef.current, descriptionRef.current, highlightedTextRef.current, servicesRef.current, linksRef.current, bottomRef.current, scrollToTopRef.current];
+          elementsToAnimate.forEach(element => {
+            if (element) element.style.willChange = 'transform, opacity';
+          });
+
+          if (footerRef.current) {
+            gsap.fromTo(footerRef.current, 
+              { opacity: 0, y: 50 },
+              { opacity: 1, y: 0, duration: 1, ease: "power2.out", force3D: true }
+            );
+          }
+
+          // Animation du logo
+          if (logoRef.current) {
+            gsap.fromTo(logoRef.current,
+              { scale: 0.8, opacity: 0, rotation: -5 },
+              { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)", delay: 0.2, force3D: true }
+            );
+          }
+
+          // Animation de la description
+          if (descriptionRef.current) {
+            gsap.fromTo(descriptionRef.current,
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.4, force3D: true }
+            );
+          }
+
+          // Animation du texte mis en évidence
+          if (highlightedTextRef.current) {
+            gsap.fromTo(highlightedTextRef.current,
+              { rotation: -15, scale: 0.5, opacity: 0, y: 20 },
+              { rotation: 2, scale: 1, opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)", delay: 0.6, force3D: true }
+            );
+
+            // Animation de hover pour le texte mis en évidence
+            const handleMouseEnter = () => {
+              gsap.to(highlightedTextRef.current, {
+                rotation: 8,
+                scale: 1.1,
+                y: -8,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            };
+
+            const handleMouseLeave = () => {
+              gsap.to(highlightedTextRef.current, {
+                rotation: 2,
+                scale: 1,
+                y: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            };
+
+            const element = highlightedTextRef.current;
+            element.addEventListener('mouseenter', handleMouseEnter);
+            element.addEventListener('mouseleave', handleMouseLeave);
+
+            return () => {
+              element.removeEventListener('mouseenter', handleMouseEnter);
+              element.removeEventListener('mouseleave', handleMouseLeave);
+            };
+          }
+
+          // Animation des sections services et liens
+          if (servicesRef.current) {
+            gsap.fromTo(servicesRef.current,
+              { opacity: 0, x: -30 },
+              { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 0.8, force3D: true }
+            );
+          }
+
+          if (linksRef.current) {
+            gsap.fromTo(linksRef.current,
+              { opacity: 0, x: -30 },
+              { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 1.0, force3D: true }
+            );
+          }
+
+          // Animation de la section bottom
+          if (bottomRef.current) {
+            gsap.fromTo(bottomRef.current,
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 1.2, force3D: true }
+            );
+          }
+
+          // Animation du bouton scroll to top
+          if (scrollToTopRef.current) {
+            gsap.fromTo(scrollToTopRef.current,
+              { scale: 0, opacity: 0, rotation: 180 },
+              { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)", delay: 1.4, force3D: true }
+            );
+          }
+
+          // Animations de hover pour les liens
+          const serviceLinks = document.querySelectorAll('.services-section a');
+          const footerLinks = document.querySelectorAll('.footer-links a');
+
+          serviceLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+              gsap.to(link, {
+                scale: 1.05,
+                x: 5,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            });
+
+            link.addEventListener('mouseleave', () => {
+              gsap.to(link, {
+                scale: 1,
+                x: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            });
+          });
+
+          footerLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+              gsap.to(link, {
+                scale: 1.05,
+                x: 5,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            });
+
+            link.addEventListener('mouseleave', () => {
+              gsap.to(link, {
+                scale: 1,
+                x: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                force3D: true
+              });
+            });
+          });
+
+          // Clean up will-change after animations complete
+          setTimeout(() => {
+            elementsToAnimate.forEach(element => {
+              if (element) element.style.willChange = 'auto';
+            });
+          }, 2000);
+
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
     if (footerRef.current) {
-      gsap.fromTo(footerRef.current, 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-      );
+      observer.observe(footerRef.current);
     }
 
-    // Animation du logo
-    if (logoRef.current) {
-      gsap.fromTo(logoRef.current,
-        { scale: 0.8, opacity: 0, rotation: -5 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)", delay: 0.2 }
-      );
-    }
-
-    // Animation de la description
-    if (descriptionRef.current) {
-      gsap.fromTo(descriptionRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.4 }
-      );
-    }
-
-    // Animation du texte mis en évidence
-    if (highlightedTextRef.current) {
-      gsap.fromTo(highlightedTextRef.current,
-        { rotation: -15, scale: 0.5, opacity: 0, y: 20 },
-        { rotation: 2, scale: 1, opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)", delay: 0.6 }
-      );
-
-      // Animation de hover pour le texte mis en évidence
-      const handleMouseEnter = () => {
-        gsap.to(highlightedTextRef.current, {
-          rotation: 8,
-          scale: 1.1,
-          y: -8,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      };
-
-      const handleMouseLeave = () => {
-        gsap.to(highlightedTextRef.current, {
-          rotation: 2,
-          scale: 1,
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      };
-
-      const element = highlightedTextRef.current;
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    }
-
-    // Animation des sections services et liens
-    if (servicesRef.current) {
-      gsap.fromTo(servicesRef.current,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 0.8 }
-      );
-    }
-
-    if (linksRef.current) {
-      gsap.fromTo(linksRef.current,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: 1.0 }
-      );
-    }
-
-    // Animation de la section bottom
-    if (bottomRef.current) {
-      gsap.fromTo(bottomRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 1.2 }
-      );
-    }
-
-    // Animation du bouton scroll to top
-    if (scrollToTopRef.current) {
-      gsap.fromTo(scrollToTopRef.current,
-        { scale: 0, opacity: 0, rotation: 180 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)", delay: 1.4 }
-      );
-    }
-
-    // Animations de hover pour les liens
-    const serviceLinks = document.querySelectorAll('.services-section a');
-    const footerLinks = document.querySelectorAll('.footer-links a');
-
-    serviceLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        gsap.to(link, {
-          scale: 1.05,
-          x: 5,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-
-      link.addEventListener('mouseleave', () => {
-        gsap.to(link, {
-          scale: 1,
-          x: 0,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-    });
-
-    footerLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        gsap.to(link, {
-          scale: 1.05,
-          x: 5,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-
-      link.addEventListener('mouseleave', () => {
-        gsap.to(link, {
-          scale: 1,
-          x: 0,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-    });
-
+    return () => observer.disconnect();
   }, []);
 
   return (

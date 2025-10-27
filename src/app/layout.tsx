@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 import Script from "next/script";
@@ -8,13 +7,6 @@ import { GridBackground } from "@/components/ui/grid-background";
 
 const Footer = dynamic(() => import("@/components/footer"), {
   loading: () => <div className="h-32 bg-surface-muted animate-pulse" />,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -95,8 +87,14 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        {/* Resource hints for performance */}
+        <link rel="preconnect" href="https://app.rybbit.io" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cal.com" />
+        
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo_black.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo-black.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,7 +107,7 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={` font-sans antialiased`}
       >
         <div className="min-h-screen bg-background relative font-be-vietnam-pro">
           <Navbar />
