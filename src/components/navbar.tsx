@@ -234,7 +234,7 @@ export default function Navbar() {
                   <div className="pt-4">
                     <Button
                     size="lg"
-                      className="w-full bg-brand-green text-brand-black cursor-pointer transition-transform hover:-translate-y-1"
+                      className="w-full bg-brand-green text-brand-black cursor-pointer transition-transform hover:-translate-y-1 hover:text-white"
                       asChild
                     >
                       <a href="#rendez-vous" className="flex items-center justify-center gap-2">

@@ -13,7 +13,7 @@ export default function AutomatisationCRMHero() {
 Pas de formation interminable. Pas de consultant qui disparaît après 2 semaines. Juste un système qui tourne."
       primaryCta="Automatiser mon CRM"
       secondaryCta="Télécharge le guide nurturing"
-      primaryCtaLink="#rendez-toi"
+      primaryCtaLink="#rendez-vous"
       secondaryCtaLink="#integrations"
       brandColor="bg-brand-orange"
       showBadge={true}

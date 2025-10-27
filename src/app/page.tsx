@@ -73,7 +73,7 @@ export default function Home() {
     <>
       <HeroCard brandColor="bg-brand-green" showBadge={false} showStats={true} title="On construit des produits digitaux qui bossent pour toi." description="Tu veux lancer vite sans sacrifier la qualité ?
 Design UX/UI, développement full-stack, automatisation CRM et prospection LinkedIn multicomptes.
-Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-toi" secondaryCtaLink="#calculator" />
+Nos process sont calibrés pour exécuter vite et bien : prototype en 5 jours, MVP en 6 semaines, croissance activée en 30 jours." primaryCta="Parle-nous de ton projet" secondaryCta="Estime ton projet" primaryCtaLink="#rendez-vous" secondaryCtaLink="#calculator" />
       <MethodSection />
       <PhilosophySection/> 
       <IdentificationSection />

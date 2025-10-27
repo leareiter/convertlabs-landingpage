@@ -254,7 +254,7 @@ export default function HeroCard({
               className="bg-brand-black text-white text-lg rounded-md font-medium cursor-pointer -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
               asChild
             >
-              <a href={primaryCtaLink}>
+              <a href="#rendez-vous">
                 {hero.primaryCta}
                 <ArrowRight size={16} />
               </a>
