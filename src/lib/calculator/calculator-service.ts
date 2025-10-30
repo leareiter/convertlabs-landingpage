@@ -129,19 +129,33 @@ export const calculateLinkedIn = (data: LinkedinData): CalculationResult => {
 
 export class CalculatorService {
   static calculate(calculatorType: TabId, data: any): CalculationResult {
+    let result: CalculationResult;
     switch (calculatorType) {
       case 'site':
-        return calculateSite(data as SiteData);
+        result = calculateSite(data as SiteData);
+        break;
       case 'prototype':
-        return calculatePrototype(data as PrototypeData);
+        result = calculatePrototype(data as PrototypeData);
+        break;
       case 'mvp':
-        return calculateMVP(data as MvpData);
+        result = calculateMVP(data as MvpData);
+        break;
       case 'crm':
-        return calculateCRM(data as CrmData);
+        result = calculateCRM(data as CrmData);
+        break;
       case 'linkedin':
-        return calculateLinkedIn(data as LinkedinData);
+        result = calculateLinkedIn(data as LinkedinData);
+        break;
       default:
         throw new Error(`Invalid calculator type: ${calculatorType}`);
     }
+
+    // Apply 20% discount to all services except LinkedIn
+    if (calculatorType !== 'linkedin') {
+      if (typeof result.min === 'number') result.min = Math.round(result.min * 0.8);
+      if (typeof result.max === 'number') result.max = Math.round(result.max * 0.8);
+    }
+
+    return result;
   }
 }
