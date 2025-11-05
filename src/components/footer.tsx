@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
-
   const footer = {
     logo: "ConvertLabs",
     description: "On construit des produits digitaux",
@@ -58,16 +56,6 @@ export default function Footer() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setShowScrollToTop(scrollTop > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Handle scroll to section when arriving from another page
   useEffect(() => {
     const hash = window.location.hash;
@@ -85,7 +73,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="bg-brand-black text-background py-16 md:py-16 font-be-vietnam-pro tracking-[-0.05em]">
+    <footer className="relative bg-brand-black text-background py-16 md:py-16 font-be-vietnam-pro tracking-[-0.05em]">
       <div className="container mx-auto px-4">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8 md:mb-12">
@@ -179,16 +167,13 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to top button */}
-      {showScrollToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-48 right-4 md:bottom-6 md:right-6 z-50 bg-brand-green hover:bg-brand-green/90 text-brand-black p-4 md:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+          className="absolute bottom-56 right-4 md:bottom-6 md:right-6 z-50 bg-brand-green hover:bg-brand-green/90 text-brand-black p-4 md:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
           aria-label="Retour en haut de page"
         >
           <ArrowUp size={24} className="md:w-5 md:h-5" />
         </button>
-      )}
     </footer>
   );
 } 
