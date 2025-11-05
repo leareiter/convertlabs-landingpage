@@ -60,6 +60,7 @@ export default function HeroCard({
 }: HeroCardProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
   const { submitLeadMagnet, isSubmitting, submitError, submitSuccess, resetSubmission } = useLeadMagnetSubmission();
 
   const handleSecondaryCtaClick = (e: React.MouseEvent) => {
@@ -68,7 +69,28 @@ export default function HeroCard({
       setDialogOpen(true);
       resetSubmission();
       setEmail("");
+      setEmailError(null);
     }
+  };
+
+  const validateEmail = (emailValue: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailValue.trim()) {
+      setEmailError(null);
+      return false;
+    }
+    if (!emailRegex.test(emailValue.trim())) {
+      setEmailError('Email invalide');
+      return false;
+    }
+    setEmailError(null);
+    return true;
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    validateEmail(value);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -99,6 +121,7 @@ export default function HeroCard({
     setDialogOpen(open);
     if (!open) {
       setEmail("");
+      setEmailError(null);
       resetSubmission();
     }
   };
@@ -361,7 +384,13 @@ export default function HeroCard({
                           type="email"
                           placeholder="votre@email.com"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={handleEmailChange}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !isSubmitting && email.trim() && !emailError) {
+                              e.preventDefault();
+                              handleSubmit(e as any);
+                            }
+                          }}
                           autoComplete="email"
                           autoCapitalize="none"
                           autoCorrect="off"
@@ -371,8 +400,8 @@ export default function HeroCard({
                           data-1p-ignore
                           data-lpignore="true"
                         />
-                        {submitError && (
-                          <p className="text-sm text-red-600">{submitError}</p>
+                        {(emailError || submitError) && (
+                          <p className="text-sm text-red-600">{emailError || submitError}</p>
                         )}
                       </div>
                     </div>
@@ -391,12 +420,14 @@ export default function HeroCard({
                         </DialogClose>
                         <Button
                           type="submit"
-                          disabled={isSubmitting || !email}
-                          className="bg-brand-black text-white hover:opacity-90"
+                          disabled={isSubmitting || !email.trim() || !!emailError}
+                          className={`bg-brand-black text-white hover:opacity-90 ${
+                            isSubmitting || !email.trim() || emailError ? 'opacity-50 cursor-not-allowed' : ''
+                          }`}
                           onClick={async (e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            if (!email.trim() || isSubmitting) {
+                            if (!email.trim() || isSubmitting || emailError) {
                               return;
                             }
                             await handleSubmit(e as any);

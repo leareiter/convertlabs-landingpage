@@ -17,7 +17,7 @@ export const useLeadMagnetSubmission = () => {
     // Validate email
     const emailValidation = emailSchema.safeParse(submissionData.email);
     if (!emailValidation.success) {
-      setSubmitError(emailValidation.error.errors[0]?.message || 'Email invalide');
+      setSubmitError(emailValidation.error.issues[0]?.message || 'Email invalide');
       return false;
     }
 
@@ -45,8 +45,14 @@ export const useLeadMagnetSubmission = () => {
           return true;
         }
 
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit lead magnet');
+        let errorMessage = 'Failed to submit lead magnet';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = `Erreur serveur (${response.status})`;
+        }
+        throw new Error(errorMessage);
       }
 
       setSubmitSuccess(true);
