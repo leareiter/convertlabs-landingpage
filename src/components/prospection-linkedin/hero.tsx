@@ -14,7 +14,7 @@ Pas de spam. Pas de ban. Juste un pipeline qui se remplit pendant que tu bosses.
       primaryCta="Générer des leads"
       secondaryCta="Télécharge le ICP Checklist"
       primaryCtaLink="#rendez-vous"
-      secondaryCtaLink="#resultats"
+      secondaryCtaDialog={{ leadMagnetType: "linkedinLM" }}
       brandColor="bg-brand-blue"
       showBadge={true}
       sectionId="hero"

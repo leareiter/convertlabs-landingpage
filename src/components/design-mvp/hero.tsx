@@ -14,7 +14,7 @@ Pas de tunnel noir. Pas de dette technique. Juste un produit qui tourne."
       primaryCta="Lancer mon MVP"
       secondaryCta="Télécharge le MVP Checklist"
       primaryCtaLink="#rendez-vous"
-      secondaryCtaLink="#realisations"
+      secondaryCtaDialog={{ leadMagnetType: "designLM" }}
       brandColor="bg-brand-purple"
       showBadge={true}
       sectionId="hero"

@@ -14,7 +14,7 @@ Pas de formation interminable. Pas de consultant qui disparaît après 2 semaine
       primaryCta="Automatiser mon CRM"
       secondaryCta="Télécharge le guide nurturing"
       primaryCtaLink="#rendez-vous"
-      secondaryCtaLink="#integrations"
+      secondaryCtaDialog={{ leadMagnetType: "crmLM" }}
       brandColor="bg-brand-orange"
       showBadge={true}
       sectionId="hero"

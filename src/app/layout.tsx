@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import Script from "next/script";
 import { GridBackground } from "@/components/ui/grid-background";
-
-const Footer = dynamic(() => import("@/components/footer"), {
-  loading: () => <div className="h-32 bg-surface-muted animate-pulse" />,
-});
 
 export const metadata: Metadata = {
   title: "ConvertLabs - On construit des produits digitaux qui bossent pour toi",

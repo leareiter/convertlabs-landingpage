@@ -2,7 +2,19 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useLeadMagnetSubmission } from "@/hooks/use-lead-magnet-submission";
 
 interface HeroCardProps {
   badgeText?: string;
@@ -16,6 +28,9 @@ interface HeroCardProps {
   secondaryCta: string;
   primaryCtaLink?: string;
   secondaryCtaLink?: string;
+  secondaryCtaDialog?: {
+    leadMagnetType: 'designLM' | 'crmLM' | 'linkedinLM';
+  };
   brandColor?: string;
   showBadge?: boolean;
   sectionId?: string;
@@ -34,8 +49,8 @@ export default function HeroCard({
   description,
   primaryCta,
   secondaryCta,
-  primaryCtaLink = "#rendez-vous",
   secondaryCtaLink,
+  secondaryCtaDialog,
   brandColor = "bg-brand-green",
   showBadge = true,
   sectionId,
@@ -43,6 +58,50 @@ export default function HeroCard({
   showStats = false,
   showValidation = false
 }: HeroCardProps) {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const { submitLeadMagnet, isSubmitting, submitError, submitSuccess, resetSubmission } = useLeadMagnetSubmission();
+
+  const handleSecondaryCtaClick = (e: React.MouseEvent) => {
+    if (secondaryCtaDialog) {
+      e.preventDefault();
+      setDialogOpen(true);
+      resetSubmission();
+      setEmail("");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!secondaryCtaDialog || !email.trim()) {
+      console.log('Validation failed:', { secondaryCtaDialog, email });
+      return;
+    }
+    
+    const success = await submitLeadMagnet({
+      email: email.trim(),
+      leadMagnetType: secondaryCtaDialog.leadMagnetType,
+    });
+
+
+    if (success) {
+      setTimeout(() => {
+        setDialogOpen(false);
+        setEmail("");
+        resetSubmission();
+      }, 3000);
+    }
+  };
+
+  const handleDialogOpenChange = (open: boolean) => {
+    setDialogOpen(open);
+    if (!open) {
+      setEmail("");
+      resetSubmission();
+    }
+  };
   const hero = useMemo(() => ({
     badgeText,
     title,
@@ -263,9 +322,10 @@ export default function HeroCard({
               variant="outline"
               size="lg"
               className="border border-border text-foreground text-lg  rounded-md font-medium -translate-y-1 hover:-translate-y-2 transition-transform duration-200 w-full md:w-auto"
-              asChild={!!secondaryCtaLink}
+              asChild={!!secondaryCtaLink && !secondaryCtaDialog}
+              onClick={secondaryCtaDialog ? handleSecondaryCtaClick : undefined}
             >
-              {secondaryCtaLink ? (
+              {secondaryCtaLink && !secondaryCtaDialog ? (
                 <a href={secondaryCtaLink}>
                   {hero.secondaryCta}
                 </a>
@@ -274,6 +334,83 @@ export default function HeroCard({
               )}
             </Button>
           </div>
+
+          {secondaryCtaDialog && (
+            <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
+              <form onSubmit={handleSubmit} noValidate>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Télécharger le guide</DialogTitle>
+                    <DialogDescription>
+                      Entrez votre email pour recevoir le guide gratuitement.
+                    </DialogDescription>
+                  </DialogHeader>
+                  {submitSuccess ? (
+                    <div className="py-4">
+                      <p className="text-sm text-green-600 font-medium">
+                        Merci ! Votre email a été enregistré avec succès. Vous recevrez le guide dans quelques instants.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid gap-4">
+                      <div className="grid gap-3">
+                        <Label htmlFor="email">Email</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="votre@email.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          autoComplete="email"
+                          autoCapitalize="none"
+                          autoCorrect="off"
+                          spellCheck="false"
+                          required
+                          disabled={isSubmitting}
+                          data-1p-ignore
+                          data-lpignore="true"
+                        />
+                        {submitError && (
+                          <p className="text-sm text-red-600">{submitError}</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  <DialogFooter>
+                    {submitSuccess ? (
+                      <DialogClose asChild>
+                        <Button variant="outline">Fermer</Button>
+                      </DialogClose>
+                    ) : (
+                      <>
+                        <DialogClose asChild>
+                          <Button variant="outline" type="button">
+                            Annuler
+                          </Button>
+                        </DialogClose>
+                        <Button
+                          type="submit"
+                          disabled={isSubmitting || !email}
+                          className="bg-brand-black text-white hover:opacity-90"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (!email.trim() || isSubmitting) {
+                              return;
+                            }
+                            await handleSubmit(e as any);
+                          }}
+                        >
+                          {isSubmitting ? "Envoi..." : "Confirmer"}
+                        </Button>
+                      </>
+                    )}
+                  </DialogFooter>
+                </DialogContent>
+              </form>
+            </Dialog>
+          )}
 
           {showStats && (
             <div className={`mt-8 flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-text-muted tracking-[-0.05em] ${brandColor === "bg-brand-orange" ? "hidden md:flex" : "flex"}`}>
