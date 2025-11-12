@@ -2,7 +2,7 @@
 
 import { ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
@@ -25,8 +25,8 @@ export default function Footer() {
       { text: "Réserver un appel", href: "/#rendez-vous" }
     ],
     legalLinks: [
-      { text: "Politique de confidentialité", href: "#privacy" },
-      { text: "Conditions d'utilisation", href: "#terms" },    ]
+      { text: "Mentions légales", href: "/legal" },
+    ]
   };
   const currentYear = new Date().getFullYear();
 
