@@ -18,7 +18,7 @@ export default function AppointmentCard({
   headerSubtitle, 
   headerTitle, 
   sectionId = "rendez-vous",
-  calLink = "benjamin-convertlabs/30min",
+  calLink = "benjaminconvertlabs/30min",
   namespace = "discovery-call",
   loadingText = "Chargement du calendrier...",
   footerText = "Réponse sous 48h. Sans engagement."
